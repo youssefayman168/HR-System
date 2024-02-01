@@ -2,7 +2,9 @@ import AuthLayout from "@/layouts/AuthLayout"
 
 const Login = () => {
     return (
-        <AuthLayout>Login</AuthLayout>
+        <AuthLayout>Login
+            
+        </AuthLayout>
     )
 }
 
