@@ -15,7 +15,7 @@ function App() {
           <Route path={pathList.forgetPassword}>
             <Route element={<ForgetPassword />} index />
             <Route element={<ForgetPasswordOTP />} path={pathList.forgetPasswordOTP} />
-            <Route element={<ResetPassword />} path={pathList.forgetPassword} />
+            <Route element={<ResetPassword />} path={pathList.resetPassword} />
           </Route>
         </Route>
       </>
@@ -26,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
