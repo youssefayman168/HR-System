@@ -1,10 +1,15 @@
-import AuthLayout from "@/layouts/AuthLayout"
+import AuthLayout from "../../layouts/AuthLayout"
+
 
 const Login = () => {
     return (
-        <AuthLayout>Login
+        <AuthLayout>
             
+        <div>
+        Login
+        </div>
         </AuthLayout>
+
     )
 }
 

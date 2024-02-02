@@ -1,5 +1,6 @@
 import whiteLogo from '../../src/assets/SEC_white_logo.png';
 import rectangleShape1 from '../../src/assets/authLayout/circleShape.svg';
+import { motion } from 'framer-motion'
 
 const AuthLayout = ({ children }: any) => {
     return (
@@ -8,11 +9,13 @@ const AuthLayout = ({ children }: any) => {
                 <img src={whiteLogo} alt="logo" className='absolute top-1/2 ' />
                 <img src={rectangleShape1} alt="circle shape" className='top-[-40px] right-[-40px] absolute' />
             </div>
-            <div className="flex items-center justify-center flex-1">
-                <div>
-                    {children}
-                </div>
-            </div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className='flex items-center justify-center flex-1'>
+                {children}
+            </motion.div>
         </main>
     )
 }
