@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import AuthLayout from "../../layouts/AuthLayout";
 import "./ForgetPasswordOTP.css";
 import BaseBtn from "../../components/BaseBtn";
