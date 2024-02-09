@@ -10,7 +10,9 @@ import ForgetPassword from "@/pages/auth/ForgetPassword";
 import ForgetPasswordOTP from "@/pages/auth/ForgetPasswordOTP";
 import ResetPassword from "@/pages/auth/ResetPassword";
 import Home from "@/pages/Home";
-import Projects from "@/pages/Projects";
+import Projects from "@/pages/projects/all";
+import CreateProject from "./pages/projects/create-project";
+import ProjectDetails from "./pages/projects/project-details";
 import Tasks from "@/pages/Tasks";
 import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
@@ -35,6 +37,11 @@ const router = createBrowserRouter(
           />
           <Route element={<ResetPassword />} path={pathList.resetPassword} />
         </Route>
+        <Route path={pathList.projects}>
+          <Route element={<Projects />} index />
+          <Route element={<CreateProject />} path={pathList.createProject} />
+          <Route element={<ProjectDetails />} path={pathList.projectDetails} />
+        </Route>
         <Route
           element={
             <ProtectedRoute>
@@ -43,7 +50,6 @@ const router = createBrowserRouter(
           }
           path={pathList.home}
         />
-        <Route element={<Projects />} path={pathList.projects} />
         <Route element={<Tasks />} path={pathList.tasks} />
         <Route element={<Timetable />} path={pathList.time_table} />
         <Route element={<Notifications />} path={pathList.notifications} />
