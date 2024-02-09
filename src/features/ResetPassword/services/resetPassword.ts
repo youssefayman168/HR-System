@@ -12,7 +12,6 @@ const resetPassword = (otpCode: string, email: string, newPassword: string) => {
       showToast: true,
       success: (data) => data.message,
       error: (e) => {
-        console.log(e);
         return e.message;
       },
     }
