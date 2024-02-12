@@ -16,7 +16,7 @@ export const pathList = {
   reports: "/reports",
 
   // Projects URLs
-  projects: "/projects/all",
+  projects: "/projects",
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
 };
