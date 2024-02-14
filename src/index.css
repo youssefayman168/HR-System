@@ -18,8 +18,14 @@ html {
 ul svg {
     fill: #797979;
 }
-.statusDropDown:hover .DropDownTable{
+.statusDropDown:hover .DropDownTable , .Filter:hover .DropDownTable{
     opacity: 1;
     visibility: visible;
     top: 70px;
+}
+.Notifications::-webkit-scrollbar {
+    display: none;
+}
+.ulFilter.act {
+    height: 224.44px;
 }
