@@ -18,7 +18,7 @@ html {
 ul svg {
     fill: #797979;
 }
-.statusDropDown:hover .DropDownTable , .Filter:hover .DropDownTable{
+.statusDropDown:hover .DropDownTable{
     opacity: 1;
     visibility: visible;
     top: 70px;
