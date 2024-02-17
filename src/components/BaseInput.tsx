@@ -10,7 +10,7 @@ type IProps = {
   styles?: CSSProperties;
   mainStyles?: CSSProperties;
   labelStyles?: CSSProperties;
-  id: string;
+  id?: string;
   req?: boolean;
 };
 
