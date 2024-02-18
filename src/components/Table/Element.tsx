@@ -25,7 +25,7 @@ const Element = ({id , projects , company , startingDate , expiryDate , status ,
     <td className='text-[#9295AB]'>{company}</td>
     <td className='text-[#9295AB]' >{startingDate}</td>
     <td className='text-[#9295AB]'>{expiryDate}</td>
-    <td className='block mt-5 rounded-[8px] w-fit mx-auto ' style={styles} ><div className='p-2'>{status}</div></td>
+    <td className='block mt-5 rounded-[8px] mx-auto w-[95px] ' style={styles} ><div className='p-2'>{status}</div></td>
     <td className='text-[#9295AB]' >{projectHours}</td>
     <td className='text-[#9295AB]' >{workHours}</td>
 
