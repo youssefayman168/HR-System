@@ -30,8 +30,8 @@ const BaseLayout = ({ children }: any) => {
       <div className='flex'>
         <aside className='w-[290px] bg-white h-[100vh]'>
           <img src={companyLogo} alt='SEC Logo' className='mt-8 ml-7' />
-          <div className='mt-10'>
-            <ul className=' flex items-center justify-between gap-3 flex-col'>
+          <div className='mt-6'>
+            <ul className=' flex items-center justify-between gap-2 flex-col'>
               {asideLinks.map(({ title, src, Icon }, index) => {
                 return (
                   <NavLink
