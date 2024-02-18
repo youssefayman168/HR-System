@@ -34,13 +34,13 @@ const Projects = () => {
         </Link>
       </div>
     </div>
-    <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[78vh] rounded-[20px]  ">
+    <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
       <ProjectsTable />
     </div>
-    <button className="flex bg-[#105090] ms-auto mt-6 me-10 py-[10px] ps-4 pe-5 gap-2 rounded-[10px] text-white ">
-      <img src={DownloadIcon} alt="DownloadIcon" />
-      Export As PDF
-    </button>
+      <button className="flex bg-[#105090] ms-auto mt-6 me-10 py-[10px] ps-4 pe-5 gap-2 rounded-[10px] text-white ">
+        <img src={DownloadIcon} alt="DownloadIcon" />
+        Export As PDF
+      </button>
   </div>
   </BaseLayout>
   );
