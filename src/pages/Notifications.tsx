@@ -4,7 +4,7 @@ import NotificationIcons from '../assets/Notification/Filter.svg'
 import DateIcon from '../assets/Notification/DateIcon.svg'
 import NotificationCompo from '@/components/Notification/NotificationCompo';
 import { useRef } from 'react';
-import Date from '@/components/DateInput/Date';
+import DateInp from '@/components/DateInput/Date';
 
 const Notifications = () => {
     const ulElement = useRef<HTMLUListElement>(null)
@@ -28,7 +28,7 @@ const Notifications = () => {
                                 <li className='py-[10px] border-b cursor-pointer'>Reports</li>
                             </ul>
                         </div>
-                        <Date icon={DateIcon} styles={{ flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
+                        <DateInp icon={DateIcon} styles={{ flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
                     </div>
                 </div>
 
