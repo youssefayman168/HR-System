@@ -8,7 +8,7 @@ const ProjectsTable = () => {
     return (
         <div className='bg-white px-10 rounded-[20px] '>
 
-            <table className='w-full text-center  '>
+            <table className='w-full text-center'>
 
                 <thead className='text-[#9295AB] '>
                     <tr className='border-b-[2px] border-[#a0aaca80]'>
@@ -22,8 +22,7 @@ const ProjectsTable = () => {
                                 Status
                                 <img src={DropIcon} alt="DropIcon" />
                             </div>
-
-                            <DropDown style={{ height: openList ? '254px' : '0', opacity: openList ? '1' : '0' }} text1='All' text2='Planning' text3='In progress' text4='Done' text5='Canceled' />
+                            <DropDown style={{ height: openList ? '254px' : '0', opacity: openList ? '1' : '0' , visibility: openList ? 'visible' : 'hidden' }} text1='All' text2='Planning' text3='In progress' text4='Done' text5='Canceled' />
                         </th>
                         <th>Project Hours</th>
                         <th>Work Hours</th>

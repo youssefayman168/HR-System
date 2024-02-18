@@ -7,11 +7,15 @@ type DateProp = {
     stylesInp? : CSSProperties
 }
 
-const Date = ({ icon , styles , stylesInp } : DateProp) => {
+const DateInp = ({ icon , styles , stylesInp } : DateProp) => {
 
+    const d = new Date()
+
+    const addLeadingZero = (num: number) => (num < 10 ? `0${num}` : num);
+
+    const [dateF, setDateF] = useState<string>(`${addLeadingZero(d.getFullYear())}-${addLeadingZero(d.getMonth() + 1)}-${addLeadingZero(d.getDate())} `)
+    
     const dateInpF = useRef<HTMLInputElement>(null);
-    const [dateF, setDateF] = useState<string>("29 July 2023")
-
     const dataInputFromOnChange = () => {
         if (dateInpF.current) {
             setDateF(dateInpF.current.value);
@@ -30,4 +34,4 @@ const Date = ({ icon , styles , stylesInp } : DateProp) => {
   )
 }
 
-export default Date
+export default DateInp

@@ -6,7 +6,7 @@ import DateIcon from '../../assets/Projects/Date.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
 import { Link } from "react-router-dom";
 import { pathList } from "@/routes/routesPaths";
-import Date from "@/components/DateInput/Date";
+import DateInp from "@/components/DateInput/Date";
 
 const Projects = () => {
   return (
@@ -24,7 +24,7 @@ const Projects = () => {
       </div>
       <div className="flex items-center gap-4">
 
-        <Date icon={DateIcon} />
+        <DateInp icon={DateIcon} />
 
         <Link to={pathList.createProject} className="flex items-center gap-2 bg-[#105090] text-white py-3 px-4 rounded-[8px] ">
           <div className="bg-white text-black text-[11px] p-[2px] rounded-[4px]">
