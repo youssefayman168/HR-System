@@ -1,5 +1,7 @@
 import { BiTrashAlt } from "react-icons/bi"; 
 import { BiPencil } from "react-icons/bi"; 
+import DeleteIcon from '../../assets/Projects/Delete.svg'
+import EditIcon from '../../assets/Projects/Edit.svg'
 import { CSSProperties } from 'react'
 
 
@@ -28,11 +30,8 @@ const Element = ({id , projects , company , startingDate , expiryDate , status ,
     <td className='block mt-5 rounded-[8px] mx-auto w-[95px] ' style={styles} ><div className='p-2'>{status}</div></td>
     <td className='text-[#9295AB]' >{projectHours}</td>
     <td className='text-[#9295AB]' >{workHours}</td>
-
-    {/* <div className="flex justify-center items-center">
-    <td className='text-[#34E045] bg-[#DEFFE1] block mt-5 rounded-[8px] w-fit mx-auto' ><div className='p-2'><BiPencil /></div></td>
-    <td className='text-[#AA0000] bg-[#FFE9E0] block mt-5 rounded-[8px] w-fit mx-auto' ><div className='p-2'><BiTrashAlt /></div></td>
-    </div> */}
+    <td><img className="bg-[#DEFFE1] inline-block py-[10px] px-[10px] mt-1 rounded-full cursor-pointer" src={EditIcon} alt="EditIcon" /></td>
+    <td className='inline-block cursor-pointer' ><img src={DeleteIcon} alt="DeleteIcon" /></td>
     </>
   )
 }
