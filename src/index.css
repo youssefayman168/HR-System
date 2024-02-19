@@ -9,6 +9,8 @@ html {
 .active {
     color: #ffffff;
     background-color: #105090;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .active svg {
@@ -18,9 +20,37 @@ html {
 ul svg {
     fill: #797979;
 }
-.HideScroll::-webkit-scrollbar{
+
+.HideScroll::-webkit-scrollbar {
     display: none;
 }
+
 .ulFilter.act {
     height: 224.44px;
+}
+
+.linePercentageAnimation {
+    animation: forwards lineAnimation 1.4s;
+}
+
+@keyframes lineAnimation {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #365B98;
+    border-radius: 6px;
 }
