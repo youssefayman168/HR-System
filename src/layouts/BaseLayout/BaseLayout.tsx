@@ -37,7 +37,7 @@ const BaseLayout = ({ children }: any) => {
                   <NavLink
                     key={index}
                     className={
-                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] text-lg px-10 py-[8px]"
+                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-1 xxxl:my-2 text-lg px-10 py-[8px]"
                     }
                     to={src}
                   >
