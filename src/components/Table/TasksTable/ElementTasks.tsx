@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import { CSSProperties } from 'react'
 import DeleteIcon from '../../../assets/Projects/Delete.svg'
 import EditIcon from '../../../assets/Projects/Edit.svg'
 import { Link } from 'react-router-dom'

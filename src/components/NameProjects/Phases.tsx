@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import bold from '../../assets/NameProjects/Bold.svg'
 import bTM from '../../assets/NameProjects/ArrowBTM.svg'
 import Groupe from '../../assets/NameProjects/Groupe.svg'

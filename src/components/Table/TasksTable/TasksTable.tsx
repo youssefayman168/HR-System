@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import DropIcon from '../../../assets/Projects/DropDown.svg'
 import arrowBottom from '../../../assets/Tasks/arrowBottom.svg'
 import { Link } from 'react-router-dom'

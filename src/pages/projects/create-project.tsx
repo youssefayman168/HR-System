@@ -5,7 +5,6 @@ import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
 import ArrowBottom from '../../assets/CreateProjects/ArrowBottom.svg'
 import DropFiles from '../../assets/CreateProjects/DropFiles.svg'
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
 import DateInpCreate from "@/components/DateInput/DateInpCreate";
 
 const CreateProject = () => {
