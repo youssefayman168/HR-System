@@ -1,4 +1,4 @@
-import BaseBtn from "@/components/BaseBtn";
+import BaseBtn from "@/components/Buttons/BaseBtn";
 import PasswordInp from "@/components/PasswordInp";
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";

@@ -1,5 +1,5 @@
 import { pathList } from "../../routes/routesPaths";
-import BaseBtn from "../../components/BaseBtn";
+import BaseBtn from "../../components/Buttons/BaseBtn";
 import BaseInput from "../../components/BaseInput";
 import AuthLayout from "../../layouts/AuthLayout";
 import PageHeader from "@/features/ForgetPassword/components/PageHeader";
