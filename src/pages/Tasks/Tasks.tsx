@@ -7,10 +7,10 @@ import plus from '../../assets/plus.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
 import { useState } from 'react'
 import TasksTable from '@/components/Table/TasksTable'
-import BtnCreate from '@/components/BtnCreate/BtnCreate'
+import BtnCreate from '@/components/Buttons/BtnCreate'
 
 const Tasks = () => {
-    return(
+    return (
         <BaseLayout>
             <div className='p-5'>
                 <div className="flex items-center justify-between">
@@ -19,13 +19,13 @@ const Tasks = () => {
                     </div>
                     <div className="relative">
                         <div className="absolute top-[50%] left-3 translate-y-[-50%] text-[#737373]">
-                        <img src={searchIcon} alt="searchIcon" />
+                            <img src={searchIcon} alt="searchIcon" />
                         </div>
                         <input className="w-[520px] h-[52px] rounded-lg ps-10 outline-none" type="text" placeholder="Quick Search..." />
                     </div>
                     <div className="flex items-center gap-4">
 
-                        <DateInp icon={DateIcon} styles={{flexDirection: "row-reverse"}} stylesInp={{display: "flex" , flexDirection: "row-reverse"}} />
+                        <DateInp icon={DateIcon} styles={{ flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
 
                         <BtnCreate text='Create Task' icon={plus} path='' />
                     </div>

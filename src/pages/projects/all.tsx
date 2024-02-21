@@ -8,37 +8,37 @@ import plus from '../../assets/plus.svg'
 import { Link } from "react-router-dom";
 import { pathList } from "@/routes/routesPaths";
 import DateInp from "@/components/DateInput/Date";
-import BtnCreate from "@/components/BtnCreate/BtnCreate";
+import BtnCreate from "@/components/Buttons/BtnCreate";
 
 const Projects = () => {
   return (
-  <BaseLayout>
-  <div className="p-5">
-    <div className="flex items-center justify-between">
-      <div>
-        <p className="text-[#224886] text-[25px] font-[600] ">Projects overview</p>
-      </div>
-      <div className="relative">
-        <div className="absolute top-[50%] left-3 translate-y-[-50%] text-[#737373]">
-          <img src={searchIcon} alt="searchIcon" />
+    <BaseLayout>
+      <div className="p-5">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[#224886] text-[25px] font-[600] ">Projects overview</p>
+          </div>
+          <div className="relative">
+            <div className="absolute top-[50%] left-3 translate-y-[-50%] text-[#737373]">
+              <img src={searchIcon} alt="searchIcon" />
+            </div>
+            <input className="w-[520px] h-[52px] rounded-lg ps-10 outline-none" type="text" placeholder="Quick Search..." />
+          </div>
+          <div className="flex items-center gap-4">
+
+            <DateInp icon={DateIcon} />
+
+            <BtnCreate text="Create Projects" icon={plus} path={pathList.createProject} />
+          </div>
         </div>
-        <input className="w-[520px] h-[52px] rounded-lg ps-10 outline-none" type="text" placeholder="Quick Search..." />
+        <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
+          <ProjectsTable />
+        </div>
+        <div className="w-fit ms-auto mt-5 ">
+          <BtnCreate icon={DownloadIcon} text="Export As PDF" path="" />
+        </div>
       </div>
-      <div className="flex items-center gap-4">
-
-        <DateInp icon={DateIcon} />
-
-        <BtnCreate text="Create Projects" icon={plus} path={pathList.createProject} />
-      </div>
-    </div>
-    <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
-      <ProjectsTable />
-    </div>
-      <div className="w-fit ms-auto mt-5 ">
-        <BtnCreate icon={DownloadIcon} text="Export As PDF" path="" />
-      </div>
-  </div>
-  </BaseLayout>
+    </BaseLayout>
   );
 };
 

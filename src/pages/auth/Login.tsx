@@ -1,6 +1,6 @@
 import BaseInput from "../../components/BaseInput";
 import AuthLayout from "../../layouts/AuthLayout";
-import BaseBtn from "../../components/BaseBtn";
+import BaseBtn from "../../components/Buttons/BaseBtn";
 import { Link, useNavigate } from "react-router-dom";
 import { pathList } from "../../routes/routesPaths";
 import PasswordInp from "../../components/PasswordInp";

@@ -32,7 +32,7 @@ const Notifications = () => {
                     </div>
                 </div>
 
-            <div className='Notifications HideScroll mt-8 h-[calc(100vh-200px)] overflow-y-auto'>
+                <div className='Notifications HideScroll mt-8 h-[calc(100vh-200px)] overflow-y-auto'>
 
                     <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='New Emplyee' type='new' />
                     <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Update Employees' type='update' />

@@ -15,7 +15,7 @@ import CreateProject from "./pages/projects/create-project";
 import ProjectDetails from "./pages/projects/project-details";
 import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
-import AllEmployees from "@/pages/AllEmployees";
+import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
 import Analysis from "@/pages/Analysis";
 import Requests from "@/pages/Requests";
