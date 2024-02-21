@@ -6,7 +6,12 @@ export const pathList = {
   resetPassword: "/forget_password/reset_password/:otpCode/:email",
 
   home: "/home",
+
+  // Taska URLs
   tasks: "/tasks",
+  architecturalDrawing: "/tasks/architecturalDrawing" ,
+  addSubTasks: "/tasks/architecturalDrawing/addSubTasks" ,
+
   time_table: "/time_table",
   notifications: "/notifications",
   all_employees: "/all_employees",
@@ -19,4 +24,5 @@ export const pathList = {
   projects: "/projects",
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
+  projectDetailsAddTask: "/projects/:id/addTask",
 };

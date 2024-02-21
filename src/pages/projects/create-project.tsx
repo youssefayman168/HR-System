@@ -3,30 +3,12 @@ import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import { pathList } from "@/routes/routesPaths";
 import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
 import ArrowBottom from '../../assets/CreateProjects/ArrowBottom.svg'
-import Date from '../../assets/CreateProjects/Date.svg'
 import DropFiles from '../../assets/CreateProjects/DropFiles.svg'
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
+import DateInpCreate from "@/components/DateInput/DateInpCreate";
 
 const CreateProject = () => {
-
-const dateInpF = useRef<HTMLInputElement>(null);
-const [dateF, setDateF] = useState<string>('From')
-
-  const dataInputFromOnChange = () => {
-    if (dateInpF.current) {
-      setDateF(dateInpF.current.value);
-    }
-  };
-
-const dateInpT = useRef<HTMLInputElement>(null);
-const [dateT, setDateT] = useState<string>('To')
-
-  const dataInputToOnChange = () => {
-    if (dateInpT.current) {
-      setDateT(dateInpT.current.value);
-    }
-  };
 
   return (
     <BaseLayout>
@@ -37,7 +19,7 @@ const [dateT, setDateT] = useState<string>('To')
             <BiChevronRight />
             Create Projects
           </Link>
-          <div className="CreatProject HideScroll bg-white mt-6 rounded-[20px] px-[80px] py-[50px] h-[80vh] overflow-auto ">
+          <div className="CreatProject HideScroll bg-white mt-6 rounded-[20px] px-[80px] py-[50px] h-[calc(100vh-176px)] overflow-y-auto ">
             <form className=" w-[100%] " action="">
                 <p className="font-bold text-[25px] ">Create New Projects</p>
                 <div className="mb-5 mt-7 flex items-center gap-8">
@@ -56,10 +38,10 @@ const [dateT, setDateT] = useState<string>('To')
                     <input id="Comp" placeholder="Please Enter The Task Name" className="w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] " type="text" />
                   </div>
 
-                  <div>
+                  <div className="w-full ">
                     <label className='mb-2 text-lg font-medium block' htmlFor="mySelect">Status</label>
-                    <div className="Select-Container relative">
-                      <select id="mySelect" className="custom-select p-5 border-[1px] border-[#ccc] appearance-none outline-none w-[590px] h-[60px] rounded-[10px] ">
+                    <div className="Select-Container relative w-full">
+                      <select id="mySelect" className="custom-select p-5 border-[1px] border-[#ccc] w-[100%] appearance-none outline-none h-[60px] rounded-[10px] ">
                         <option value="" >Please Choose The Status</option>
                         <option value="On Hold">On Hold</option>
                         <option value="Cancelled">Cancelled</option>
@@ -75,24 +57,10 @@ const [dateT, setDateT] = useState<string>('To')
 
                   <p className="mb-2 mt-3 text-lg font-medium">Duration</p>
 
-                  <div className="flex items-center gap-4 w-fit ">
+                  <div className="flex items-center gap-4 w-[50%]">
 
-                  <div className="relative ">
-                    <input ref={dateInpF} onChange={dataInputFromOnChange} className="border-2 px-[17.6px] rounded-[10px] absolute inset-0 z-[99] opacity-0 " type="date"  />
-                    <div className="border-2 p-4 rounded-[10px] flex items-center gap-44 ">
-                      <p>{dateF}</p>
-                      <img src={Date} alt="Date" />
-
-                    </div>
-                  </div>
-
-                  <div className="relative">
-                    <input onChange={dataInputToOnChange} ref={dateInpT} className="border-2 px-[17.6px] rounded-[10px] absolute inset-0 z-[99] opacity-0 " type="date"  />
-                    <div className="border-2 p-4 rounded-[10px] flex items-center gap-44 ">
-                      <p>{dateT}</p>
-                      <img src={Date} alt="Date" />
-                    </div>
-                  </div>
+                    <DateInpCreate when="From" />
+                    <DateInpCreate when="To" />
 
                   </div>
 

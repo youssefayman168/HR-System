@@ -34,16 +34,16 @@ const Notifications = () => {
 
             <div className='Notifications HideScroll mt-8 h-[calc(100vh-200px)] overflow-y-auto'>
 
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='New Emplyee' type='New Emplyee' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Update Employees' type='Update Employees' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Delete Employees' type='Delete Employees' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Office supplies requests' type='Office supplies requests' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Done' type='Read' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='New Emplyee' type='New Emplyee' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Update Employees' type='Update Employees' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Delete Employees' type='Delete Employees' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Office supplies requests' type='Office supplies requests' />
-                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Done' type='Read' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='New Emplyee' type='new' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Update Employees' type='update' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Delete Employees' type='delete' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Office supplies requests' type='office' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Done' type='read' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='New Emplyee' type='new' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Update Employees' type='update' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Delete Employees' type='delete' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Office supplies requests' type='office' />
+                    <NotificationCompo img={testImg} name='James campion' info='added a new employee to the department product designs' date='12 Jan 2024' status='Done' type='read' />
 
                 </div>
             </div>
