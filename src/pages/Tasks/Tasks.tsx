@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom'
 import BaseLayout from '../../layouts/BaseLayout/BaseLayout'
 import DateInp from '@/components/DateInput/Date'
 import searchIcon from '../../assets/Projects/search.svg'
 import DateIcon from '../../assets/Projects/Date.svg'
 import plus from '../../assets/plus.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
-import { useState } from 'react'
-import TasksTable from '@/components/Table/TasksTable'
+import TasksTable from '@/components/Table/TasksTable/TasksTable'
 import BtnCreate from '@/components/BtnCreate/BtnCreate'
 
 const Tasks = () => {
@@ -32,7 +30,6 @@ const Tasks = () => {
                 </div>
 
                 <div className='HideScroll h-[calc(100vh-240px)] overflow-y-auto rounded-[15px] '>
-                    <TasksTable />
                     <TasksTable />
                     <TasksTable />
                     <TasksTable />

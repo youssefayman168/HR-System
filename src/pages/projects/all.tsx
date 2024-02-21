@@ -1,13 +1,11 @@
-import { BiPlus } from "react-icons/bi";
-import ProjectsTable from "@/components/Table/ProjectsTable";
 import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import searchIcon from '../../assets/Projects/search.svg'
 import DateIcon from '../../assets/Projects/Date.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
 import plus from '../../assets/plus.svg'
-import { Link } from "react-router-dom";
 import { pathList } from "@/routes/routesPaths";
 import DateInp from "@/components/DateInput/Date";
+import ProjectsTable from "@/components/Table/ProjectsTable/ProjectsTable";
 import BtnCreate from "@/components/BtnCreate/BtnCreate";
 
 const Projects = () => {
@@ -31,7 +29,7 @@ const Projects = () => {
         <BtnCreate text="Create Projects" icon={plus} path={pathList.createProject} />
       </div>
     </div>
-    <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
+    <div className="TableCompo mt-8 rounded-[20px]  ">
       <ProjectsTable />
     </div>
       <div className="w-fit ms-auto mt-5 ">
