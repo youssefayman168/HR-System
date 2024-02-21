@@ -8,7 +8,7 @@ import icons from '../../assets/NameProjects/GroupeImg.svg'
 import addPlus from '../../assets/NameProjects/addPlus.svg'
 import ElementPhase from './ElementPhase'
 import { Link } from 'react-router-dom'
-import DropDown from '../Table/DropDown'
+import DropDown from '../DropDown/DropDown'
 type phaseNum = {
     phaseNum : string
 }
@@ -18,7 +18,7 @@ const Phases = ( { phaseNum } : phaseNum ) => {
 
   return (
       <div className='Phases mb-10'>
-      <div onClick={() => { setPhaseList(!phaseList) } } className='flex cursor-pointer items-center gap-3 text-[#101828] font-[600] text-[19px] mt-2 w-fit '><img className={`${phaseList ? "rotate-[-90deg]" : ""} duration-300 `} src={ArrowBottom} alt="ArrowBottom" />Phase{phaseNum}</div>
+      <div onClick={() => { setPhaseList(!phaseList) } } className='flex cursor-pointer items-center gap-3 text-[#101828] font-[600] text-[19px] mt-2 w-fit '><img className={`${phaseList ? "rotate-[-90deg]" : ""} duration-300 `} src={ArrowBottom} alt="ArrowBottom" />Phase {phaseNum}</div>
         <div className={` ${phaseList ? "h-0 overflow-hidden opacity-0 hidden " : ""} duration-200`} >
             <div className='header flex items-center border-b-[1px] border-[#DFE2E5] text-[#9295AB] font-[800] pb-4 mt-4 '>
                 <p className='w-[15%]'>A Task name</p>

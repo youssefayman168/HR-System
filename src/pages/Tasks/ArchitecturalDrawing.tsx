@@ -28,6 +28,7 @@ const ArchitecturalDrawing = () => {
           </div>
         </div>
         <div className='text-[#105090] my-7 w-fit text-[22px] font-[700] flex items-center gap-3'>All SubTasks</div>
+
         <div className='HideScroll rounded-[15px] h-[calc(100vh-325px)] overflow-y-auto'>
           <ArchitecturalDrawingTable />
         </div>

@@ -1,13 +1,12 @@
-import { BiPlus } from "react-icons/bi";
-import ProjectsTable from "@/components/Table/ProjectsTable";
 import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import searchIcon from '../../assets/Projects/search.svg'
 import DateIcon from '../../assets/Projects/Date.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
 import plus from '../../assets/plus.svg'
-import { Link } from "react-router-dom";
 import { pathList } from "@/routes/routesPaths";
 import DateInp from "@/components/DateInput/Date";
+import ProjectsTable from "@/components/Table/ProjectsTable/ProjectsTable";
+
 import BtnCreate from "@/components/Buttons/BtnCreate";
 
 const Projects = () => {

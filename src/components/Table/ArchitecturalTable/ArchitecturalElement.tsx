@@ -1,7 +1,6 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import DeleteIcon from '../../../assets/Projects/Delete.svg'
 import EditIcon from '../../../assets/Projects/Edit.svg'
-import { Link } from 'react-router-dom'
 
 type ElementArchitectural = {
     text1 : string ,
@@ -11,11 +10,10 @@ type ElementArchitectural = {
     text5 : string ,
     text6 : string ,
     text7 : string ,
-    styles? : CSSProperties ,
-    status? : CSSProperties ,
+    styleStaus : string ,
 }
 
-const ArchitecturalElement = ({ text1 , text2 , text3 , text4 , text5 , text6 , text7 , status } : ElementArchitectural ) => {
+const ArchitecturalElement = ({ text1 , text2 , text3 , text4 , text5 , text6 , text7 , styleStaus } : ElementArchitectural ) => {
   return (
     <>
         <p className='w-[15%] text-[#105090] '>{text1}</p>
@@ -24,7 +22,7 @@ const ArchitecturalElement = ({ text1 , text2 , text3 , text4 , text5 , text6 , 
         <p className='w-[12%] '>{text4}</p>
         <p className='w-[12%] '>{text5}</p>
         <div className='w-[12%] ' >
-          <p style={status} className='w-[120px] py-[7px] px-[12px] text-center rounded-[6px] bg-[#E6EFFC] text-[#0764E6]'>{text6}</p>
+          <p style={{background: styleStaus === "progress" ? "#E6EFFC" : styleStaus === "canceled" ? "#FFE3E3" : styleStaus === "planning" ? "#FFE9E0" : styleStaus === "done" ? "#DEFFE1" : "" ,     color : styleStaus === "progress" ? "#0764E6" : styleStaus === "canceled" ? "#A00" : styleStaus === "planning" ? "#FF793F" : styleStaus === "done" ? "#34E045" : ""   }} className='w-[120px] py-[7px] px-[12px] text-center rounded-[6px]'>{text6}</p>
         </div>
         <div className=' flex-1 flex items-center gap-[15px] '>
           <p className='w-fit'>{text7}</p>
