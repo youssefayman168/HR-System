@@ -26,6 +26,7 @@ import ArchitecturalDrawing from "./pages/Tasks/ArchitecturalDrawing";
 import Tasks from "./pages/Tasks/Tasks";
 import AddSubTasks from "./pages/Tasks/AddSubTasks";
 import AddTaskProjectDetails from "./pages/projects/AddTaskProjectDetails";
+import ViewEmployee from "./pages/AllEmployees/ViewEmployee";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,13 +56,16 @@ const router = createBrowserRouter(
           path={pathList.home}
         />
         <Route path={pathList.tasks} >
-          <Route element={<Tasks />} index  />
+          <Route element={<Tasks />} index />
           <Route element={<ArchitecturalDrawing />} path={pathList.architecturalDrawing} />
           <Route element={<AddSubTasks />} path={pathList.addSubTasks} />
         </Route>
         <Route element={<Timetable />} path={pathList.time_table} />
         <Route element={<Notifications />} path={pathList.notifications} />
-        <Route element={<AllEmployees />} path={pathList.all_employees} />
+        <Route path={pathList.all_employees}>
+          <Route element={<AllEmployees />} index />
+          <Route element={<ViewEmployee />} path={pathList.view_employee} />
+        </Route>
         <Route element={<NewEmployee />} path={pathList.new_employee} />
         <Route element={<Analysis />} path={pathList.analysis} />
         <Route element={<Requests />} path={pathList.requests} />

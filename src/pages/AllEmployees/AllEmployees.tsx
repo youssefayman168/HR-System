@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { employeesData } from '.'
 import BtnCreate from '@/components/Buttons/BtnCreate'
+import { useNavigate } from 'react-router-dom'
+import { pathList } from '@/routes/routesPaths'
 
 const AllEmployees = () => {
 
@@ -37,6 +39,11 @@ const AllEmployees = () => {
             })
         );
     }, [page]);
+
+    // View employee functionality
+    const navigation = useNavigate()
+
+    const viewEmployee = () => navigation(pathList.view_employee)
 
     return (
         <BaseLayout>
@@ -73,8 +80,8 @@ const AllEmployees = () => {
                     positionClick={openPosition}
                 >
                     <div className="h-[calc(100%-158px)] overflow-y-auto HideScroll">
-                        {filterData && filterData.map(({ picture, employeeName, companyName, departmentName, positionName }: any) => {
-                            return <AllEmployeesComponents employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName} />
+                        {filterData && filterData.map(({ picture, employeeName, companyName, departmentName, positionName }: any, index: number) => {
+                            return <AllEmployeesComponents key={index} employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName} onViewClick={() => viewEmployee()} />
                         })}
                     </div>
                     <div className="h-[80px] w-full">

@@ -44,7 +44,7 @@ const BoxStats = ({ titleName, employeesNumber, messageIcon, mainNumber, mainIco
                                     :
                                     ''
                         }
-                        <p className="text-sm">{employeesNumber}</p>
+                        <p className="text-sm whitespace-nowrap">{employeesNumber}</p>
                     </div>
                 </div>
             </div>

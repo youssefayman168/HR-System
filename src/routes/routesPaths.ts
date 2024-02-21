@@ -7,14 +7,17 @@ export const pathList = {
 
   home: "/home",
 
-  // Taska URLs
+  // Task URLs
   tasks: "/tasks",
-  architecturalDrawing: "/tasks/architecturalDrawing" ,
-  addSubTasks: "/tasks/architecturalDrawing/addSubTasks" ,
+  architecturalDrawing: "/tasks/architecturalDrawing",
+  addSubTasks: "/tasks/architecturalDrawing/addSubTasks",
 
   time_table: "/time_table",
   notifications: "/notifications",
+  // All Employees
   all_employees: "/all_employees",
+  view_employee: "/all_employees/view_employee",
+
   new_employee: "/new_employee",
   analysis: "/analysis",
   requests: "/requests",

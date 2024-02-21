@@ -1,5 +1,5 @@
 import { pathList } from '@/routes/routesPaths'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import DropIcon from '../../../assets/Projects/DropDown.svg'
 import ArchitecturalElement from './ArchitecturalElement'
@@ -7,8 +7,7 @@ import DropDown from '@/components/DropDown/DropDown'
 
 const ArchitecturalDrawingTable = () => {
     const [openList, setOpenList] = useState<boolean>(false)
-  return (
-    <div>
+    return (
         <div>
             <div className="bg-white duration-300 rounded-[15px] px-10" >
                 <div className='w-full text-start '>
@@ -24,8 +23,11 @@ const ArchitecturalDrawingTable = () => {
                                     Status
                                     <img src={DropIcon} alt="DropIcon" />
                                 </div>
-                                <DropDown style={{ height: openList ? '254px' : '0', opacity: openList ? '1' : '0' , visibility: openList ? 'visible' : 'hidden' }} text1='All' text2='Planning' text3='In progress' text4='Done' text5='Canceled' />
+                                <DropDown style={{ height: openList ? '254px' : '0', opacity: openList ? '1' : '0', visibility: openList ? 'visible' : 'hidden' }} text1='All' text2='Planning' text3='In progress' text4='Done' text5='Canceled' />
                             </div>
+                            <p className='w-[12%]  '>Task Hours</p>
+                        </div>
+                        <div>
                             <p className='w-[12%]  '>Task Hours</p>
                         </div>
                         <div className='Body HideScroll h-[calc(100vh-405px)] overflow-y-auto '>
@@ -58,8 +60,7 @@ const ArchitecturalDrawingTable = () => {
                 </div>
             </div>
         </div>
-    </div>
-)
+    )
 }
 
 export default ArchitecturalDrawingTable

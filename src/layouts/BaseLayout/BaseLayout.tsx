@@ -70,7 +70,7 @@ const BaseLayout = ({ children }: any) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
             className=' bg-[#E9EDF3] w-full h-[calc(100vh-75px)]'
           >
             {children}

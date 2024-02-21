@@ -4,9 +4,9 @@ type IProps = {
     companyName: string,
     departmentName: string,
     positionName: string,
-    onViewClick?: Function,
-    onEditClick?: Function,
-    onDeleteClick?: Function
+    onViewClick?: any,
+    onEditClick?: any,
+    onDeleteClick?: any
 }
 
 const AllEmployeesComponents = ({ employeeImg, employeeName, companyName, departmentName, positionName, onViewClick, onEditClick, onDeleteClick }: IProps) => {
@@ -21,9 +21,9 @@ const AllEmployeesComponents = ({ employeeImg, employeeName, companyName, depart
             <p className="w-[15%]">{departmentName}</p>
             <p className="w-[15%]">{positionName}</p>
             <div className="w-[30%] flex items-center gap-2">
-                <button className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold' onClick={() => onViewClick}>view</button>
-                <button className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold' onClick={() => onEditClick}>edit</button>
-                <button className='py-2 px-6 bg-[#F6DADA] text-[#c71025] rounded-md capitalize font-semibold' onClick={() => onDeleteClick}>delete</button>
+                <button className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold' onClick={onViewClick}>view</button>
+                <button className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold' onClick={onEditClick}>edit</button>
+                <button className='py-2 px-6 bg-[#F6DADA] text-[#c71025] rounded-md capitalize font-semibold' onClick={onDeleteClick}>delete</button>
             </div>
         </div>
 

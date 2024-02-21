@@ -13,6 +13,8 @@ export default {
         redColor: "#E03434",
         blueColor: "#0764E6",
         greenColor: "#34E045",
+        blackGrayColor: "#101828",
+        darkBlueColor: "#0E2354",
       },
       screens: {
         sm: "540px",
