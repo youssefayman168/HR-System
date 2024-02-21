@@ -1,4 +1,3 @@
-import React from 'react'
 import DeleteIcon from '../../../assets/Projects/Delete.svg'
 import EditIcon from '../../../assets/Projects/Edit.svg'
 
