@@ -26,7 +26,7 @@ const DateInp = ({ icon , styles , stylesInp } : DateProp) => {
   return (
     <div className="relative">
         <input style={stylesInp} ref={dateInpF} onChange={dataInputFromOnChange} className="border-2 px-[17.6px] rounded-[10px] absolute inset-0 z-[99] opacity-0 " type="date"  />
-        <div style={styles} className="text-[#224886] flex items-center gap-2 py-3 px-4 rounded-[8px] border-[1px] border-[#224886] ">
+        <div style={styles} className="text-[#224886] flex items-center gap-3 py-3 px-4 rounded-[10px] border-[1px] border-[#224886] ">
             <p>{dateF}</p>
             <img src={icon} alt="Date" />
         </div>

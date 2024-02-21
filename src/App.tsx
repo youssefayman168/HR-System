@@ -13,7 +13,6 @@ import Home from "@/pages/Home";
 import Projects from "@/pages/projects/all";
 import CreateProject from "./pages/projects/create-project";
 import ProjectDetails from "./pages/projects/project-details";
-import Tasks from "@/pages/Tasks";
 import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees";
@@ -23,6 +22,10 @@ import Requests from "@/pages/Requests";
 import Reports from "@/pages/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
+import ArchitecturalDrawing from "./pages/Tasks/ArchitecturalDrawing";
+import Tasks from "./pages/Tasks/Tasks";
+import AddSubTasks from "./pages/Tasks/AddSubTasks";
+import AddTaskProjectDetails from "./pages/projects/AddTaskProjectDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +44,7 @@ const router = createBrowserRouter(
           <Route element={<Projects />} index />
           <Route element={<CreateProject />} path={pathList.createProject} />
           <Route element={<ProjectDetails />} path={pathList.projectDetails} />
+          <Route element={<AddTaskProjectDetails />} path={pathList.projectDetailsAddTask} />
         </Route>
         <Route
           element={
@@ -50,7 +54,11 @@ const router = createBrowserRouter(
           }
           path={pathList.home}
         />
-        <Route element={<Tasks />} path={pathList.tasks} />
+        <Route path={pathList.tasks} >
+          <Route element={<Tasks />} index  />
+          <Route element={<ArchitecturalDrawing />} path={pathList.architecturalDrawing} />
+          <Route element={<AddSubTasks />} path={pathList.addSubTasks} />
+        </Route>
         <Route element={<Timetable />} path={pathList.time_table} />
         <Route element={<Notifications />} path={pathList.notifications} />
         <Route element={<AllEmployees />} path={pathList.all_employees} />

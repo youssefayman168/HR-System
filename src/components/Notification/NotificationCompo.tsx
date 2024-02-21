@@ -15,7 +15,7 @@ const NotificationCompo = ({ img , type , info , name , status , date} : Notify)
     <div className='relative flex gap-5 bg-white p-3 ps-5 rounded-xl mb-4 '>
         <div className='img'>
             <img className='rounded-full w-[52px] h-[50px] object-cover' src={img} alt="" />
-            <div style={{backgroundColor: type === "New Emplyee" && "#228656" || type === "Update Employees" && "#FFAC46" || type === "Delete Employees" && "#C71026" || type === "Office supplies requests" && "#224886" || type === "Read" && "#A4A4A4"   }} className='Type absolute w-[6px] h-[99px] top-0 left-0 rounded-tl-[20px] rounded-bl-[20px]'></div>
+            <div style={{backgroundColor: type === "new" ? "#228656" : type === "update" ? "#FFAC46" : type === "delete" ? "#C71026" : type === "office" ? "#224886" : type === "read" ? "#A4A4A4" : ""  }} className='Type absolute w-[6px] h-[99px] top-0 left-0 rounded-tl-[20px] rounded-bl-[20px]'></div>
         </div>
         <div>
             <p className='font-[500]'>{status}</p>

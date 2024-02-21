@@ -1,38 +1,43 @@
-import { BiTrashAlt } from "react-icons/bi"; 
-import { BiPencil } from "react-icons/bi"; 
+import { Link } from 'react-router-dom'
 import DeleteIcon from '../../assets/Projects/Delete.svg'
 import EditIcon from '../../assets/Projects/Edit.svg'
 import { CSSProperties } from 'react'
+import { pathList } from '@/routes/routesPaths'
 
 
 type MyElement = {
-    id? : string,
-    projects? : string,
-    company? : string,
-    startingDate? : string,
-    expiryDate? : string,
-    status? : string,
-    projectHours? : string,
-    workHours? : string,
-    styles?: CSSProperties,
+    text1? : string,
+    text2? : string,
+    text3? : string,
+    text4? : string,
+    text5? : string,
+    text6? : string,
+    text7? : string,
+    text8? : string,
+    status?: CSSProperties,
+    
 }
 
-
-
-const Element = ({id , projects , company , startingDate , expiryDate , status , projectHours , workHours , styles} : MyElement) => {
+const Element = ({text1 , text2 , text3 , text4 , text5 , text6 , text7 , text8 , status } : MyElement) => {
   return (
-    <>
-    <td className='text-[#105090] font-bold py-7' >{id}</td>
-    <td className='text-[#105090] font-bold' >{projects}</td>
-    <td className='text-[#9295AB]'>{company}</td>
-    <td className='text-[#9295AB]' >{startingDate}</td>
-    <td className='text-[#9295AB]'>{expiryDate}</td>
-    <td className='block mt-5 rounded-[8px] mx-auto w-[95px] ' style={styles} ><div className='p-2'>{status}</div></td>
-    <td className='text-[#9295AB]' >{projectHours}</td>
-    <td className='text-[#9295AB]' >{workHours}</td>
-    <td><img className="bg-[#DEFFE1] inline-block py-[10px] px-[10px] mt-1 rounded-full cursor-pointer" src={EditIcon} alt="EditIcon" /></td>
-    <td className='inline-block cursor-pointer' ><img src={DeleteIcon} alt="DeleteIcon" /></td>
-    </>
+    <Link className='flex items-center gap-2 py-7 text-[#9295AB] border-b-[2px] border-[#a0aaca80] ' to={`/projects/21323`}>
+        <p className='w-[5%] text-[#105090] font-[600] '>{text1}</p>
+        <p className='w-[12%] text-[#105090] font-[600] '>{text2}</p>
+        <p className='w-[18%] '>{text3}</p>
+        <p className='w-[10%]  '>{text4}</p>
+          <p  className='w-[10%] mx-auto py-[7px] px-[12px] text-center rounded-[6px]'>{text5}</p>
+        <div className='w-[10%] '>
+        <p style={status} className='w-[120px]  mx-auto py-[7px] px-[12px] text-center rounded-[6px]'>{text6}</p>
+        </div>
+        <p className='w-[13%]  text-center  '>{text7}</p>
+        <div className=' flex-1 flex items-center  gap-[15px] '>
+          <p className='w-[50%] '>{text8}</p>
+          <div className='flex items-center gap-4 ms-auto'>
+              <img className='bg-[#DEFFE1] cursor-pointer py-[10px] px-[10px] rounded-full ' src={EditIcon} alt="EditIcon" />
+              <img className='cursor-pointer' src={DeleteIcon} alt="DeleteIcon" />
+          </div>
+        </div>
+    </Link>
   )
 }
 
