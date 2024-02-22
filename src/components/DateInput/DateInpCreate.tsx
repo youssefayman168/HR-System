@@ -10,19 +10,15 @@ type DateInput = {
 
 
 const DateInpCreate = ({ when , styles } : DateInput ) => {
-    let wh = `${when === "From" ? "From" : when === "To" ? "To" : when === "start" ? "Starting Date" : when === "expire" ? "Expiry date" : "" }`
 
     const dateInpT = useRef<HTMLInputElement>(null);
-    const [dateT, setDateT] = useState<any>(wh)
+    const [dateT, setDateT] = useState<any>(`${when}`)
 
   const dataInputToOnChange = () => {
     if (dateInpT.current) {
       setDateT(dateInpT.current.value);
     }
   };
-
-
-
 
   return (
     <div style={styles} className="relative w-full border-2 rounded-[10px]">
