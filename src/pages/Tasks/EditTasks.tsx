@@ -26,8 +26,8 @@ const EditTasks = () => {
                             <BaseInput type='text' placeholder='Task name' styles={{width : "100%" , height : "65px"}} />
                             <textarea placeholder='Description' className='border-[1px] border-[#BDBDBD] p-5 w-full mt-4 rounded-[10px] h-[150px] outline-none ' ></textarea>
                             <div className='Date flex gap-4 mt-4'>
-                                <DateInpCreate when='start' styles={{color: "rgba(115, 115, 115, 0.80)" , border: "1px solid #BDBDBD"}} />
-                                <DateInpCreate when='expire' styles={{color: "rgba(115, 115, 115, 0.80)" , border: "1px solid #BDBDBD"}} />
+                                <DateInpCreate when='Starting Date' styles={{color: "rgba(115, 115, 115, 0.80)" , border: "1px solid #BDBDBD"}} />
+                                <DateInpCreate when='Expiry Date' styles={{color: "rgba(115, 115, 115, 0.80)" , border: "1px solid #BDBDBD"}} />
                             </div>
                         </div>
                     </div>
