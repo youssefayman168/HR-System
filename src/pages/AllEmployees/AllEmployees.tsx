@@ -44,6 +44,7 @@ const AllEmployees = () => {
     const navigation = useNavigate()
 
     const viewEmployee = () => navigation(pathList.view_employee)
+    const editEmployee = () => navigation(pathList.edit_employee)
 
     return (
         <BaseLayout>
@@ -81,7 +82,7 @@ const AllEmployees = () => {
                 >
                     <div className="h-[calc(100%-158px)] overflow-y-auto HideScroll">
                         {filterData && filterData.map(({ picture, employeeName, companyName, departmentName, positionName }: any, index: number) => {
-                            return <AllEmployeesComponents key={index} employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName} onViewClick={() => viewEmployee()} />
+                            return <AllEmployeesComponents key={index} employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName} onViewClick={() => viewEmployee()} onEditClick={() => editEmployee()} />
                         })}
                     </div>
                     <div className="h-[80px] w-full">

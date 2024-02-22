@@ -6,8 +6,9 @@ import { pathList } from "@/routes/routesPaths"
 import testImg from '@/assets/testImg.jpg'
 import EmployeeInfo from "@/features/AllEmployees/ViewEmployees/components/EmployeeInfo"
 import EmployeeAttachment from "@/features/AllEmployees/ViewEmployees/components/EmployeeAttachment"
+import editPen from '@/assets/editPen.svg'
 
-const ViewEmployee = () => {
+const EditEmployee = () => {
     return (
         <BaseLayout>
             <div className="p-6">
@@ -16,27 +17,25 @@ const ViewEmployee = () => {
                         <img src={ArrowLeft} alt="ArrowLeft" />
                         All Employees
                         <BiChevronRight />
-                        View Employee
+                        Edit Employee
                     </Link>
                 </div>
-                <div className="mt-6 rounded-2xl bg-white px-8 h-[120px] flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                        <p className="text-blackGrayColor text-2xl font-bold">Tanner Finsha</p>
+                <div className="mt-6 rounded-2xl bg-white px-8 h-[120px] ">
+                    <div className="flex items-center gap-4 h-full">
                         <div className="bg-[#F5F6F7] rounded-2xl text-xs flex items-center p-2 gap-2">
                             <span className="text-[#7A8699] font-bold">#Employee ID: </span>
                             <span className="text-blackGrayColor font-bold"> 23454GH6</span>
                         </div>
                     </div>
-                    <div className="border border-grayColor rounded-lg py-[10px] px-4 text-darkBlueColor">Sales specialist</div>
                 </div>
                 <div className="mt-5 w-full rounded-lg bg-white h-[calc(100vh-340px)] flex items-stretch gap-5 p-6 overflow-y-auto HideScroll">
                     <div className="w-[25%] border border-[#EFF1F4] rounded-2xl p-6 h-fit">
-                        <div className="flex items-center gap-3 border-b border-b-[#F5F6F7] pb-6">
-                            <img className="rounded-full size-[60px]" src={testImg} alt="Picture" />
-                            <div>
-                                <p className="text-blackGrayColor font-bold">Tanner Finsha</p>
-                                <p className="text-grayColor font-bold text-sm">Tannerfisher@gmail.com</p>
-                            </div>
+                        <div className="flex items-center gap-3 border-b border-b-[#F5F6F7] pb-6 relative">
+                            <img className="rounded-full size-[80px] mx-auto" src={testImg} alt="Picture" />
+                            <label htmlFor="picFile" className="w-fit absolute bottom-1 cursor-pointer right-[75px]">
+                                <img src={editPen} alt="" className="size-[24px]" />
+                            </label>
+                            <input type="file" name="picFile" id="picFile" className=" hidden" />
                         </div>
                         <div className="mt-8">
                             <p className="text-primary text-xl font-bold mb-8">Personal Details</p>
@@ -77,4 +76,4 @@ const ViewEmployee = () => {
     )
 }
 
-export default ViewEmployee
+export default EditEmployee
