@@ -60,7 +60,7 @@ const AllEmployees = () => {
                 </div>
                 <BlueTableHeader
                     departmentDropDown={
-                        <ul className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${departmentState ? 'ulFilter' : 'h-0'}`} style={{ opacity: departmentState ? 1 : 0 }}>
+                        <ul className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${departmentState ? 'ulFilter act' : 'h-0'}`} style={{ opacity: departmentState ? 1 : 0 }}>
                             <li className='py-[10px] border-b cursor-pointer'>All</li>
                             <li className='py-[10px] border-b cursor-pointer'>HR</li>
                             <li className='py-[10px] border-b cursor-pointer'>Designing</li>
@@ -69,7 +69,7 @@ const AllEmployees = () => {
                         </ul>
                     }
                     positionDropDown={
-                        <ul className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${positionState ? 'ulFilter' : 'h-0'}`} style={{ opacity: positionState ? 1 : 0 }}>
+                        <ul className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${positionState ? 'ulFilter act' : 'h-0'}`} style={{ opacity: positionState ? 1 : 0 }}>
                             <li className='py-[10px] border-b cursor-pointer'>All</li>
                             <li className='py-[10px] border-b cursor-pointer'>HR</li>
                             <li className='py-[10px] border-b cursor-pointer'>Designing</li>
