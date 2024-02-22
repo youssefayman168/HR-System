@@ -17,7 +17,6 @@ import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
-import Analysis from "@/pages/Analysis";
 import Requests from "@/pages/Requests";
 import Reports from "@/pages/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
@@ -30,6 +29,7 @@ import ViewEmployee from "./pages/AllEmployees/ViewEmployee";
 import ViewTask from "./pages/Tasks/ViewTask";
 import ViewSubTask from "./pages/Tasks/ViewSubTask";
 import EditTasks from "./pages/Tasks/EditTasks";
+import Analysis from "./pages/Analysis/Analysis";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
