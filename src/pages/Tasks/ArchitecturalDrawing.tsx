@@ -22,7 +22,7 @@ const ArchitecturalDrawing = () => {
             Architectural drawing
           </Link>
           <div className='btns flex items-center gap-4 '>
-            <Link to={""} className='text-[#224886] gap-3 py-3 px-4 rounded-[10px] border-[1px] border-[#224886]'>View Task</Link>
+            <Link to={pathList.viewTask} className='text-[#224886] gap-3 py-3 px-4 rounded-[10px] border-[1px] border-[#224886]'>View Task</Link>
             <DateInp icon={DateIcon} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} styles={{ flexDirection: "row-reverse" }} />
             <BtnCreate icon={plus} text='Add Subtasks' path={pathList.addSubTasks} />
           </div>

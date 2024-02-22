@@ -20,7 +20,7 @@ const AddSubTasks = () => {
                         Add SubTasks
                     </Link>
                 </div>
-                <div className='bg-white px-32 py-11 rounded-[15px] h-[calc(100vh-186px)] overflow-y-auto HideScroll '>
+                <div className='bg-white px-20 py-11 rounded-[15px] h-[calc(100vh-186px)] overflow-y-auto HideScroll '>
                     <form action="#">
                         <p className='mb-5 text-[#101828] font-[600] text-[24px] '>Add Subtasks</p>
                         <div className='inputs'>
