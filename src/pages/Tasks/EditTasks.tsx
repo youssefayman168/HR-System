@@ -1,28 +1,26 @@
-import BaseLayout from '@/layouts/BaseLayout/BaseLayout'
-import { pathList } from '@/routes/routesPaths'
-import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
-import { BiChevronRight } from 'react-icons/bi'
-import { Link } from 'react-router-dom'
 import BaseInput from '@/components/BaseInput'
 import DateInpCreate from '@/components/DateInput/DateInpCreate'
+import BaseLayout from '@/layouts/BaseLayout/BaseLayout'
+import { pathList } from '@/routes/routesPaths'
+import { BiChevronRight } from 'react-icons/bi'
+import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
+import { Link } from 'react-router-dom'
 
-const AddTaskProjectDetails = () => {
-  return (
-    <BaseLayout>
+const EditTasks = () => {
+    return (
+        <BaseLayout>
         <div className='p-5'>
             <div className='header'>
-                <Link to={pathList.projectDetails} className="flex w-fit items-center gap-3 text-[22px] text-[#224886] font-bold ">
+                <Link to={pathList.tasks} className="flex w-fit items-center gap-3 text-[22px] text-[#224886] font-bold ">
                     <img src={ArrowLeft} alt="ArrowLeft" />
-                    Projects overview
+                    Tasks
                     <BiChevronRight />
-                    Name Projects
-                    <BiChevronRight />
-                    Add Task
+                    Edit Tasks
                 </Link>
             </div>
             <div className='bg-white px-20 py-10 rounded-[15px] mt-8 h-[calc(100vh-185px)] overflow-y-auto HideScroll '>
                 <form action="#">
-                    <p className='flex items-center text-[22px] font-[600] mb-6 '>Name Projects <div className='text-[30px] '> <BiChevronRight /> </div> addTask </p>
+                    <p className='flex items-center text-[22px] font-[600] mb-6 text-[#0E2354] '>Designing Task</p>
                     <div className='inputs'>
                         <div className='w-full'>
                             <BaseInput type='text' placeholder='Task name' styles={{width : "100%" , height : "65px"}} />
@@ -40,8 +38,8 @@ const AddTaskProjectDetails = () => {
                 </form>
             </div>
         </div>
-    </BaseLayout>
-  )
+        </BaseLayout>
+    )
 }
 
-export default AddTaskProjectDetails
+export default EditTasks

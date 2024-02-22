@@ -11,6 +11,9 @@ export const pathList = {
   tasks: "/tasks",
   architecturalDrawing: "/tasks/architecturalDrawing",
   addSubTasks: "/tasks/architecturalDrawing/addSubTasks",
+  editTasks: "/tasks/editTasks",
+  viewTask: "/tasks/architecturalDrawing/viewTask",
+  viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
 
   time_table: "/time_table",
   notifications: "/notifications",
@@ -28,4 +31,5 @@ export const pathList = {
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
   projectDetailsAddTask: "/projects/:id/addTask",
+
 };

@@ -14,7 +14,7 @@ type ElementArchitectural = {
 
 const ArchitecturalElement = ({ text1 , text2 , text3 , text4 , text5 , text6 , text7 , styleStaus } : ElementArchitectural ) => {
   return (
-    <>
+    <div className='border-b-[2px] border-[#a0aaca80] font-[600] py-7 flex items-center gap-[10px] '>
         <p className='w-[15%] text-[#105090] '>{text1}</p>
         <p className='w-[12%] '>{text2}</p>
         <p className='w-[12%] '>{text3}</p>
@@ -30,7 +30,7 @@ const ArchitecturalElement = ({ text1 , text2 , text3 , text4 , text5 , text6 , 
               <img className='cursor-pointer' src={DeleteIcon} alt="DeleteIcon" />
           </div>
         </div>
-    </>
+    </div>
   )
 }
 

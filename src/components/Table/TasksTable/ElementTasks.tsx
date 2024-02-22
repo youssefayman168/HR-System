@@ -2,6 +2,7 @@ import { CSSProperties } from 'react'
 import DeleteIcon from '../../../assets/Projects/Delete.svg'
 import EditIcon from '../../../assets/Projects/Edit.svg'
 import { Link } from 'react-router-dom'
+import { pathList } from '@/routes/routesPaths'
 
 type ElementTask = {
     text1 : string ,
@@ -29,7 +30,9 @@ const ElementTasks = ({ text1 , text2 , text3 , text4 , text5 , text6 , text7 , 
         <div className=' flex-1 flex items-center gap-[15px] '>
           <Link to={"/tasks/architecturalDrawing/addSubTasks"} style={styleActionBtn} className='w-fit rounded-[6px] '>{text7}</Link>
           <div className='flex items-center gap-4 ms-auto'>
+            <Link to={pathList.editTasks}>
               <img className='bg-[#DEFFE1] cursor-pointer py-[10px] px-[10px] rounded-full ' src={EditIcon} alt="EditIcon" />
+            </Link>
               <img className='cursor-pointer' src={DeleteIcon} alt="DeleteIcon" />
           </div>
         </div>

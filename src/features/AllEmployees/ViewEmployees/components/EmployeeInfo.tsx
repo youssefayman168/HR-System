@@ -1,5 +1,7 @@
+import { CSSProperties } from "react"
+
 type IProps = {
-    title: string,
+    title: string ,
     value: string
 }
 
