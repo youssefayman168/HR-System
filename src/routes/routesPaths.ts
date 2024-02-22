@@ -17,9 +17,11 @@ export const pathList = {
 
   time_table: "/time_table",
   notifications: "/notifications",
+
   // All Employees
   all_employees: "/all_employees",
   view_employee: "/all_employees/view_employee",
+  edit_employee: "/all_employees/edit_employee",
 
   new_employee: "/new_employee",
   analysis: "/analysis",
