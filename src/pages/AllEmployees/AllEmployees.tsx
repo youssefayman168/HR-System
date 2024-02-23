@@ -45,6 +45,7 @@ const AllEmployees = () => {
 
     const viewEmployee = () => navigation(pathList.view_employee)
     const editEmployee = () => navigation(pathList.edit_employee)
+    const addDepartment = () => navigation(pathList.add_department)
 
     return (
         <BaseLayout>
@@ -54,7 +55,7 @@ const AllEmployees = () => {
                         All Employees
                     </h1>
                     <div className="flex items-center gap-[15px]">
-                        <SecondaryBorderBtn text='Add Department' icon={outlinePlus} />
+                        <SecondaryBorderBtn text='Add Department' icon={outlinePlus} onClick={() => addDepartment()} />
                         <SecondaryBorderBtn text='Add Position' icon={outlinePlus} />
                     </div>
                 </div>

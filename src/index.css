@@ -54,3 +54,7 @@ ul svg {
     background: #365B98;
     border-radius: 6px;
 }
+
+textarea {
+    resize: none;
+}

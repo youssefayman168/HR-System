@@ -31,6 +31,7 @@ import ViewSubTask from "./pages/Tasks/ViewSubTask";
 import EditTasks from "./pages/Tasks/EditTasks";
 import Analysis from "./pages/Analysis/Analysis";
 import EditEmployee from "./pages/AllEmployees/EditEmployee";
+import AddDepartment from "./pages/AllEmployees/AddDepartment";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -73,6 +74,7 @@ const router = createBrowserRouter(
           <Route element={<AllEmployees />} index />
           <Route element={<ViewEmployee />} path={pathList.view_employee} />
           <Route element={<EditEmployee />} path={pathList.edit_employee} />
+          <Route element={<AddDepartment />} path={pathList.add_department} />
         </Route>
         <Route element={<NewEmployee />} path={pathList.new_employee} />
         <Route element={<Analysis />} path={pathList.analysis} />
