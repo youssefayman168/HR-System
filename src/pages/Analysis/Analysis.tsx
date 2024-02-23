@@ -40,6 +40,7 @@ export const data = {
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker'
 import IncreaseDec from '@/components/Analysis/IncreaseDec'
+import ValueColor from '@/components/Analysis/ValueColor'
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -55,13 +56,11 @@ export const data2 = {
     labels,
     datasets: [
         {
-            label: '',
             data: labels.map(() => (faker.datatype.number({ min: 0, max: 1000 }))),
             backgroundColor: '#224886',
             borderRadius: '30',
         },
         {
-            label: '2',
             data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
             backgroundColor: '#224886BA',
             borderRadius: '30',
@@ -154,9 +153,9 @@ const Analysis = () => {
                                 <p className='font-[500] text-[17px] '>Company Profit And Expands</p>
                                 <DateInp icon={Calendar} styles={{ color: "black", border: "1px solid #00000033", flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
                             </div>
-                            <div className='flex items-center gap-8'>
-                                <p className='relative after:absolute after:bg-[#343C6A] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Profit</p>
-                                <p className='relative after:absolute after:bg-[#7694BA] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Expand</p>
+                            <div className='flex items-center gap-5'>
+                                <ValueColor name='Profit' aftColor='profit' styleName={{width: "fit-content"}} />
+                                <ValueColor name='Expands' aftColor='expand' styleName={{width: "fit-content"}}  />
                             </div>
                         </div>
                         <div className='w-[97%] mx-auto'>
@@ -172,18 +171,14 @@ const Analysis = () => {
                         <div className='w-[300px] max-xxl:w-[200px] mx-auto'>
                             <Pie data={data} />
                         </div>
-                        <div className='Info mt-5'>
-                            <div className='flex items-center justify-between mb-4'>
-                                <p className='relative after:absolute after:bg-[#343C6A] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Design</p>
-                                <p>30K</p>
-                                <p className='relative after:absolute after:bg-[#7694BA] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>HR</p>
-                                <p>50K</p>
+                        <div className='Info mt-10'>
+                            <div className='flex items-center justify-between mb-8'>
+                                <ValueColor aftColor='design' name='Design' val='30K' />
+                                <ValueColor aftColor='hr' name='HR' val='50K' />
                             </div>
                             <div className='flex items-center justify-between '>
-                                <p className='relative after:absolute after:bg-[#A1E3CB] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Managment</p>
-                                <p>60K</p>
-                                <p className='relative after:absolute after:bg-[#1814F3] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Other</p>
-                                <p>40K</p>
+                                <ValueColor aftColor='managment' name='Managment' val='60K' />
+                                <ValueColor aftColor='other' name='Other' val='40K' />
                             </div>
                         </div>
                     </div>
