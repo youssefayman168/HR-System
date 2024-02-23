@@ -1,7 +1,9 @@
 import Modal from "@/components/Modal";
 import BaseLayout from "../layouts/BaseLayout/BaseLayout";
+import { useState } from "react";
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <BaseLayout>
       <Modal
@@ -9,11 +11,13 @@ const Home = () => {
         title='Add'
         subtitle='subtitle'
         showCancel
-        showOptions={false}
+        // showOptions
         mainOptionTitle='Ok'
         onMainOptionClick={() => console.log("first")}
-        onCancel={() => console.log("first")}
+        onCancel={() => setShowModal(false)}
+        showModal={showModal}
       />
+      <button onClick={() => setShowModal((prev) => !prev)}>Toggle</button>
     </BaseLayout>
   );
 };
