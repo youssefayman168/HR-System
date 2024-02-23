@@ -8,13 +8,13 @@ import DecreaseBTM from '../../assets/Analysis/DecreaseBTM.svg'
 import IncreaseTOP from '../../assets/Analysis/IncreaseTOP.svg'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { useEffect, useState } from 'react'
-import {employeesDataFunds} from './index'
+import { employeesDataFunds } from './index'
 import AllEmployeeFunds from '@/components/Analysis/AllEmployeeFunds'
 import ReactPaginate from 'react-paginate'
 import Header from '@/components/Analysis/Header';
 
 //  Pie
-import { Chart as ChartJS, ArcElement, Tooltip , CategoryScale , LinearScale , BarElement , Title } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, CategoryScale, LinearScale, BarElement, Title } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip);
 export const data = {
@@ -41,39 +41,39 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker'
 import IncreaseDec from '@/components/Analysis/IncreaseDec'
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
 );
 export const options = {
-  responsive: true,
+    responsive: true,
 };
 const labels = ['Sat', 'Sun', 'Man', 'Tue', 'Wed', 'Thu', 'Fri'];
 export const data2 = {
-  labels,
-  datasets: [
-    {
-      label: '',
-      data: labels.map(() => (faker.datatype.number({ min: 0, max: 1000 }))),
-      backgroundColor: '#224886',
-      borderRadius: '30' ,      
-    },
-    {
-      label: '2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: '#224886BA',
-      borderRadius: '30' ,
-    },
-  ],
+    labels,
+    datasets: [
+        {
+            label: '',
+            data: labels.map(() => (faker.datatype.number({ min: 0, max: 1000 }))),
+            backgroundColor: '#224886',
+            borderRadius: '30',
+        },
+        {
+            label: '2',
+            data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+            backgroundColor: '#224886BA',
+            borderRadius: '30',
+        },
+    ],
 };
 
 
 const Analysis = () => {
 
-    const [ currentPage , setCurrentPage ] = useState(0)
-    const [ filterDataFunds , setFilterDataFunds ] = useState<any>()
+    const [currentPage, setCurrentPage] = useState(0)
+    const [filterDataFunds, setFilterDataFunds] = useState<any>()
 
     const itemsNum = 4
 
@@ -85,7 +85,7 @@ const Analysis = () => {
         );
     }, [currentPage]);
 
-    
+
 
     return (
         <BaseLayout>
@@ -95,13 +95,13 @@ const Analysis = () => {
                         <div className='flex items-center justify-between '>
                             <p className='text-[20px] font-[600] '>Employee Funds</p>
                             <div>
-                                <DateInp icon={Calendar} styles={{color: "black" , border: "1px solid #00000033" , flexDirection: "row-reverse" }} stylesInp={{display: "flex" , flexDirection: "row-reverse" }} />
+                                <DateInp icon={Calendar} styles={{ color: "black", border: "1px solid #00000033", flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
                             </div>
                         </div>
-                            <Header>
+                        <Header>
                             <div className='Table h-[260px] overflow-y-auto HideScroll '>
 
-                                {filterDataFunds && filterDataFunds.map(({ picture, employeeName, Department, Hours, TotalMonthFund , Productivity , type }: any, index: number) => {
+                                {filterDataFunds && filterDataFunds.map(({ picture, employeeName, Department, Hours, TotalMonthFund, Productivity, type }: any, index: number) => {
                                     return <AllEmployeeFunds key={index} employeeImg={picture} EmpolyeeName={employeeName} Department={Department} Hours={Hours} TotalMonthFund={TotalMonthFund} Productivity={Productivity} type={type} />
                                 })}
                             </div>
@@ -123,25 +123,25 @@ const Analysis = () => {
                                             <IoIosArrowForward />
                                         </div>
                                     }
-                                    />
-                        </div>
-                    </Header>
+                                />
+                            </div>
+                        </Header>
                     </div>
                     <div className='Year Projects bg-white p-5 pb-0 rounded-[16px] w-[24%] '>
                         <p className='mb-6 font-[600] text-[21px] '>Year Projects</p>
                         <div className='h-[50vh] xxxl:h-[42vh] xxl:h-[47vh] max-xxl:h-[52vh] overflow-y-auto HideScroll '>
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
-                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
+                            <NameProjectsInf Name='Lorem ipsum' Value='20k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "18px" }} />
                         </div>
                         <div className='Total py-1'>
-                            <NameProjectsInf Name='Total' Value='100k' styleName={{color: "#1c1c1c" , width: "260px" , marginBottom: "13px" , fontSize: "19px" , fontWeight: "800" }} styleVal={{fontSize: "19px" , fontWeight: "800"}} styleDiv={{margin: "0"}} />
+                            <NameProjectsInf Name='Total' Value='100k' styleName={{ color: "#1c1c1c", width: "260px", marginBottom: "13px", fontSize: "19px", fontWeight: "800" }} styleVal={{ fontSize: "19px", fontWeight: "800" }} styleDiv={{ margin: "0" }} />
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ const Analysis = () => {
                         <div className='flex items-center justify-between mb-6 '>
                             <div className='flex items-center gap-6'>
                                 <p className='font-[500] text-[17px] '>Company Profit And Expands</p>
-                                <DateInp icon={Calendar} styles={{color: "black" , border: "1px solid #00000033" , flexDirection: "row-reverse" }} stylesInp={{display: "flex" , flexDirection: "row-reverse" }} />
+                                <DateInp icon={Calendar} styles={{ color: "black", border: "1px solid #00000033", flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
                             </div>
                             <div className='flex items-center gap-8'>
                                 <p className='relative after:absolute after:bg-[#343C6A] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Profit</p>
@@ -163,7 +163,7 @@ const Analysis = () => {
                             <Bar redraw options={options} data={data2} />
                         </div>
                     </div>
-                    
+
                     <div className='bg-white py-6 px-10 w-[40%] rounded-[16px] '>
                         <div className='flex items-center justify-between mb-3 '>
                             <p className='font-[600] text-[20px]'>Funds By Department</p>
@@ -174,15 +174,15 @@ const Analysis = () => {
                         </div>
                         <div className='Info mt-5'>
                             <div className='flex items-center justify-between mb-4'>
-                                <p className='relative after:absolute after:bg-[#343C6A] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Design</p>
+                                <p className='relative after:absolute after:bg-[#343C6A] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Design</p>
                                 <p>30K</p>
-                                <p className='relative after:absolute after:bg-[#7694BA] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>HR</p>
+                                <p className='relative after:absolute after:bg-[#7694BA] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>HR</p>
                                 <p>50K</p>
                             </div>
                             <div className='flex items-center justify-between '>
-                                <p className='relative after:absolute after:bg-[#A1E3CB] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Managment</p>
+                                <p className='relative after:absolute after:bg-[#A1E3CB] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Managment</p>
                                 <p>60K</p>
-                                <p className='relative after:absolute after:bg-[#1814F3] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] '>Other</p>
+                                <p className='relative after:absolute after:bg-[#1814F3] after:top-[50%] after:translate-y-[-50%] after:w-[6px] after:h-[6px] after:rounded-full after:left-[-12px] w-[100px]'>Other</p>
                                 <p>40K</p>
                             </div>
                         </div>
