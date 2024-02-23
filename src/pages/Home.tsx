@@ -9,7 +9,7 @@ const Home = () => {
         title='Add'
         subtitle='subtitle'
         showCancel
-        showOptions
+        showOptions={false}
         mainOptionTitle='Ok'
         onMainOptionClick={() => console.log("first")}
         onCancel={() => console.log("first")}
