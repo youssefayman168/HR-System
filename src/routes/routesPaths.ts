@@ -23,6 +23,7 @@ export const pathList = {
   view_employee: "/all_employees/view_employee",
   edit_employee: "/all_employees/edit_employee",
   add_department: "/all_employees/add_department",
+  add_position: "/all_employees/add_position",
 
   new_employee: "/new_employee",
   analysis: "/analysis",

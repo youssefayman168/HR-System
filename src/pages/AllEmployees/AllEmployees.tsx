@@ -46,6 +46,7 @@ const AllEmployees = () => {
     const viewEmployee = () => navigation(pathList.view_employee)
     const editEmployee = () => navigation(pathList.edit_employee)
     const addDepartment = () => navigation(pathList.add_department)
+    const addPosition = () => navigation(pathList.add_position)
 
     return (
         <BaseLayout>
@@ -56,7 +57,7 @@ const AllEmployees = () => {
                     </h1>
                     <div className="flex items-center gap-[15px]">
                         <SecondaryBorderBtn text='Add Department' icon={outlinePlus} onClick={() => addDepartment()} />
-                        <SecondaryBorderBtn text='Add Position' icon={outlinePlus} />
+                        <SecondaryBorderBtn text='Add Position' icon={outlinePlus} onClick={() => addPosition()} />
                     </div>
                 </div>
                 <BlueTableHeader
