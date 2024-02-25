@@ -17,7 +17,7 @@ import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
-import Requests from "@/pages/Requests";
+import Requests from "@/pages/Requests/Requests";
 import Reports from "@/pages/Reports/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
@@ -33,7 +33,6 @@ import Analysis from "./pages/Analysis/Analysis";
 import EditEmployee from "./pages/AllEmployees/EditEmployee";
 import AddDepartment from "./pages/AllEmployees/AddDepartment";
 import AddPosition from "./pages/AllEmployees/AddPosition";
-import Requests from "./pages/Requests/Requests";
 import ViewReq from "./pages/Requests/ViewReq";
 
 const router = createBrowserRouter(
