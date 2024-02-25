@@ -58,3 +58,23 @@ ul svg {
 textarea {
     resize: none;
 }
+
+
+li {
+    position: relative;
+    cursor: pointer;
+}
+
+.underline {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #224886;
+    z-index: 10;
+}
+
+li.selected {
+    color: #224886;
+}

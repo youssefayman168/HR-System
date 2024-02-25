@@ -18,7 +18,7 @@ import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
 import Requests from "@/pages/Requests";
-import Reports from "@/pages/Reports";
+import Reports from "@/pages/Reports/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
 import ArchitecturalDrawing from "./pages/Tasks/ArchitecturalDrawing";
