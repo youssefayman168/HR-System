@@ -1,5 +1,4 @@
-import React, { CSSProperties } from 'react'
-
+import { CSSProperties } from 'react'
 
 type NameProj = {
     Name: string , 
@@ -8,7 +7,6 @@ type NameProj = {
     styleVal? : CSSProperties ,
     styleDiv? : CSSProperties
 }
-
 const NameProjectsInf = ({ Name , Value , styleName , styleVal , styleDiv } : NameProj ) => {
   return (
     <div style={styleDiv} className='flex items-center gap-3 mb-3'>

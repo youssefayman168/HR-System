@@ -33,6 +33,8 @@ import Analysis from "./pages/Analysis/Analysis";
 import EditEmployee from "./pages/AllEmployees/EditEmployee";
 import AddDepartment from "./pages/AllEmployees/AddDepartment";
 import AddPosition from "./pages/AllEmployees/AddPosition";
+import Requests from "./pages/Requests/Requests";
+import ViewReq from "./pages/Requests/ViewReq";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -80,7 +82,10 @@ const router = createBrowserRouter(
         </Route>
         <Route element={<NewEmployee />} path={pathList.new_employee} />
         <Route element={<Analysis />} path={pathList.analysis} />
-        <Route element={<Requests />} path={pathList.requests} />
+        <Route path={pathList.requests}>
+          <Route element={<Requests />} index />
+          <Route element={<ViewReq />} path={pathList.viewRequests} />
+        </Route>
         <Route element={<Reports />} path={pathList.reports} />
       </Route>
     </>

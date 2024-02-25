@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from 'react'
+import { CSSProperties, useRef, useState } from 'react'
 import Date from '../../assets/CreateProjects/Date.svg'
 
 type DateInput = {
@@ -7,8 +7,6 @@ type DateInput = {
     styles? : CSSProperties
 
 }
-
-
 const DateInpCreate = ({ when , styles } : DateInput ) => {
 
     const dateInpT = useRef<HTMLInputElement>(null);
