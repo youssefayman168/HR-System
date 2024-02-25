@@ -73,7 +73,6 @@ const Analysis = () => {
 
     const [currentPage, setCurrentPage] = useState(0)
     const [filterDataFunds, setFilterDataFunds] = useState<any>()
-
     const itemsNum = 4
 
     useEffect(() => {

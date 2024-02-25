@@ -55,7 +55,7 @@ const ViewSubTask = () => {
                         <div className='flex gap-20'>
                         <div>
                             <EmployeeInfo title='Sub Task ID:' value='23GH 56HJK' />
-                            <div className="flex items-start flex-col mb-6">
+                            <div className="z">
                                 <p className="text-sm text-grayColor font-bold capitalize">Status</p>
                                 <p className="relative text-[15px] font-semibold bg-[#ECFDF3] text-[#027A48] after:absolute after:bg-[#12B76A] left-[-5px] py-[3px] px-3 ps-5 after:w-[8px] after:h-[8px] after:rounded-full after:top-[50%] after:translate-y-[-50%] after:left-[7px] rounded-[15px] ">Active</p>
                             </div>

@@ -17,7 +17,6 @@ import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
-import Requests from "@/pages/Requests";
 import Reports from "@/pages/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
@@ -33,6 +32,8 @@ import Analysis from "./pages/Analysis/Analysis";
 import EditEmployee from "./pages/AllEmployees/EditEmployee";
 import AddDepartment from "./pages/AllEmployees/AddDepartment";
 import AddPosition from "./pages/AllEmployees/AddPosition";
+import Requests from "./pages/Requests/Requests";
+import ViewReq from "./pages/Requests/ViewReq";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -80,7 +81,10 @@ const router = createBrowserRouter(
         </Route>
         <Route element={<NewEmployee />} path={pathList.new_employee} />
         <Route element={<Analysis />} path={pathList.analysis} />
-        <Route element={<Requests />} path={pathList.requests} />
+        <Route path={pathList.requests}>
+          <Route element={<Requests />} index />
+          <Route element={<ViewReq />} path={pathList.viewRequests} />
+        </Route>
         <Route element={<Reports />} path={pathList.reports} />
       </Route>
     </>
