@@ -126,7 +126,7 @@ const Requests = () => {
                             />
                         </div>
                         <div>
-                            <p>Showing <span className='w-[13px] text-center inline-block '>{currentPage + 1}</span> to 5 out of 60 records</p>
+                            <p>Showing <span className='w-[13px] text-center inline-block '>{currentPage + 1}</span> to {Math.ceil(RequestData.length / itemsNum)} out of 60 records</p>
                         </div>
                     </div>
                 </div>

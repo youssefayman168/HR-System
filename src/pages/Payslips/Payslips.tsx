@@ -115,7 +115,7 @@ const Payslips = () => {
                             />
                         </div>
                         <div>
-                            <p>Showing <span className='w-[13px] inline-block text-center'>{page + 1}</span> to 10 out of 60 records</p>
+                            <p>Showing <span className='w-[13px] inline-block text-center'>{page + 1}</span> to {Math.ceil(payslipsData.length / n)} out of 60 records</p>
                         </div>
                     </div>
                 </BlueTableHeader>
