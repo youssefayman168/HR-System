@@ -5,6 +5,8 @@ import ReactPaginate from "react-paginate"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import SalaryElement from "./SalaryElement"
 import { salariesData } from './index'
+import BtnCreate from "@/components/Buttons/BtnCreate"
+import DownloadIcon from '@/assets/Projects/Download.svg'
 
 const SalaryRecords = () => {
 
@@ -90,6 +92,9 @@ const SalaryRecords = () => {
                     />
                 </div>
             </SalariesTable>
+            <div className="w-fit mt-6 ms-auto">
+                <BtnCreate icon={DownloadIcon} text='Export As PDF' path='' />
+            </div>
         </main>
     )
 }
