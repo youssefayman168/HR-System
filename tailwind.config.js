@@ -8,6 +8,13 @@ export default {
     extend: {
       colors: {
         primary: "#365B98",
+        grayColor: "#9295AB",
+        orangeColor: "#FF793F",
+        redColor: "#E03434",
+        blueColor: "#0764E6",
+        greenColor: "#34E045",
+        blackGrayColor: "#101828",
+        darkBlueColor: "#0E2354",
       },
       screens: {
         sm: "540px",

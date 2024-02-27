@@ -10,8 +10,10 @@ type IProps = {
   styles?: CSSProperties;
   mainStyles?: CSSProperties;
   labelStyles?: CSSProperties;
-  id: string;
+  id?: string;
   req?: boolean;
+  className?: string;
+  containerClassName?: string;
 };
 
 const BaseInput = ({
@@ -26,9 +28,14 @@ const BaseInput = ({
   id,
   labelStyles,
   req,
+  className,
+  containerClassName,
 }: IProps) => {
   return (
-    <main style={mainStyles} className='flex flex-col items-start gap-1'>
+    <main
+      style={mainStyles}
+      className={`flex flex-col items-start gap-1 ${containerClassName}`}
+    >
       <label
         style={labelStyles}
         htmlFor={id}
@@ -45,7 +52,7 @@ const BaseInput = ({
         disabled={disabled}
         onChange={(e) => onChange?.(e.target.value)}
         style={styles}
-        className='border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px]'
+        className={`border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] ${className}`}
       />
     </main>
   );

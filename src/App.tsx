@@ -13,16 +13,25 @@ import Home from "@/pages/Home";
 import Projects from "@/pages/projects/all";
 import CreateProject from "./pages/projects/create-project";
 import ProjectDetails from "./pages/projects/project-details";
-import Tasks from "@/pages/Tasks";
 import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
-import AllEmployees from "@/pages/AllEmployees";
+import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
-import Analysis from "@/pages/Analysis";
 import Requests from "@/pages/Requests";
 import Reports from "@/pages/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
+import ArchitecturalDrawing from "./pages/Tasks/ArchitecturalDrawing";
+import Tasks from "./pages/Tasks/Tasks";
+import AddSubTasks from "./pages/Tasks/AddSubTasks";
+import AddTaskProjectDetails from "./pages/projects/AddTaskProjectDetails";
+import ViewEmployee from "./pages/AllEmployees/ViewEmployee";
+import ViewTask from "./pages/Tasks/ViewTask";
+import ViewSubTask from "./pages/Tasks/ViewSubTask";
+import EditTasks from "./pages/Tasks/EditTasks";
+import Analysis from "./pages/Analysis/Analysis";
+import EditEmployee from "./pages/AllEmployees/EditEmployee";
+import AddDepartment from "./pages/AllEmployees/AddDepartment";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +50,7 @@ const router = createBrowserRouter(
           <Route element={<Projects />} index />
           <Route element={<CreateProject />} path={pathList.createProject} />
           <Route element={<ProjectDetails />} path={pathList.projectDetails} />
+          <Route element={<AddTaskProjectDetails />} path={pathList.projectDetailsAddTask} />
         </Route>
         <Route
           element={
@@ -50,10 +60,22 @@ const router = createBrowserRouter(
           }
           path={pathList.home}
         />
-        <Route element={<Tasks />} path={pathList.tasks} />
+        <Route path={pathList.tasks} >
+          <Route element={<Tasks />} index />
+          <Route element={<ArchitecturalDrawing />} path={pathList.architecturalDrawing} />
+          <Route element={<AddSubTasks />} path={pathList.addSubTasks} />
+          <Route element={<ViewTask />} path={pathList.viewTask} />
+          <Route element={<ViewSubTask />} path={pathList.viewSubTask} />
+          <Route element={<EditTasks />} path={pathList.editTasks} />
+        </Route>
         <Route element={<Timetable />} path={pathList.time_table} />
         <Route element={<Notifications />} path={pathList.notifications} />
-        <Route element={<AllEmployees />} path={pathList.all_employees} />
+        <Route path={pathList.all_employees}>
+          <Route element={<AllEmployees />} index />
+          <Route element={<ViewEmployee />} path={pathList.view_employee} />
+          <Route element={<EditEmployee />} path={pathList.edit_employee} />
+          <Route element={<AddDepartment />} path={pathList.add_department} />
+        </Route>
         <Route element={<NewEmployee />} path={pathList.new_employee} />
         <Route element={<Analysis />} path={pathList.analysis} />
         <Route element={<Requests />} path={pathList.requests} />

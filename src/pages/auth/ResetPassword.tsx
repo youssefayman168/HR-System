@@ -1,5 +1,5 @@
 import React from "react";
-import BaseBtn from "../../components/BaseBtn";
+import BaseBtn from "../../components/Buttons/BaseBtn";
 import PasswordInp from "../../components/PasswordInp";
 import AuthLayout from "../../layouts/AuthLayout";
 import PageHeader from "@/features/ResetPassword/components/PageHeader";

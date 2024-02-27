@@ -30,14 +30,14 @@ const BaseLayout = ({ children }: any) => {
       <div className='flex'>
         <aside className='w-[290px] bg-white h-[100vh]'>
           <img src={companyLogo} alt='SEC Logo' className='mt-8 ml-7' />
-          <div className='mt-10'>
-            <ul className=' flex items-center justify-between gap-3 flex-col'>
+          <div className='mt-6'>
+            <ul className=' flex items-center justify-between gap-2 flex-col'>
               {asideLinks.map(({ title, src, Icon }, index) => {
                 return (
                   <NavLink
                     key={index}
                     className={
-                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] text-lg px-10 py-3"
+                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-lg px-10 py-[8px]"
                     }
                     to={src}
                   >
@@ -70,7 +70,7 @@ const BaseLayout = ({ children }: any) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
             className=' bg-[#E9EDF3] w-full h-[calc(100vh-75px)]'
           >
             {children}

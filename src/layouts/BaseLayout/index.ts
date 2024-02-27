@@ -9,7 +9,6 @@ import NewEmployeeIcon from "../../assets/icons/NewEmployeeIcon";
 import AnalysisIcon from "../../assets/icons/AnalysisIcon";
 import RequestsIcon from "../../assets/icons/RequestsIcon";
 import ReportsIcon from "../../assets/icons/ReportsIcon";
-import LogoutIcon from "../../assets/icons/LogoutIcon";
 
 export const asideLinks = [
   {
