@@ -6,6 +6,8 @@ import DownloadIcon from '@/assets/Projects/Download.svg'
 import EmployeePerformanceElement from "./EmployeePerformanceElement"
 import ReactPaginate from "react-paginate"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { useNavigate } from "react-router-dom"
+import { pathList } from "@/routes/routesPaths"
 
 const EmployeePerformance = () => {
 
@@ -34,6 +36,11 @@ const EmployeePerformance = () => {
             })
         );
     }, [page]);
+
+    // View insight 
+    const navigation = useNavigate()
+
+    const viewInsight = () => navigation(pathList.view_insight)
 
     return (
         <main>
@@ -68,6 +75,7 @@ const EmployeePerformance = () => {
                             companyName={companyName}
                             departmentName={departmentName}
                             positionName={position}
+                            onActionClick={() => viewInsight()}
                         />
                     })}
                 </div>

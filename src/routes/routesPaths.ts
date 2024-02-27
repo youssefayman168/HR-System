@@ -30,7 +30,10 @@ export const pathList = {
 
   new_employee: "/new_employee",
   analysis: "/analysis",
+
+  // Reports
   reports: "/reports",
+  view_insight: "/reports/view_insights",
 
   // Requests URLs
   requests: "/requests",

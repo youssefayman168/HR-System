@@ -35,7 +35,7 @@ import AddPosition from "./pages/AllEmployees/AddPosition";
 import ViewReq from "./pages/Requests/ViewReq";
 import Payslips from "./pages/Payslips/Payslips";
 import CreatePayslip from "./pages/Payslips/CreatePayslip";
-
+import ViewInsightsPage from "./features/Reports/employeePerformance/components/ViewInsightsPage";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -89,7 +89,10 @@ const router = createBrowserRouter(
           <Route element={<Requests />} index />
           <Route element={<ViewReq />} path={pathList.viewRequests} />
         </Route>
-        <Route element={<Reports />} path={pathList.reports} />
+        <Route path={pathList.reports}>
+          <Route index element={<Reports />} />
+          <Route element={<ViewInsightsPage />} path={pathList.view_insight} />
+        </Route>
       </Route>
     </>
   )

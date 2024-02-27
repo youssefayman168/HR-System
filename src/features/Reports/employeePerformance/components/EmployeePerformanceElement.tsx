@@ -4,7 +4,7 @@ type IProps = {
     companyName: string,
     departmentName: string,
     positionName: string,
-    onActionClick?: number,
+    onActionClick?: any,
 }
 
 const EmployeePerformanceElement = ({ employeeImg, employeeName, companyName, departmentName, positionName, onActionClick }: IProps) => {
@@ -19,7 +19,7 @@ const EmployeePerformanceElement = ({ employeeImg, employeeName, companyName, de
             <p className="w-[15%]">{departmentName}</p>
             <p className="w-[15%]">{positionName}</p>
             <div className="w-[25%] flex items-center gap-2">
-                <button onClick={() => onActionClick} className="rounded-md capitalize text-[#063C84] font-semibold bg-[#CCE2FF] h-[40px] w-[125px] flex items-center justify-center">view insights</button>
+                <button onClick={() => onActionClick()} className="rounded-md capitalize text-[#063C84] font-semibold bg-[#CCE2FF] h-[40px] w-[125px] flex items-center justify-center">view insights</button>
             </div>
         </div>
 
