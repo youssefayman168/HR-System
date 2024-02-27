@@ -11,11 +11,10 @@ const ViewReq = () => {
 
 
     let type;
-    if(localStorage.State) {
-        type = JSON.parse(localStorage.State)
+    if(sessionStorage.Requests) {
+        type = JSON.parse(sessionStorage.Requests)
     }
 
-    console.log(type)
   return (
     <BaseLayout>
         <div className='p-6'>
@@ -50,9 +49,6 @@ const ViewReq = () => {
                                     <div className='w-[630px] xxxl:w-[670px] max-xxl:w-[500px] '>
                                         <p className='text-[#091E42] text-[20px] font-[500] mb-3'>Notes From The Employee</p>
                                         <p>Responsible for driving revenue growth by identifying and pursuing new business opportunities, as well as maintaining relationships with existing clients. working closely with customers to understand their needs and provide solutions that meet or exceed their expectations, while also achieving the company's sales goals.</p>
-                                        
-                                        
-                                        
                                         <div className='mt-16 mb-7'>
                                             <div className='border-b-[1px] border-[#EAECF0] flex items-center gap-32'>
                                                 <EmployeeInfo title='Employee ID:' value={inf.id} />

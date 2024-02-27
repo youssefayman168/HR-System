@@ -1,20 +1,17 @@
-import SecondaryBorderBtn from '@/components/Buttons/SecondaryBorderBtn'
-import BaseLayout from '../../layouts/BaseLayout/BaseLayout'
-import outlinePlus from '@/assets/outlinePlus.svg'
-import DownloadIcon from '@/assets/Projects/Download.svg'
+import BaseLayout from '@/layouts/BaseLayout/BaseLayout'
 import BlueTableHeader from '@/components/Table/BlueTableHeader'
-import AllEmployeesComponents from '@/features/AllEmployees/components/AllEmployeesComponents'
-import ReactPaginate from 'react-paginate'
-import { useEffect, useState } from 'react'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { employeesData } from '.'
 import BtnCreate from '@/components/Buttons/BtnCreate'
-import { useNavigate } from 'react-router-dom'
+import plus from '../../assets/plus.svg'
+import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
+import { payslipsData } from './index'
+import AllEmployeesComponents from '@/features/AllEmployees/components/AllEmployeesComponents'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { pathList } from '@/routes/routesPaths'
 
-const AllEmployees = () => {
+const Payslips = () => {
 
-    //  DropDown State
+
     const [departmentState, setDepartmentState] = useState<boolean>(false)
     const [positionState, setPositionState] = useState<boolean>(false)
     const [allEmployeesState, setAllEmployeesState] = useState<boolean>(false)
@@ -36,41 +33,29 @@ const AllEmployees = () => {
         setDepartmentState(false)
     }
 
-    // Pagination
+
+
     const [page, setPage] = useState(0);
     const [filterData, setFilterData] = useState<any>();
-    const n = 5
+    const n = 6
     useEffect(() => {
         setFilterData(
-            employeesData.filter((_, index: number) => {
+            payslipsData.filter((_, index: number) => {
                 return (index >= page * n) && (index < (page + 1) * n);
             })
         );
     }, [page]);
 
-    // View employee functionality
-    const navigation = useNavigate()
 
-    const viewEmployee = () => navigation(pathList.view_employee)
-    const editEmployee = () => navigation(pathList.edit_employee)
-    const addDepartment = () => navigation(pathList.add_department)
-    const addPosition = () => navigation(pathList.add_position)
 
-    return (
-        <BaseLayout>
-            <div className="p-6 pb-2">
-                <div className="flex items-center justify-between gap-[15px]">
-                    <h1 className='text-primary font-bold text-2xl'>
-                        All Employees
-                    </h1>
-                    <div className="flex items-center gap-[15px]">
-                        <SecondaryBorderBtn text='Add Department' icon={outlinePlus} onClick={() => addDepartment()} />
-                        <SecondaryBorderBtn text='Add Position' icon={outlinePlus} onClick={() => addPosition()} />
-                    </div>
-                </div>
-                <div className='bg-white rounded-[15px]'>
-
-                <BlueTableHeader
+  return (
+    <BaseLayout>
+        <div className='p-6 pb-2'>
+            <div className='CreatePayslip w-fit ms-auto'>
+                <BtnCreate text='Create Payslip' icon={plus} path={pathList.create_payslip} />
+            </div>
+            <div className='bg-white rounded-[15px]'>
+            <BlueTableHeader
                     departmentDropDown={
                         <ul className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${departmentState ? 'ulFilter act' : 'h-0'}`} style={{ opacity: departmentState ? 1 : 0 }}>
                             <li className='py-[10px] border-b cursor-pointer'>All</li>
@@ -102,39 +87,42 @@ const AllEmployees = () => {
                     positionClick={openPosition}
                     allEmployeesClick={openAllEmployeesState}
                 >
-                    <div className="h-[calc(100vh-395px)] overflow-y-auto HideScroll">
+                    <div className="Body w-full h-[calc(100vh-330px)] HideScroll overflow-y-auto">
                         {filterData && filterData.map(({ picture, employeeName, companyName, departmentName, positionName }: any, index: number) => {
-                            return <AllEmployeesComponents key={index} employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName} onViewClick={() => viewEmployee()} onEditClick={() => editEmployee()} />
+                            return <AllEmployeesComponents key={index} styleDeleteBtn={{display: "none"}} employeeImg={picture} employeeName={employeeName} companyName={companyName} departmentName={departmentName} positionName={positionName}/>
                         })}
                     </div>
-                    <div className="w-full py-3">
-                        <ReactPaginate
-                            containerClassName={"pagination flex items-center gap-[8px] ml-6"}
-                            pageClassName={"size-[40px] rounded-lg flex items-center justify-center border border-[#D9D9DB]"}
-                            activeClassName={"active border-primary"}
-                            onPageChange={(event) => setPage(event.selected)}
-                            pageCount={Math.ceil(employeesData.length / n)}
-                            breakLabel="..."
-                            previousLabel={
-                                <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
-                                    <IoIosArrowBack />
-                                </div>
-                            }
-                            nextLabel={
-                                <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
-                                    <IoIosArrowForward />
-                                </div>
-                            }
-                        />
+
+                    <div className='py-3 flex items-center justify-between px-6'>
+                        <div>
+                            <ReactPaginate
+                                containerClassName={"pagination flex items-center gap-[8px]"}
+                                pageClassName={"size-[40px] rounded-lg flex items-center justify-center border border-[#D9D9DB]"}
+                                activeClassName={"active border-primary"}
+                                onPageChange={(event) => setPage(event.selected)}
+                                pageCount={Math.ceil(payslipsData.length / n)}
+                                breakLabel="..."
+                                previousLabel={
+                                    <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
+                                        <IoIosArrowBack />
+                                    </div>
+                                }
+                                nextLabel={
+                                    <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
+                                        <IoIosArrowForward />
+                                    </div>
+                                }
+                            />
+                        </div>
+                        <div>
+                            <p>Showing <span className='w-[13px] inline-block text-center'>{page + 1}</span> to {Math.ceil(payslipsData.length / n)} out of 60 records</p>
+                        </div>
                     </div>
                 </BlueTableHeader>
-                </div>
-                <div className="w-fit mt-6 ms-auto">
-                    <BtnCreate icon={DownloadIcon} text='Export As PDF' path='' />
-                </div>
             </div>
-        </BaseLayout>
-    )
+        </div>
+    </BaseLayout>
+  )
 }
 
-export default AllEmployees
+export default Payslips

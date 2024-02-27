@@ -5,10 +5,8 @@ import download from '../../assets/Projects/Download.svg'
 import DropDown from '../../components/DropDown/DropDown';
 import Elm from '../../components/Requests/Elm';
 import BtnCreate from '../../components/Buttons/BtnCreate';
-import {employeesDataReq} from './index'
+import {RequestData} from './index'
 import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
-import { pathList } from '@/routes/routesPaths';
 const Requests = () => {
 
     const [uListEmp , setUlList] = useState(false)
@@ -52,7 +50,7 @@ const Requests = () => {
 
     useEffect(() => {
         setFilterDataReq(
-            employeesDataReq.filter((_, index: number) => {
+            RequestData.filter((_, index: number) => {
                 return (index >= currentPage * itemsNum) && (index < (currentPage + 1) * itemsNum);
             })
         );
@@ -101,7 +99,7 @@ const Requests = () => {
                             filterDataReq && filterDataReq.map(({photo , name , reqType , id , date , role , status } :any , index: number ) => {
                                 let Info = [{ status : status , name: name , reqType: reqType , id: id , date : date , photo }]
                                 return <div key={index}><Elm photo={photo} name={name} reqType={reqType} id={id} date={date} role={role} status={status} onclick={() => {
-                                    localStorage.setItem("State" , JSON.stringify(Info))
+                                    sessionStorage.setItem("Requests" , JSON.stringify(Info))
                                 }} /></div>
                             })
                         }
@@ -113,7 +111,7 @@ const Requests = () => {
                                 pageClassName={"size-[40px] rounded-lg flex items-center justify-center border border-[#D9D9DB]"}
                                 activeClassName={"active border-primary"}
                                 onPageChange={(event) => setCurrentPage(event.selected)}
-                                pageCount={Math.ceil(employeesDataReq.length / itemsNum)}
+                                pageCount={Math.ceil(RequestData.length / itemsNum)}
                                 breakLabel="..."
                                 previousLabel={
                                     <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
@@ -128,7 +126,7 @@ const Requests = () => {
                             />
                         </div>
                         <div>
-                            <p>Showing <span className='w-[13px] text-center inline-block '>{currentPage + 1}</span> to 5 out of 60 records</p>
+                            <p>Showing <span className='w-[13px] text-center inline-block '>{currentPage + 1}</span> to {Math.ceil(RequestData.length / itemsNum)} out of 60 records</p>
                         </div>
                     </div>
                 </div>

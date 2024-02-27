@@ -13,7 +13,6 @@ import Home from "@/pages/Home";
 import Projects from "@/pages/projects/all";
 import CreateProject from "./pages/projects/create-project";
 import ProjectDetails from "./pages/projects/project-details";
-import Timetable from "@/pages/Timetable";
 import Notifications from "@/pages/Notifications";
 import AllEmployees from "@/pages/AllEmployees/AllEmployees";
 import NewEmployee from "@/pages/NewEmployee";
@@ -34,6 +33,8 @@ import EditEmployee from "./pages/AllEmployees/EditEmployee";
 import AddDepartment from "./pages/AllEmployees/AddDepartment";
 import AddPosition from "./pages/AllEmployees/AddPosition";
 import ViewReq from "./pages/Requests/ViewReq";
+import Payslips from "./pages/Payslips/Payslips";
+import CreatePayslip from "./pages/Payslips/CreatePayslip";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -70,7 +71,10 @@ const router = createBrowserRouter(
           <Route element={<ViewSubTask />} path={pathList.viewSubTask} />
           <Route element={<EditTasks />} path={pathList.editTasks} />
         </Route>
-        <Route element={<Timetable />} path={pathList.time_table} />
+        <Route path={pathList.payslips}>
+          <Route element={<Payslips />} index />
+          <Route element={<CreatePayslip />} path={pathList.create_payslip} />
+        </Route>
         <Route element={<Notifications />} path={pathList.notifications} />
         <Route path={pathList.all_employees}>
           <Route element={<AllEmployees />} index />

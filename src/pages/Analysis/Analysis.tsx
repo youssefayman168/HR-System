@@ -8,7 +8,7 @@ import DecreaseBTM from '../../assets/Analysis/DecreaseBTM.svg'
 import IncreaseTOP from '../../assets/Analysis/IncreaseTOP.svg'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { useEffect, useState } from 'react'
-import { employeesDataFunds } from './index'
+import { EmployeeFundsData } from './index'
 import AllEmployeeFunds from '@/components/Analysis/AllEmployeeFunds'
 import ReactPaginate from 'react-paginate'
 import Header from '@/components/Analysis/Header';
@@ -52,7 +52,7 @@ export const options = {
     responsive: true,
 };
 const labels = ['Sat', 'Sun', 'Man', 'Tue', 'Wed', 'Thu', 'Fri'];
-export const data2 = {
+export const data2 : any = {
     labels,
     datasets: [
         {
@@ -77,7 +77,7 @@ const Analysis = () => {
 
     useEffect(() => {
         setFilterDataFunds(
-            employeesDataFunds.filter((_, index: number) => {
+            EmployeeFundsData.filter((_, index: number) => {
                 return (index >= currentPage * itemsNum) && (index < (currentPage + 1) * itemsNum);
             })
         );
@@ -109,7 +109,7 @@ const Analysis = () => {
                                     pageClassName={"size-[40px] rounded-lg flex items-center justify-center border border-[#D9D9DB]"}
                                     activeClassName={"active border-primary"}
                                     onPageChange={(event) => setCurrentPage(event.selected)}
-                                    pageCount={Math.ceil(employeesDataFunds.length / itemsNum)}
+                                    pageCount={Math.ceil(EmployeeFundsData.length / itemsNum)}
                                     breakLabel="..."
                                     previousLabel={
                                         <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>

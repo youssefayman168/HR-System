@@ -14,8 +14,11 @@ export const pathList = {
   editTasks: "/tasks/editTasks",
   viewTask: "/tasks/architecturalDrawing/viewTask",
   viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
+  
+  // Payslips URLs
+  payslips: "/payslips",
+  create_payslip: "/payslips/create_payslip",
 
-  time_table: "/time_table",
   notifications: "/notifications",
 
   // All Employees
