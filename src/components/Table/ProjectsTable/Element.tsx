@@ -18,7 +18,7 @@ type MyElement = {
 
 const Element = ({text1 , text2 , text3 , text4 , text5 , text6 , text7 , text8 , styleStaus } : MyElement) => {
   return (
-    <Link className='flex items-center gap-2 py-7 text-[#9295AB] border-b-[2px] border-[#a0aaca80] ' to={`/projects/21323`}>
+    <Link className='flex items-center gap-2 py-6 text-[#9295AB] border-b-[2px] border-[#a0aaca80] ' to={`/projects/21323`}>
         <p className='w-[5%] text-[#105090] font-[600] '>{text1}</p>
         <p className='w-[12%] text-[#105090] font-[600] '>{text2}</p>
         <p className='w-[18%] '>{text3}</p>

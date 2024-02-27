@@ -15,7 +15,7 @@ const Projects = () => {
       <div className="p-5">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-[#224886] text-[25px] font-[600] ">Projects overview</p>
+            <p className="text-[#224886] text-[25px] font-[600]">Projects overview</p>
           </div>
           <div className="relative">
             <div className="absolute top-[50%] left-3 translate-y-[-50%] text-[#737373]">
@@ -33,7 +33,7 @@ const Projects = () => {
         <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
           <ProjectsTable />
         </div>
-        <div className="w-fit ms-auto mt-5 ">
+        <div className="w-fit ms-auto mt-5">
           <BtnCreate icon={DownloadIcon} text="Export As PDF" path="" />
         </div>
       </div>

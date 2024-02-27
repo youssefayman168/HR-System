@@ -53,19 +53,19 @@ const ViewSubTask = () => {
                         </div>
                         <p className='font-[600] text-[18px] my-6 text-[#0E2354] '>Task Details</p>
                         <div className='flex gap-20'>
-                        <div>
-                            <EmployeeInfo title='Sub Task ID:' value='23GH 56HJK' />
-                            <div className="flex items-start flex-col mb-6">
-                                <p className="text-sm text-grayColor font-bold capitalize">Status</p>
-                                <p className="relative text-[15px] font-semibold bg-[#ECFDF3] text-[#027A48] after:absolute after:bg-[#12B76A] left-[-5px] py-[3px] px-3 ps-5 after:w-[8px] after:h-[8px] after:rounded-full after:top-[50%] after:translate-y-[-50%] after:left-[7px] rounded-[15px] ">Active</p>
+                            <div>
+                                <EmployeeInfo title='Sub Task ID:' value='23GH 56HJK' />
+                                <div className='mb-7'>
+                                    <p className="text-sm text-grayColor font-bold capitalize">Status</p>
+                                    <p className="relative text-[15px] font-semibold bg-[#ECFDF3] text-[#027A48] after:absolute after:bg-[#12B76A] w-fit left-[-5px] py-[3px] px-3 ps-5 after:w-[8px] after:h-[8px] after:rounded-full after:top-[50%] after:translate-y-[-50%] after:left-[7px] rounded-[15px] ">Active</p>
+                                </div>
+                                <EmployeeInfo title='Start Date' value='Mon Jan 29 2024 ' />
                             </div>
-                            <EmployeeInfo title='Start Date' value='Mon Jan 29 2024 ' />
-                        </div>
-                        <div>
-                            <EmployeeInfo title='Sub Task Hours' value='12' />
-                            <EmployeeInfo title='Company' value='Hr' />
-                            <EmployeeInfo title='End Date' value='Mon Jan 29 2024' />
-                        </div>
+                            <div>
+                                <EmployeeInfo title='Sub Task Hours' value='12' />
+                                <EmployeeInfo title='Company' value='Hr' />
+                                <EmployeeInfo title='End Date' value='Mon Jan 29 2024' />
+                            </div>
                         </div>
                     </div>
                 </div>

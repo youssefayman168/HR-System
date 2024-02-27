@@ -27,8 +27,8 @@ export const asideLinks = [
     Icon: TasksIcon,
   },
   {
-    title: "Timetable",
-    src: pathList.time_table,
+    title: "Payslips",
+    src: pathList.payslips,
     Icon: TimeTableIcon,
   },
   {

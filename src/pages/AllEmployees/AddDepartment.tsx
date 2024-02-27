@@ -25,14 +25,14 @@ const AddDepartment = () => {
                         <p className='flex items-center text-[22px] font-[600] mb-6 text-[#0E2354] '>Create New Department</p>
                         <div className='inputs'>
                             <div className='w-full'>
-                                <BaseInput type='text' placeholder='Task name' label="Department Name" labelStyles={{ fontWeight: 'bold' }} styles={{ width: "100%", height: "65px", marginBottom: 24 }} />
+                                <BaseInput type='text' placeholder='Please Enter Department Name' label="Department Name" labelStyles={{ fontWeight: 'bold' }} styles={{ width: "100%", height: "65px", marginBottom: 24 }} />
 
                                 <label
                                     className='mb-2 text-lg font-bold'
                                 >
                                     Description
                                 </label>
-                                <textarea placeholder='Description' className='border-[1px] border-[#BDBDBD] p-5 w-full mt-4 rounded-[10px] h-[250px] outline-none ' ></textarea>
+                                <textarea placeholder='Please Enter Department Description ' className='border-[1px] border-[#BDBDBD] p-5 w-full mt-4 rounded-[10px] h-[250px] outline-none ' ></textarea>
                             </div>
                         </div>
                         <div className='Submit mx-auto w-fit mt-16 flex gap-5' >

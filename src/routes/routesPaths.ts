@@ -14,8 +14,11 @@ export const pathList = {
   editTasks: "/tasks/editTasks",
   viewTask: "/tasks/architecturalDrawing/viewTask",
   viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
+  
+  // Payslips URLs
+  payslips: "/payslips",
+  create_payslip: "/payslips/create_payslip",
 
-  time_table: "/time_table",
   notifications: "/notifications",
 
   // All Employees
@@ -23,11 +26,18 @@ export const pathList = {
   view_employee: "/all_employees/view_employee",
   edit_employee: "/all_employees/edit_employee",
   add_department: "/all_employees/add_department",
+  add_position: "/all_employees/add_position",
 
   new_employee: "/new_employee",
   analysis: "/analysis",
-  requests: "/requests",
+
+  // Reports
   reports: "/reports",
+  view_insight: "/reports/view_insights",
+
+  // Requests URLs
+  requests: "/requests",
+  viewRequests: "/requests/viewRequests",
 
   // Projects URLs
   projects: "/projects",
