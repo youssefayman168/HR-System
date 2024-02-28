@@ -78,3 +78,17 @@ li {
 li.selected {
     color: #224886;
 }
+
+.chartAnimation::after {
+    animation: forwards animationChart 4.4s;
+}
+
+@keyframes animationChart {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
