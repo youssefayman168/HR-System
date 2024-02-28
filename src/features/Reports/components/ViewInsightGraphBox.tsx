@@ -5,12 +5,13 @@ type IProps = {
     title: string,
     value: string,
     message: string,
-    status: string
+    status: string,
+    style?: string,
 }
 
-const ViewInsightGraphBox = ({ title, value, message, status }: IProps) => {
+const ViewInsightGraphBox = ({ title, value, message, status, style }: IProps) => {
     return (
-        <div className='h-full w-1/2 bg-white flex items-center justify-between border border-[#E0E0E0] p-5 gap-7 rounded-[10px]'>
+        <div className={`h-full w-1/2 ${style} bg-white flex items-center justify-between border border-[#E0E0E0] p-5 gap-7 rounded-[10px]`}>
             <div>
                 <p className="text-xl font-semibold">{title}</p>
                 <p className="text-5xl font-semibold mt-5">{value}</p>
