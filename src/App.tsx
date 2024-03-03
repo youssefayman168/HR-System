@@ -30,7 +30,7 @@ import ViewSubTask from "./pages/Tasks/ViewSubTask";
 import EditTasks from "./pages/Tasks/EditTasks";
 import Analysis from "./pages/Analysis/Analysis";
 import EditEmployee from "./pages/AllEmployees/EditEmployee";
-import AddDepartment from "./pages/AllEmployees/AddDepartment";
+import AddDepartment from "./features/AllEmployees/AddDepartment/components/AddDepartment";
 import AddPosition from "./pages/AllEmployees/AddPosition";
 import ViewReq from "./pages/Requests/ViewReq";
 import Payslips from "./pages/Payslips/Payslips";
