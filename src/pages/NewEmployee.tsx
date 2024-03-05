@@ -95,7 +95,7 @@ const NewEmployee = () => {
   };
   return (
     <BaseLayout>
-      <Breadcrumb />
+      <Breadcrumb link='/home' />
       <div className='bg-white mx-[20px] w-[97%] rounded-[15px] h-[77vh] overflow-scroll'>
         <div className='flex justify-between px-[20px]'>
           <h2 className='text-[#101828] font-semibold text-[26px] mt-[50px]'>

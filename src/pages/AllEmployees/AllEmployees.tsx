@@ -84,9 +84,8 @@ const AllEmployees = () => {
           <BlueTableHeader
             departmentDropDown={
               <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${
-                  departmentState ? "ulFilter act" : "h-0"
-                }`}
+                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${departmentState ? "ulFilter act" : "h-0"
+                  }`}
                 style={{ opacity: departmentState ? 1 : 0 }}
               >
                 <li className='py-[10px] border-b cursor-pointer'>All</li>
@@ -100,9 +99,8 @@ const AllEmployees = () => {
             }
             positionDropDown={
               <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${
-                  positionState ? "ulFilter act" : "h-0"
-                }`}
+                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${positionState ? "ulFilter act" : "h-0"
+                  }`}
                 style={{ opacity: positionState ? 1 : 0 }}
               >
                 <li className='py-[10px] border-b cursor-pointer'>All</li>
@@ -116,9 +114,8 @@ const AllEmployees = () => {
             }
             allEmployeesDropDown={
               <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${
-                  allEmployeesState ? "ulFilter act" : "h-0"
-                }`}
+                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${allEmployeesState ? "ulFilter act" : "h-0"
+                  }`}
                 style={{ opacity: allEmployeesState ? 1 : 0 }}
               >
                 <li className='py-[10px] border-b cursor-pointer'>All</li>

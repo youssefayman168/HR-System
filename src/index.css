@@ -100,3 +100,27 @@ input[type="file"] {
   cursor: pointer;
   opacity: 0;
 }
+
+.modalAnimation {
+  animation: forwards animationModal 1s;
+}
+
+@keyframes animationModal {
+  0% {
+    width: 500px;
+    height: 300px;
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0.8;
+    width: 550px;
+    height: 380px;
+  }
+
+  100% {
+    opacity: 1;
+    width: 532px;
+    height: 361px;
+  }
+}
