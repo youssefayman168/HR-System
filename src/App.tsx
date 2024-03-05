@@ -50,10 +50,38 @@ const router = createBrowserRouter(
           <Route element={<ResetPassword />} path={pathList.resetPassword} />
         </Route>
         <Route path={pathList.projects}>
-          <Route element={<Projects />} index />
-          <Route element={<CreateProject />} path={pathList.createProject} />
-          <Route element={<ProjectDetails />} path={pathList.projectDetails} />
-          <Route element={<AddTaskProjectDetails />} path={pathList.projectDetailsAddTask} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <Projects />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <CreateProject />
+              </ProtectedRoute>
+            }
+            path={pathList.createProject}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ProjectDetails />
+              </ProtectedRoute>
+            }
+            path={pathList.projectDetails}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AddTaskProjectDetails />
+              </ProtectedRoute>
+            }
+            path={pathList.projectDetailsAddTask}
+          />
         </Route>
         <Route
           element={
@@ -63,35 +91,175 @@ const router = createBrowserRouter(
           }
           path={pathList.home}
         />
-        <Route path={pathList.tasks} >
-          <Route element={<Tasks />} index />
-          <Route element={<ArchitecturalDrawing />} path={pathList.architecturalDrawing} />
-          <Route element={<AddSubTasks />} path={pathList.addSubTasks} />
-          <Route element={<ViewTask />} path={pathList.viewTask} />
-          <Route element={<ViewSubTask />} path={pathList.viewSubTask} />
-          <Route element={<EditTasks />} path={pathList.editTasks} />
+        <Route path={pathList.tasks}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <Tasks />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ArchitecturalDrawing />
+              </ProtectedRoute>
+            }
+            path={pathList.architecturalDrawing}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AddSubTasks />
+              </ProtectedRoute>
+            }
+            path={pathList.addSubTasks}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ViewTask />
+              </ProtectedRoute>
+            }
+            path={pathList.viewTask}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ViewSubTask />
+              </ProtectedRoute>
+            }
+            path={pathList.viewSubTask}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <EditTasks />
+              </ProtectedRoute>
+            }
+            path={pathList.editTasks}
+          />
         </Route>
         <Route path={pathList.payslips}>
-          <Route element={<Payslips />} index />
-          <Route element={<CreatePayslip />} path={pathList.create_payslip} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <Payslips />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <CreatePayslip />
+              </ProtectedRoute>
+            }
+            path={pathList.create_payslip}
+          />
         </Route>
-        <Route element={<Notifications />} path={pathList.notifications} />
+        <Route
+          element={
+            <ProtectedRoute>
+              <Notifications />
+            </ProtectedRoute>
+          }
+          path={pathList.notifications}
+        />
         <Route path={pathList.all_employees}>
-          <Route element={<AllEmployees />} index />
-          <Route element={<ViewEmployee />} path={pathList.view_employee} />
-          <Route element={<EditEmployee />} path={pathList.edit_employee} />
-          <Route element={<AddDepartment />} path={pathList.add_department} />
-          <Route element={<AddPosition />} path={pathList.add_position} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AllEmployees />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ViewEmployee />
+              </ProtectedRoute>
+            }
+            path={pathList.view_employee}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <EditEmployee />
+              </ProtectedRoute>
+            }
+            path={pathList.edit_employee}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AddDepartment />
+              </ProtectedRoute>
+            }
+            path={pathList.add_department}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AddPosition />
+              </ProtectedRoute>
+            }
+            path={pathList.add_position}
+          />
         </Route>
-        <Route element={<NewEmployee />} path={pathList.new_employee} />
-        <Route element={<Analysis />} path={pathList.analysis} />
+        <Route
+          element={
+            <ProtectedRoute>
+              <NewEmployee />
+            </ProtectedRoute>
+          }
+          path={pathList.new_employee}
+        />
+        <Route
+          element={
+            <ProtectedRoute>
+              <Analysis />
+            </ProtectedRoute>
+          }
+          path={pathList.analysis}
+        />
         <Route path={pathList.requests}>
-          <Route element={<Requests />} index />
-          <Route element={<ViewReq />} path={pathList.viewRequests} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <Requests />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ViewReq />
+              </ProtectedRoute>
+            }
+            path={pathList.viewRequests}
+          />
         </Route>
         <Route path={pathList.reports}>
-          <Route index element={<Reports />} />
-          <Route element={<ViewInsightsPage />} path={pathList.view_insight} />
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <ViewInsightsPage />
+              </ProtectedRoute>
+            }
+            path={pathList.view_insight}
+          />
         </Route>
       </Route>
     </>

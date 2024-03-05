@@ -6,8 +6,13 @@ const logout = (refresh: any) => {
   });
 };
 
+const getPersonalInfo = () => {
+  return requestHelpers.getData("/user/profile/");
+};
+
 const globalServices = {
   logout,
+  getPersonalInfo,
 };
 
 export default globalServices;

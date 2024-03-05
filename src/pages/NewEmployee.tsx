@@ -4,7 +4,7 @@ import Excel from "@/components/Excel";
 import Step from "@/features/NewEmployee/components/Step";
 import useMultiStepForm from "@/hooks/useMultistepForm";
 import BasicInfo from "@/features/NewEmployee/components/BasicInfo";
-import ReviewDetails from "@/features/NewEmployee/components/ReviewDetails";
+import Attachment from "@/features/NewEmployee/components/Attachment";
 import SetPermissions from "@/features/NewEmployee/components/SetPermissions";
 import BorderBtn from "@/components/Buttons/BorderBtn";
 import BaseBtn from "@/components/Buttons/BaseBtn";
@@ -13,9 +13,37 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import createEmployee from "@/features/NewEmployee/services/createEmployee";
 
+export type IEmployeeData = {
+  name: string;
+  email: string;
+  phone_number: string;
+  gender: string;
+  nationality: string;
+  location: string;
+  birth_date: string;
+  medical_insurance_type: string;
+  image: File | string;
+  position: string;
+  department: string;
+  grade: string;
+  company: string;
+  college_name: string;
+  graduation_date_from: string;
+  graduation_date_to: string;
+  hiring_date: string;
+  cv: string;
+  passport_copy: string;
+  scanned_paper: string;
+  id_photo: string;
+  birth_certificate: string;
+  military_certificate: string;
+  graduation_certificate: string;
+  social_insurance: string;
+};
+
 const NewEmployee = () => {
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState({
+  const [data, setData] = useState<IEmployeeData>({
     name: "",
     email: "",
     phone_number: "",
@@ -33,11 +61,19 @@ const NewEmployee = () => {
     graduation_date_from: "",
     graduation_date_to: "",
     hiring_date: "",
+    cv: "",
+    passport_copy: "",
+    scanned_paper: "",
+    id_photo: "",
+    birth_certificate: "",
+    military_certificate: "",
+    graduation_certificate: "",
+    social_insurance: "",
   });
   const { currentStep, step, goNext } = useMultiStepForm([
-    <BasicInfo />,
+    <BasicInfo setData={setData} />,
     <SetPermissions />,
-    <ReviewDetails />,
+    <Attachment />,
   ]);
   const addEmployee = useMutation<any, any, any>({
     mutationFn: (data) => {
@@ -60,7 +96,7 @@ const NewEmployee = () => {
   return (
     <BaseLayout>
       <Breadcrumb />
-      <div className='bg-white mx-[20px] w-[97%] rounded-[15px]'>
+      <div className='bg-white mx-[20px] w-[97%] rounded-[15px] h-[77vh] overflow-scroll'>
         <div className='flex justify-between px-[20px]'>
           <h2 className='text-[#101828] font-semibold text-[26px] mt-[50px]'>
             Create New Employee
@@ -87,7 +123,7 @@ const NewEmployee = () => {
               active={currentStep <= 2}
               completed={currentStep > 2}
               stepNumber={3}
-              stepName='Review Details'
+              stepName='Attachments'
             />
           </div>
           {step}

@@ -1,8 +1,14 @@
 import BaseInput from "@/components/BaseInput";
 import Calendar from "@/components/Calendar";
+import ImageUploader from "@/components/ImageUploader";
+import { IEmployeeData } from "@/pages/NewEmployee";
 import React from "react";
 
-const BasicInfo = () => {
+const BasicInfo = ({
+  setData,
+}: {
+  setData: React.Dispatch<React.SetStateAction<IEmployeeData>>;
+}) => {
   return (
     <>
       <div className='w-[100%] flex justify-between items-center gap-[21px]'>
@@ -12,6 +18,14 @@ const BasicInfo = () => {
           label='Full Name'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                name: e,
+              };
+            })
+          }
         />
         <BaseInput
           type='text'
@@ -19,6 +33,14 @@ const BasicInfo = () => {
           label='Email'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                email: e,
+              };
+            })
+          }
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -28,6 +50,14 @@ const BasicInfo = () => {
           label='Phone Number'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                phone_number: e,
+              };
+            })
+          }
         />
         <BaseInput
           type='text'
@@ -35,6 +65,14 @@ const BasicInfo = () => {
           label='Gender'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                gender: e,
+              };
+            })
+          }
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -44,6 +82,14 @@ const BasicInfo = () => {
           label='Nationality'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                nationality: e,
+              };
+            })
+          }
         />
         <BaseInput
           type='text'
@@ -51,6 +97,14 @@ const BasicInfo = () => {
           label='Location'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                location: e,
+              };
+            })
+          }
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -60,29 +114,39 @@ const BasicInfo = () => {
           label='Date of Birth'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                birth_date: e,
+              };
+            })
+          }
         />
         <BaseInput
           type='text'
           placeholder='Please Select Insurance Type'
-          label='Email'
+          label='Insurance Type'
           className='w-[100%]'
           containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                social_insurance: e,
+              };
+            })
+          }
         />
       </div>
-      <div className='mt-[50px] mb-[61px]'>
-        <p className='text-[#000] text-[20px] font-medium'>
-          Employee’s Profile Photo
-        </p>
-        <div className='flex flex-col items-center pt-[40px] px-[237px] pb-[35px] rounded-[9px] border-[1px] border-dashed border-[#1F4690] mt-[12px]'>
-          <Calendar />
-          <h5 className='text-[#1F4690] cursor-pointer font-bold'>
-            Browse Images From Your Local Device
-          </h5>
-          <p className='text-[#969DB2] text-[8px] '>
-            Supports: PNG, JPG, JPEG, WEBP
-          </p>
-        </div>
-      </div>
+      <ImageUploader label='Employee’s Profile Photo' onSelect={(file) => {
+        setData((prev) => {
+          return {
+            ...prev,
+            image: file!,
+          };
+        });
+      }}/>
     </>
   );
 };
