@@ -1,5 +1,5 @@
-import increase from '@/assets/Analysis/increase.svg'
-import decrease from '@/assets/Analysis/decrease.svg'
+import increase from '@/assets/Analysis/Increase.svg'
+import decrease from '@/assets/Analysis/Decrease.svg'
 
 type Iprops = {
   employeeImg: any,
