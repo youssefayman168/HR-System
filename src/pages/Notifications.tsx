@@ -23,7 +23,7 @@ const Notifications = () => {
                             <ul ref={ulElement} className='ulFilter bg-white duration-300 text-center absolute h-0 overflow-hidden  w-[250px] top-[calc(100%+10px)] rounded-lg shadow-lg z-[2222] right-0 '>
                                 <li className='py-[10px] border-b cursor-pointer'>Projects</li>
                                 <li className='py-[10px] border-b cursor-pointer'>Task & Sub Task</li>
-                                <li className='py-[10px] border-b cursor-pointer'>Emplyee</li>
+                                <li className='py-[10px] border-b cursor-pointer'>Employee</li>
                                 <li className='py-[10px] border-b cursor-pointer'>Requests</li>
                                 <li className='py-[10px] border-b cursor-pointer'>Reports</li>
                             </ul>

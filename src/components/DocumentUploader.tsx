@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Calendar from "./Calendar";
 import AttachmentIcon from "./AttachmentIcon";
 
 const ImageUploader = ({
@@ -13,7 +12,7 @@ const ImageUploader = ({
 }) => {
   const [selectedFile, setSelectedFile] = useState<File>();
   return (
-    <div className='mt-[50px] mb-[61px] flex-1 w-[50%]'>
+    <div className='mt-[50px] mb-[61px] flex-1 w-full'>
       <p className='text-[#000] text-[20px] font-medium'>
         {label}{" "}
         {optional && (
@@ -32,12 +31,12 @@ const ImageUploader = ({
           }}
         />
         <AttachmentIcon />
-        <h5 className='text-[#1F4690] cursor-pointer font-bold'>
+        <h5 className='text-[#1F4690] cursor-pointer font-bold my-2'>
           {selectedFile
             ? "File Selected"
             : "Browse Files From Your Local Device"}
         </h5>
-        <p className='text-[#969DB2] text-[8px] '>
+        <p className='text-[#969DB2] text-sm '>
           {selectedFile
             ? `filename: ${selectedFile?.name}`
             : "Supports: PDF, Doc, Docx, PNG, JPEG, WEBP"}
