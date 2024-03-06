@@ -6,10 +6,19 @@ import plus from '../../assets/plus.svg'
 import { pathList } from "@/routes/routesPaths";
 import DateInp from "@/components/DateInput/Date";
 import ProjectsTable from "@/components/Table/ProjectsTable/ProjectsTable";
-
 import BtnCreate from "@/components/Buttons/BtnCreate";
+import { useRef } from "react";
+import { useReactToPrint } from 'react-to-print'
 
 const Projects = () => {
+
+  // To print the table in PDF
+  const componentRef = useRef<any>();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'Projects Overview',
+  });
+
   return (
     <BaseLayout>
       <div className="p-5">
@@ -30,11 +39,11 @@ const Projects = () => {
             <BtnCreate text="Create Projects" icon={plus} path={pathList.createProject} />
           </div>
         </div>
-        <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]  ">
+        <div className="TableCompo HideScroll overflow-y-auto mt-8 h-[calc(100vh-268px)] rounded-[20px]" ref={componentRef}>
           <ProjectsTable />
         </div>
         <div className="w-fit ms-auto mt-5">
-          <BtnCreate icon={DownloadIcon} text="Export As PDF" path="" />
+          <BtnCreate icon={DownloadIcon} text="Export As PDF" path="" onClick={handlePrint} />
         </div>
       </div>
     </BaseLayout>

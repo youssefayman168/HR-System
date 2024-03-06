@@ -19,7 +19,7 @@ const BoxStats = ({ titleName, employeesNumber, messageIcon, mainNumber, mainIco
     const rounded = useTransform(count, Math.round);
 
     useEffect(() => {
-        const controls = animate(count, mainNumber, { duration: 1.5 })
+        const controls = animate(count, mainNumber, { duration: 1 })
 
         return controls.stop
     }, [])
