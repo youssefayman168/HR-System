@@ -13,7 +13,7 @@ const refreshToken = localStorage.getItem("refresh")
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    "Content-Type": "application/json",
+    // "Content-Type": "application/json",
     // only append it if it's present.
     ...(accessToken !== "" && { Authorization: `Bearer ${accessToken}` }),
   },

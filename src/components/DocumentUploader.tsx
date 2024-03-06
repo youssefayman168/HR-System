@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AttachmentIcon from "./AttachmentIcon";
 
 const ImageUploader = ({
+  name,
   onSelect,
   label,
   optional,
@@ -9,8 +10,10 @@ const ImageUploader = ({
   onSelect?: (file?: File) => any;
   label: string;
   optional?: boolean;
+  name?: string
 }) => {
   const [selectedFile, setSelectedFile] = useState<File>();
+
   return (
     <div className='mt-[50px] mb-[61px] flex-1 w-full'>
       <p className='text-[#000] text-[20px] font-medium'>
@@ -25,10 +28,12 @@ const ImageUploader = ({
         <input
           type='file'
           accept='.doc, .docx, .pdf, .png, .jpeg, .webp'
+          name={name}
           onChange={(e) => {
             onSelect?.(e.target.files?.[0]);
             setSelectedFile(e.target.files?.[0]);
           }}
+          required={optional}
         />
         <AttachmentIcon />
         <h5 className='text-[#1F4690] cursor-pointer font-bold my-2'>
