@@ -19,7 +19,7 @@ const Employees = () => {
             <EmployeeInfo
               image={testImage}
               employeeName={employee.name}
-              profession='front-end developer'
+              profession={employee.position}
               projects={employee.total_projects_worked_on}
               subTask={employee.total_subtasks}
               hours={employee.total_work_hours}

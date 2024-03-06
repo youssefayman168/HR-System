@@ -43,13 +43,18 @@ const ProjectsAnalytics = () => {
             lineWidth={
               project.worked_hours == 0
                 ? 0
-                : (project.worked_hours / project.worked_hours) * 100
+                : (project.worked_hours / project.work_hours) * 100
             }
             value={
               project.worked_hours == 0
-                ? "0"
-                : String((project.worked_hours / project.worked_hours) * 100)
+                ? "0%"
+                : String(
+                    ((project.worked_hours / project.work_hours) * 100).toFixed(
+                      0
+                    )
+                  ) + "%"
             }
+            key={project.id}
           />
         ))}
       </div>
