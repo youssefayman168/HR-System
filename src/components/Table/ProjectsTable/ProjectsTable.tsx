@@ -3,13 +3,29 @@ import DropIcon from '../../../assets/Projects/DropDown.svg'
 import { useState } from 'react'
 import DropDown from '@/components/DropDown/DropDown'
 import getAllProjects from '@/features/Projects/all/services/getAllProjects'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import handleDeleteProject from '@/features/Projects/create-projets/services/deleteSingleProject'
 
 const ProjectsTable = () => {
     const [openList, setOpenList] = useState<boolean>(false)
     
+    // Delete Single Project
+    const client = useQueryClient()
+
+const deleteProjectMutation = useMutation({
+    mutationFn: (variables) => {
+        return handleDeleteProject(variables)
+    },
+    onSuccess: () => {
+        return client.invalidateQueries({
+            queryKey: ['projectElement']
+        })
+    }
+})
+
+    // Get All Projects
   const projects = useQuery({
-    queryKey: ['getAllProjects'],
+    queryKey: ['projectElement'],
     queryFn: getAllProjects
   })
 
@@ -38,6 +54,7 @@ const ProjectsTable = () => {
                         return<Element 
                         key={id} 
                         text1={id} 
+                        id={id}
                         text2={project_name} 
                         text3={company?.name} 
                         text4={start_date} 
@@ -45,6 +62,7 @@ const ProjectsTable = () => {
                         text7={`${worked_hours}h`} 
                         text8={`${work_hours}h`} 
                         styleStaus={status}
+                        deleteAction={()=> deleteProjectMutation.mutate(id)}
                         />
                     }
                     )}

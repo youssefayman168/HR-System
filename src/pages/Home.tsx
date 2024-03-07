@@ -1,12 +1,4 @@
-import BoxStats from "@/features/Home/components/BoxStats";
 import BaseLayout from "../layouts/BaseLayout/BaseLayout";
-
-import NavColors from "@/features/Home/components/NavColors";
-import PercentageLine from "@/features/Home/components/PercentageLine";
-import HomeTable from "@/features/Home/components/HomeTable";
-import EmployeeInfo from "@/features/Home/components/EmployeeInfo";
-import testImage from "@/assets/home/testImg.svg";
-import ManagerInfo from "@/features/Home/components/ManagerInfo";
 import BaseAnalytics from "@/features/Home/components/BaseAnalytics";
 import ProjectsAnalytics from "@/features/Home/components/ProjectsAnalytics";
 import Employees from "@/features/Home/components/Employees";

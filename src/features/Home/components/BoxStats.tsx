@@ -8,9 +8,9 @@ type IProps = {
     titleName: string,
     employeesNumber: string,
     messageIcon: any,
-    mainNumber: number,
+    mainNumber: any,
     mainIcon: any,
-    unit?: string
+    unit?: boolean
 }
 
 const BoxStats = ({ titleName, employeesNumber, messageIcon, mainNumber, mainIcon, unit }: IProps) => {
@@ -28,7 +28,11 @@ const BoxStats = ({ titleName, employeesNumber, messageIcon, mainNumber, mainIco
         <div className="bg-white rounded-2xl py-4 px-6 w-[100%] flex items-start justify-between">
             <div>
                 <div className="text-primary text-[38px] font-bold flex items-center">
-                    <motion.p>{rounded}</motion.p> {unit === 'dollar' ? '$' : unit === 'hours' ? 'h' : ''}
+                    {unit ?
+                        <p>{mainNumber}</p>
+                        :
+                        <motion.p>{rounded}</motion.p>
+                    }
                 </div>
                 <div className="mt-2 text-[#252C58]">
                     <p className="text-lg font-semibold mb-1">{titleName}</p>

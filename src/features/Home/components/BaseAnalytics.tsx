@@ -1,4 +1,3 @@
-import React from "react";
 import BoxStats from "./BoxStats";
 import employeesIcon from "@/assets/home/employees.svg";
 import projectsIcon from "@/assets/home/projectsIcon.svg";
@@ -9,6 +8,8 @@ import getEmployeesAnalytics from "@/features/Home/services/getEmployeesAnalytic
 import getProjectsAnalytics from "../services/getProjectsAnalytics";
 import getWorkingHours from "../services/getWorkingHours";
 import getProjectBudgets from "../services/getProjectBudgets";
+import formatMoney from "@/utils/formatMoney";
+import formatTime from "@/utils/formatTime";
 
 const BaseAnalytics = () => {
   const employees = useQuery({
@@ -27,8 +28,9 @@ const BaseAnalytics = () => {
     queryKey: ["projectsBudgets"],
     queryFn: getProjectBudgets,
   });
-  console.log(projectsBudgets.data);
-  console.log(employees.data?.data.employees_count);
+
+  const formattedMoney = formatMoney(projectsBudgets?.data?.data?.total_budget_today)
+  console.log(formatTime(workingHrs.data?.data.total_wh_today))
   return (
     <div className='flex items-stretch justify-between gap-6'>
       {!employees.isPending && (
@@ -55,26 +57,26 @@ const BaseAnalytics = () => {
         <BoxStats
           titleName='Working Hours'
           employeesNumber={`${workingHrs.data?.data.increase_rate}% less than yesterday`}
-          mainNumber={workingHrs.data?.data.total_wh_today}
+          mainNumber={formatTime(workingHrs.data?.data.total_wh_today)}
           mainIcon={<img src={timeIcon} />}
           messageIcon={
             workingHrs.data?.data.increase_rate > 0 ? "increase" : "decrease"
           }
-          unit='hours'
+          unit
         />
       )}
       {!projectsBudgets.isPending && (
         <BoxStats
           titleName='Budget Projects'
           employeesNumber={`${projectsBudgets.data.data.increase_rate}% higher than yesterday`}
-          mainNumber={projectsBudgets.data.data.total_budget_today}
+          mainNumber={formattedMoney}
           mainIcon={<img src={dollarIcon} />}
           messageIcon={
             projectsBudgets.data?.data.increase_rate > 0
               ? "increase"
               : "decrease"
           }
-          unit='dollar'
+          unit
         />
       )}
     </div>

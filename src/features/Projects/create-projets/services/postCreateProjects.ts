@@ -1,6 +1,6 @@
 import requestHelpers from "@/lib/requestHelpers"
 
-const postCreateProjects = async (data: any) => {
+const postCreateProjects = async (e: any, data: any) => {
 
     let formData = new FormData()
     try {
@@ -13,10 +13,9 @@ const postCreateProjects = async (data: any) => {
         formData.append('budget', data.budget)
         formData.append('work_hours', data.work_hours)
         formData.append('status', data.status)
-        // e.currentTarget.reset()
-        await requestHelpers.postData('/project/create/', formData)
+        return await requestHelpers.postData('/project/create/', formData)
     } catch (error) {
-        error
+        return error
     }
 }
 
