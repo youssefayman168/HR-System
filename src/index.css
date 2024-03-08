@@ -124,3 +124,14 @@ input[type="file"] {
     height: 361px;
   }
 }
+
+
+.Animate {
+  animation: Loading 2s infinite ;
+}
+
+@keyframes Loading {
+  100%{
+    transform:  rotate(360deg) ;
+  }
+}

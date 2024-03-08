@@ -7,6 +7,9 @@ export const pathList = {
 
   home: "/home",
 
+  // Profile URLs
+  profile: "/profile" ,
+
   // Task URLs
   tasks: "/tasks",
   architecturalDrawing: "/tasks/architecturalDrawing",
