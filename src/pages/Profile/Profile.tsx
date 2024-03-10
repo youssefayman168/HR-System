@@ -4,8 +4,9 @@ import testImg from "../../assets/testImg.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import EmployeeInfo from '@/features/AllEmployees/ViewEmployees/components/EmployeeInfo';
 import { tabs } from './index'
-import WorkedProjects from '@/components/Profile/WorkedProjects';
+import AnnualsTab from '@/components/Profile/AnnualsTab';
 import PayslipsTab from '@/components/Profile/PayslipsTab';
+import WorkedProjectsTab from '@/components/Profile/WorkedProjectsTab';
 const Profile = () => {
 
     const [ currentTab , setCurrentTab ] = useState(tabs[0])
@@ -64,15 +65,11 @@ const Profile = () => {
                     >
                         {
                             currentTab.title === 'Worked Projects' ? (
-                                <WorkedProjects />
+                                <WorkedProjectsTab />
                             )
                             :
                             currentTab.title === 'Annuals' ? (
-                                <>
-                                    <div>
-                                        <p></p>
-                                    </div>
-                                </>
+                                <AnnualsTab />
                             )
                             :
                             currentTab.title === 'Payslips' ? (

@@ -6,7 +6,7 @@ import DownLoad from '../../assets/Projects/Download.svg'
 import ProjectsElm from "./ProjectsElm"
 import BtnCreate from "../Buttons/BtnCreate"
 
-const WorkedProjects = () => {
+const WorkedProjectsTab = () => {
   return (
     <>
     <div className='flex gap-5 mt-5 '>
@@ -34,4 +34,4 @@ const WorkedProjects = () => {
   )
 }
 
-export default WorkedProjects
+export default WorkedProjectsTab
