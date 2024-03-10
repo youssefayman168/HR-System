@@ -89,7 +89,7 @@ const AnnualsTab = () => {
             </div>
 
 
-            <div className='Body h-[calc(100vh-500px)]'>
+            <div className='Body h-[300px]'>
                 {filterPayslipsData && filterPayslipsData.map((text : any, index: number) => {
                     return  <RequestsTableElm key={index} text1={text.text1} text2={text.text2} text3={text.text3} text4={text.text4} />
                 })}
