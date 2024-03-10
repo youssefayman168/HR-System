@@ -33,7 +33,7 @@ const BaseLayout = ({ children }: any) => {
   });
   return (
     <main>
-      <div onClick={() => {setUserProfile(!userProfile)}} className={`${userProfile ? 'block' : 'hidden' } w-full h-[100vh] absolute`} ></div>
+      <div onClick={() => {setUserProfile(!userProfile)}} className={`${userProfile ? 'block' : 'hidden' } z-50 w-full h-[100vh] absolute`} ></div>
       <div className='flex'>
         <aside className='w-[290px] bg-white h-[100vh]'>
           <img src={companyLogo} alt='SEC Logo' className='mt-8 ml-7' />
