@@ -17,7 +17,7 @@ export const pathList = {
   editTasks: "/tasks/editTasks",
   viewTask: "/tasks/architecturalDrawing/viewTask",
   viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
-  
+
   // Payslips URLs
   payslips: "/payslips",
   create_payslip: "/payslips/create_payslip",
@@ -46,6 +46,6 @@ export const pathList = {
   projects: "/projects",
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
+  editProject: "/projects/editProject/:id",
   projectDetailsAddTask: "/projects/:id/addTask",
-
 };

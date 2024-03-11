@@ -37,6 +37,7 @@ import Payslips from "./pages/Payslips/Payslips";
 import CreatePayslip from "./pages/Payslips/CreatePayslip";
 import ViewInsightsPage from "./features/Reports/employeePerformance/components/ViewInsightsPage";
 import Profile from "./pages/Profile/Profile";
+import EditProject from "./pages/projects/EditProject";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -84,6 +85,14 @@ const router = createBrowserRouter(
               </ProtectedRoute>
             }
             path={pathList.projectDetailsAddTask}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <EditProject />
+              </ProtectedRoute>
+            }
+            path={pathList.editProject}
           />
         </Route>
         <Route
