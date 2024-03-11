@@ -36,6 +36,7 @@ import ViewReq from "./pages/Requests/ViewReq";
 import Payslips from "./pages/Payslips/Payslips";
 import CreatePayslip from "./pages/Payslips/CreatePayslip";
 import ViewInsightsPage from "./features/Reports/employeePerformance/components/ViewInsightsPage";
+import Profile from "./pages/Profile/Profile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
           />
           <Route element={<ResetPassword />} path={pathList.resetPassword} />
         </Route>
+        <Route element={<Profile />} path={pathList.profile} />
         <Route path={pathList.projects}>
           <Route
             element={
