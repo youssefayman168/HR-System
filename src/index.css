@@ -127,11 +127,15 @@ input[type="file"] {
 
 
 .Animate {
-  animation: Loading 2s infinite ;
+  animation: Loading 1s infinite linear;
 }
 
 @keyframes Loading {
-  100%{
-    transform:  rotate(360deg) ;
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
