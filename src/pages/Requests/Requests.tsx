@@ -105,8 +105,8 @@ const Requests = () => {
                     </div>
                     <div className='Body w-full h-[calc(100vh-385px)] HideScroll overflow-y-auto '>
                         {
-                            data?.map(({ employee, type, status }: any) => {
-                                const { image, id, name, hiring_date, role } = employee
+                            data?.map(({ employee, type, status, id }: any) => {
+                                const { image, name, hiring_date, role } = employee
                                 return <Elm
                                     key={id}
                                     photo={image}
@@ -115,7 +115,9 @@ const Requests = () => {
                                     id={id}
                                     date={hiring_date}
                                     role={role}
-                                    status={status} />
+                                    status={status}
+                                    src={id}
+                                />
                             })
                         }
                     </div>

@@ -1,4 +1,3 @@
-import { pathList } from "@/routes/routesPaths"
 import { Link } from "react-router-dom"
 
 type Iprops = {
@@ -9,9 +8,10 @@ type Iprops = {
     date: string,
     role: string,
     status: string,
-    onClick?: any
+    onClick?: any,
+    src: any
 }
-const Elm = ({ photo, name, reqType, id, date, role, status, onClick }: Iprops) => {
+const Elm = ({ photo, name, reqType, id, date, role, status, onClick, src }: Iprops) => {
     return (
         <div className='Element border-b-[1px] border-[#D9D9DB] flex items-center py-[31px] px-6 gap-6 font-[500] w-full'>
             <div className='w-[18%] flex items-center gap-2 mx-auto'>
@@ -28,7 +28,7 @@ const Elm = ({ photo, name, reqType, id, date, role, status, onClick }: Iprops) 
                 </p>
             </div>
             <div className='w-[15%]'>
-                <Link onClick={onClick} to={pathList.viewRequests} className='text-[#063C84] bg-[#CCE2FF] py-[9px] px-[27px] rounded-[6px]'>
+                <Link onClick={onClick} to={`/requests/viewRequests/${src}`} className='text-[#063C84] bg-[#CCE2FF] py-[9px] px-[27px] rounded-[6px]'>
                     View
                 </Link>
             </div>
