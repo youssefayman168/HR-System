@@ -10,8 +10,18 @@ import getRequestDetails from '@/features/requests/details/services/getRequestDe
 import Loading from '@/components/Loading/Loading';
 import acceptRequest from '@/features/requests/details/services/acceptRequest';
 import rejectRequest from '@/features/requests/details/services/rejectRequest';
+import { useState } from 'react';
+import BaseBtn from '@/components/Buttons/BaseBtn';
+import SecondaryBorderBtn from '@/components/Buttons/SecondaryBorderBtn';
+import getAllHR from '@/features/requests/details/services/getAllHr';
+import referHR from '@/features/requests/details/services/referHR';
+import ArrowBottom from '@/assets/CreateProjects/ArrowBottom.svg'
 
 const ViewReq = () => {
+
+  const [showPopup, setShowPopup] = useState<boolean>(false)
+
+  const closePopup = () => setShowPopup(false)
 
   const navigate = useNavigate()
 
@@ -23,7 +33,14 @@ const ViewReq = () => {
     queryFn: () => getRequestDetails(id)
   })
 
-  console.log(data)
+  const [hrValue, setHrValue] = useState('')
+
+  const  HR  = useQuery({
+      queryKey: ['getAllHR'],
+      queryFn: getAllHR
+  })
+
+  const filteredHR = HR?.data?.data?.filter(({ role }: any) => role === 'HR').map(({ name, id }: any) => ({ name, id }));
 
   return (
     <BaseLayout>
@@ -109,7 +126,7 @@ const ViewReq = () => {
                             </button>
                             <button
                               className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px]'
-                              onClick={() => ''}>
+                              onClick={() => setShowPopup(true)}>
                               Refer
                             </button>
                           </div>
@@ -134,6 +151,34 @@ const ViewReq = () => {
               </div>
             </div>
           </div>
+
+          <div className={`top-0 left-0 right-0 bottom-0 bg-[#000000CC] ${showPopup ? 'absolute' : 'hidden'}`}>
+            <div className='w-[600px] h-[400px] absolute top-[28.5%] left-[33%] rounded-[6px] bg-white flex flex-col justify-center items-center'>
+                <div className='flex items-between justify-between h-full flex-col p-10'>
+                    <h4 className='font-medium text-[#000] text-[24px] text-center'>Please Choose the HR that you want to refer about this request </h4>
+                    <div className="Select-Container relative w-full">
+                        <select
+                            id="mySelect"
+                            className="custom-select p-5 border-[1px] border-[#ccc] w-[100%] appearance-none outline-none h-[60px] rounded-[10px] "
+                            onChange={(e) => setHrValue(e.target.value)}
+                            required
+                        >
+                            {filteredHR?.map(({ id, name }: any) => {
+                                return <option selected value={id} key={id}>{name}</option>
+                            })}
+                        </select>
+                        <img className="absolute top-[50%] translate-y-[-50%] right-8 " src={ArrowBottom} alt="ArrowBottom" />
+                    </div>
+                    <div className="flex gap-8 items-center justify-center">
+                        <BaseBtn
+                        name="Send" 
+                        styles={{ fontSize: 16, fontWeight: 500, width: 100, textAlign: 'center' }} 
+                        onClick={()=> referHR(id, hrValue, navigate(pathList.requests))} />
+                        <SecondaryBorderBtn text="Cancel" style={{ width: 100, justifyContent: 'center' }} onClick={closePopup} />
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
       }
     </BaseLayout>
