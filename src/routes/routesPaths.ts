@@ -9,12 +9,12 @@ export const pathList = {
 
   // Task URLs
   tasks: "/tasks",
-  architecturalDrawing: "/tasks/architecturalDrawing",
+  taskDetails: "/tasks/details/:taskID",
   addSubTasks: "/tasks/architecturalDrawing/addSubTasks",
-  editTasks: "/tasks/editTasks",
-  viewTask: "/tasks/architecturalDrawing/viewTask",
+  editTasks: "/tasks/editTasks/:taskID",
+  viewTask: "/tasks/view-task/:taskID",
   viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
-  
+
   // Payslips URLs
   payslips: "/payslips",
   create_payslip: "/payslips/create_payslip",
@@ -43,6 +43,5 @@ export const pathList = {
   projects: "/projects",
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
-  projectDetailsAddTask: "/projects/:id/addTask",
-
+  projectDetailsAddTask: "/projects/addTask",
 };

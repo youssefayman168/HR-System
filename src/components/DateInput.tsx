@@ -9,6 +9,7 @@ type IProps = {
   labelStyles?: CSSProperties;
   className?: string;
   containerClassName?: string;
+  onDate?: (date: any) => any;
 };
 
 const DateInput = ({
@@ -19,6 +20,7 @@ const DateInput = ({
   labelStyles,
   className,
   containerClassName,
+  onDate,
 }: IProps) => {
   return (
     <main
@@ -38,6 +40,7 @@ const DateInput = ({
           //   onChange={dataInputFromOnChange}
           className='border-2 px-[17.6px] rounded-[10px] absolute inset-0 z-[99] opacity-1 '
           type='date'
+          onChange={(e) => onDate?.(e.target.value)}
         />
         <p>{placeholder}</p>
         <div className='right-[15px] absolute'>

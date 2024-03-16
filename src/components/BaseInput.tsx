@@ -14,6 +14,7 @@ type IProps = {
   req?: boolean;
   className?: string;
   containerClassName?: string;
+  defaultValue?: any;
 };
 
 const BaseInput = ({
@@ -30,6 +31,7 @@ const BaseInput = ({
   req,
   className,
   containerClassName,
+  defaultValue,
 }: IProps) => {
   return (
     <main
@@ -52,6 +54,7 @@ const BaseInput = ({
         disabled={disabled}
         onChange={(e) => onChange?.(e.target.value)}
         style={styles}
+        defaultValue={defaultValue}
         className={`border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] ${className}`}
       />
     </main>

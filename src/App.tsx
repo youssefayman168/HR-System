@@ -20,7 +20,7 @@ import Requests from "@/pages/Requests/Requests";
 import Reports from "@/pages/Reports/Reports";
 import ProtectedRoute from "./Security/ProtectedRoute";
 import { toast, ToastContainer } from "react-toastify";
-import ArchitecturalDrawing from "./pages/Tasks/ArchitecturalDrawing";
+import TaskDetails from "./pages/Tasks/TaskDetails";
 import Tasks from "./pages/Tasks/Tasks";
 import AddSubTasks from "./pages/Tasks/AddSubTasks";
 import AddTaskProjectDetails from "./pages/projects/AddTaskProjectDetails";
@@ -104,10 +104,10 @@ const router = createBrowserRouter(
           <Route
             element={
               <ProtectedRoute>
-                <ArchitecturalDrawing />
+                <TaskDetails />
               </ProtectedRoute>
             }
-            path={pathList.architecturalDrawing}
+            path={pathList.taskDetails}
           />
           <Route
             element={
@@ -269,13 +269,13 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
       <ToastContainer
         position={toast.POSITION.TOP_RIGHT}
         style={{
           zIndex: 99999,
         }}
       />
+      <RouterProvider router={router} />
     </>
   );
 }

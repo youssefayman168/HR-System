@@ -1,5 +1,6 @@
 import BaseInput from "@/components/BaseInput";
 import Calendar from "@/components/Calendar";
+import DateInput from "@/components/DateInput";
 import ImageUploader from "@/components/ImageUploader";
 import { IEmployeeData } from "@/pages/NewEmployee";
 import React from "react";
@@ -108,17 +109,13 @@ const BasicInfo = ({
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
-        <BaseInput
-          type='text'
-          placeholder='Please Enter Employee Birth Date'
-          label='Date of Birth'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
+        <DateInput
+          label='Birth Date'
+          onDate={(date) =>
             setData((prev) => {
               return {
                 ...prev,
-                birth_date: e,
+                birth_date: date,
               };
             })
           }
@@ -139,14 +136,17 @@ const BasicInfo = ({
           }
         />
       </div>
-      <ImageUploader label='Employee’s Profile Photo' onSelect={(file) => {
-        setData((prev) => {
-          return {
-            ...prev,
-            image: file!,
-          };
-        });
-      }}/>
+      <ImageUploader
+        label='Employee’s Profile Photo'
+        onSelect={(file) => {
+          setData((prev) => {
+            return {
+              ...prev,
+              image: file!,
+            };
+          });
+        }}
+      />
     </>
   );
 };

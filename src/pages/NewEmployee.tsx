@@ -72,8 +72,8 @@ const NewEmployee = () => {
   });
   const { currentStep, step, goNext } = useMultiStepForm([
     <BasicInfo setData={setData} />,
-    <SetPermissions />,
-    <Attachment />,
+    <SetPermissions setData={setData} />,
+    <Attachment setData={setData} />,
   ]);
   const addEmployee = useMutation<any, any, any>({
     mutationFn: (data) => {
@@ -86,9 +86,8 @@ const NewEmployee = () => {
 
   const onSubmit = async () => {
     try {
-      const formData = new FormData();
       // TODO: There was a conflict in the data gathering, so I'm going to re gather it again
-      await addEmployee.mutateAsync(formData);
+      await addEmployee.mutateAsync(data);
     } catch (e) {
       console.log(e);
     }
