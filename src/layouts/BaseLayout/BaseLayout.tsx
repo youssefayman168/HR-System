@@ -33,7 +33,6 @@ const BaseLayout = ({ children }: any) => {
   });
   return (
     <main>
-      <div onClick={() => {setUserProfile(!userProfile)}} className={`${userProfile ? 'block' : 'hidden' } z-50 w-full h-[100vh] absolute`} ></div>
       <div className='flex'>
         <aside className='w-[290px] bg-white h-[100vh]'>
           <img src={companyLogo} alt='SEC Logo' className='mt-8 ml-7' />
@@ -67,12 +66,12 @@ const BaseLayout = ({ children }: any) => {
           <nav className='bg-white h-[75px] w-[calc(100vw-290px)] flex items-center justify-end pr-6'>
             
             <div className="relative">
-              <button onClick={() => { setUserProfile(!userProfile)  }} className={`flex items-center gap-2 font-bold text-lg  ${userProfile ? 'opacity-0' : 'opacity-1' } `} >
+              <button onClick={() => {setUserProfile(!userProfile)}} className={`flex items-center gap-2 font-bold text-lg  `} >
                 <img src={testImg} alt='UserImg' className='rounded-full object-cover w-[30px] h-[30px]' />
                 Hi SEC, Welcome <IoIosArrowDown />
               </button>
 
-              <div className={`dd bg-white ${userProfile ? 'opacity-1 visible' : 'opacity-0 invisible' } duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-0 shadow-lg left-[-23px] w-[220px] text-start`} >
+              <div className={`${userProfile ? 'h-[178px]' : 'h-0' } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`} >
                 <div className="Inf flex mt-3 items-center gap-3 ps-5 border-b-[1px] border-b-[#E5E5EF] pb-3">
                   <img src={testImg} className="rounded-full object-cover w-[35px] h-[35px]" alt="UserImg" />
                   <div>
@@ -82,9 +81,7 @@ const BaseLayout = ({ children }: any) => {
                 </div>
                 <ul className="ps-5">
                   <li><Link className="py-[7px] block" to={pathList.profile} >Profile</Link></li>
-                  <li><Link className="py-[7px] block" to='' >Messages</Link></li>
                   <li><Link className="py-[7px] block" to='' >Add account</Link></li>
-                  <li><Link className="py-[7px] block" to='' >Settings</Link></li>
                   <li><Link className="py-[7px] block text-[#FF5151]" to='' >Sign out</Link></li>
                 </ul>
               </div>
