@@ -64,6 +64,10 @@ const ProjectDetails = () => {
             <NameProjects Name="Starting Date" Value={projectDetailsData?.start_date} />
             <NameProjects Name="Project Hours" Value={`${projectDetailsData?.worked_hours}h`} />
             <NameProjects Name="Work Hours" Value={`${projectDetailsData?.work_hours}h`} />
+            <NameProjects Name="Budget" Value={projectDetailsData?.budget} />
+            <NameProjects Name="Location" Value={projectDetailsData?.location} />
+            <NameProjects Name="Scope" Value={projectDetailsData?.scope} />
+            <NameProjects Name="Plan" Value={projectDetailsData?.plan} />
           </div>
           <div className="CreatePhases flex items-center justify-between mt-4  ">
             <p className="text-[#101828] font-[700] text-[20px] ">Project Phases</p>

@@ -8,7 +8,7 @@ type IProps = {
     statMessage?: string,
     status?: string,
     unit?: string
-    link: string
+    link?: string
 }
 const ViewInsightStatsBox = ({ title, value, statMessage, status, unit, link }: IProps) => {
 

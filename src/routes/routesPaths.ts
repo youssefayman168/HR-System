@@ -7,6 +7,9 @@ export const pathList = {
 
   home: "/home",
 
+  // Profile URLs
+  profile: "/profile",
+
   // Task URLs
   tasks: "/tasks",
   taskDetails: "/tasks/details/:taskID",
@@ -37,11 +40,12 @@ export const pathList = {
 
   // Requests URLs
   requests: "/requests",
-  viewRequests: "/requests/viewRequests",
+  viewRequests: "/requests/viewRequests/:id",
 
   // Projects URLs
   projects: "/projects",
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
-  projectDetailsAddTask: "/projects/addTask",
+  editProject: "/projects/editProject/:id",
+  projectDetailsAddTask: "/projects/:id/addTask",
 };
