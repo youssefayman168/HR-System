@@ -3,20 +3,22 @@ import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import { pathList } from "@/routes/routesPaths";
 import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
 import ArrowBottom from '../../assets/CreateProjects/ArrowBottom.svg'
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DateInpCreate from "@/components/DateInput/DateInpCreate";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import getSelectedCompanies from "@/features/Projects/create-projets/services/getSelectedCompanies";
-import { useState } from "react";
+import React, { useState } from "react";
 import getEditProjectData from "@/features/Projects/editProject/getEditProjectData";
-import postCreateProjects from "@/features/Projects/editProject/updateSingleProject";
+import updateProjects from "@/features/Projects/editProject/updateSingleProject";
 
 const EditProject = () => {
+  const navigate = useNavigate()
+
   const { id } = useParams()
 
   // Get Selected Companies
   const companies = useQuery({
-    queryKey: ['getSelectedCompanies'],
+    queryKey: ['getSelectedCompanies', id],
     queryFn: getSelectedCompanies
   })
 
@@ -27,6 +29,8 @@ const EditProject = () => {
     queryKey: ['getUpdateProjectData', id],
     queryFn: () => getEditProjectData(id)
   })
+
+  console.log(data)
 
   const [dataKeys, setDataKeys] = useState({
     project_name: '',
@@ -40,7 +44,39 @@ const EditProject = () => {
     work_hours: ''
   })
 
-  console.log(dataKeys.work_hours)
+  const queryClient = useQueryClient()
+  const editProject = useMutation({
+    mutationFn: () => {
+      return updateProjects(
+        id,
+        {
+          project_name: dataKeys.project_name ? dataKeys.project_name : data?.project_name,
+          start_date: dataKeys.start_date ? dataKeys.start_date : data?.start_date,
+          scope: dataKeys.scope ? dataKeys.scope : data?.scope,
+          location: dataKeys.location ? dataKeys.location : data?.location,
+          company: dataKeys.company ? dataKeys.company : data?.company?.id,
+          plan: dataKeys.plan ? dataKeys.plan : data?.plan,
+          budget: dataKeys.budget ? dataKeys.budget : data?.budget,
+          status: dataKeys.status ? dataKeys.status : data?.status,
+          work_hours: dataKeys.work_hours ? dataKeys.work_hours : data?.work_hours
+        }
+      )
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['editProject']
+      }).then(() => navigate(pathList.projects))
+    }
+  })
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    try {
+      await editProject.mutateAsync()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <BaseLayout>
@@ -52,16 +88,12 @@ const EditProject = () => {
           Edit Project
         </Link>
         <div className="CreatProject HideScroll bg-white mt-6 rounded-[20px] px-[80px] py-[50px] h-[calc(100vh-176px)] overflow-y-auto ">
-          <form className=" w-[100%] " onSubmit={(e) => {
-            e.preventDefault()
-            postCreateProjects(id, dataKeys)
-          }}>
+          <form className=" w-[100%] " onSubmit={onSubmit}>
             <p className="font-bold text-[25px] ">Edit Project</p>
             <div className="mb-5 mt-7 flex items-center gap-8">
               <div className="w-full">
                 <label className='mb-2 block text-lg font-medium' htmlFor="Task">Project Name</label>
                 <input
-                  required
                   id="Task"
                   defaultValue={data?.project_name}
                   className="w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] "
@@ -92,15 +124,6 @@ const EditProject = () => {
             </div>
             <div className="mb-5 mt-7 flex items-center gap-8">
               <div className="w-full">
-                <label className='mb-2 block text-lg font-medium' htmlFor="Task">Current Company</label>
-                <input
-                  disabled
-                  id="Task"
-                  defaultValue={data?.company?.name}
-                  className="w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] cursor-not-allowed"
-                  type="text" />
-              </div>
-              <div className="w-full">
                 <label className='mb-2 block text-lg font-medium' htmlFor="Comp">Company</label>
                 <div className="Select-Container relative w-full">
                   <select
@@ -119,18 +142,6 @@ const EditProject = () => {
                   </select>
                   <img className="absolute top-[50%] translate-y-[-50%] right-8 " src={ArrowBottom} alt="ArrowBottom" />
                 </div>
-              </div>
-            </div>
-            <div className="mb-5 mt-7 flex items-center gap-8">
-              <div className="w-full">
-                <label className='mb-2 block text-lg font-medium' htmlFor="Project">Current Status</label>
-                <input
-                  disabled
-                  id="Project"
-                  defaultValue={data?.status}
-                  placeholder="Please Enter Department Name"
-                  className="w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] cursor-not-allowed"
-                  type="text" />
               </div>
 
               <div className="w-full ">
@@ -160,13 +171,12 @@ const EditProject = () => {
                 </div>
               </div>
             </div>
-
             <div className="mb-5 mt-7 flex items-center gap-8">
               <div className=" w-full">
                 <p className="mb-2 mt-3 text-lg font-medium">Start Date</p>
                 <div className="flex items-center gap-4 w-full">
                   <DateInpCreate
-                    when="Start Date"
+                    when="Update Date"
                     onChange={(e: any) => setDataKeys((prev: any) => {
                       return {
                         ...prev,
