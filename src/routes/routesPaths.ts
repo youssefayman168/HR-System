@@ -26,8 +26,8 @@ export const pathList = {
 
   // All Employees
   all_employees: "/all_employees",
-  view_employee: "/all_employees/view_employee",
-  edit_employee: "/all_employees/edit_employee",
+  view_employee: "/all_employees/view_employee/:id",
+  edit_employee: "/all_employees/edit_employee/:id",
   add_department: "/all_employees/add_department",
   add_position: "/all_employees/add_position",
 

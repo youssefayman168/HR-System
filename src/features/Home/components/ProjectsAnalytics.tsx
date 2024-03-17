@@ -46,9 +46,12 @@ const ProjectsAnalytics = () => {
                 : (project.worked_hours / project.work_hours) * 100
             }
             value={
-              project.worked_hours == 0
+              project.worked_hours <= 0
                 ? "0%"
-                : String(
+                :
+                project.worked_hours >= 100 ?
+                  '100%' :
+                  String(
                     ((project.worked_hours / project.work_hours) * 100).toFixed(
                       0
                     )
