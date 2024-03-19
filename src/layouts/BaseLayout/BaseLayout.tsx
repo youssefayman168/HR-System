@@ -71,16 +71,9 @@ const BaseLayout = ({ children }: any) => {
                 Hi SEC, Welcome <IoIosArrowDown />
               </button>
 
-              <div className={`${userProfile ? 'h-[178px]' : 'h-0' } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`} >
-                <div className="Inf flex mt-3 items-center gap-3 ps-5 border-b-[1px] border-b-[#E5E5EF] pb-3">
-                  <img src={testImg} className="rounded-full object-cover w-[35px] h-[35px]" alt="UserImg" />
-                  <div>
-                    <p className="leading-[15px]">Steven Sary</p>
-                    <p className="text-[12px] text-[#525961]">@stevensary.gmail.com</p>
-                  </div>
-                </div>
+              <div className={`${userProfile ? 'h-[120px]' : 'h-0' } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`} >
                 <ul className="ps-5">
-                  <li><Link className="py-[7px] block" to={pathList.profile} >Profile</Link></li>
+                  <li><Link className="py-[7px] pt-3 block" to={pathList.profile} >Profile</Link></li>
                   <li><Link className="py-[7px] block" to='' >Add account</Link></li>
                   <li><Link className="py-[7px] block text-[#FF5151]" to='' >Sign out</Link></li>
                 </ul>
