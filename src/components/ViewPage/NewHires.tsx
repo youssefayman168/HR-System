@@ -6,9 +6,10 @@ type Iprops = {
   title: string;
   desc: string;
   btn: string;
+  subtaskID: number;
 };
 
-const NewHires = ({ title, desc, btn }: Iprops) => {
+const NewHires = ({ title, desc, btn, subtaskID }: Iprops) => {
   return (
     <div className='flex items-center max-xxl:gap-4 gap-10 mb-6 w-fit mr-[82px]'>
       <div className='w-[400px] max-xxl:w-[360px] '>
@@ -17,7 +18,7 @@ const NewHires = ({ title, desc, btn }: Iprops) => {
       </div>
       <div className='Btn'>
         <Link
-          to={pathList.viewSubTask}
+          to={`/tasks/viewSubTask/${subtaskID}`}
           className='border-[1px] font-[500] border-[#224886] py-[7px] px-8 text-[#224886] rounded-[6px] '
         >
           {btn}

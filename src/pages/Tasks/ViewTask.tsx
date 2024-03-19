@@ -51,7 +51,7 @@ const ViewTask = () => {
               <BtnCreate
                 text='Create Sub Task'
                 icon={plus}
-                path={pathList.addSubTasks}
+                path={`/tasks/${taskID}/addSubTasks`}
               />
             </div>
           </div>
@@ -113,6 +113,7 @@ const ViewTask = () => {
                     title={subtask.name}
                     desc={subtask.description}
                     btn='View'
+                    subtaskID={subtask.id}
                   />
                 ))}
               </div>

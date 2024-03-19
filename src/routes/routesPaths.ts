@@ -13,10 +13,10 @@ export const pathList = {
   // Task URLs
   tasks: "/tasks",
   taskDetails: "/tasks/details/:taskID",
-  addSubTasks: "/tasks/architecturalDrawing/addSubTasks",
+  addSubTasks: "/tasks/:taskID/addSubTasks",
   editTasks: "/tasks/editTasks/:taskID",
   viewTask: "/tasks/view-task/:taskID",
-  viewSubTask: "/tasks/architecturalDrawing/viewSubTask",
+  viewSubTask: "/tasks/viewSubTask/:subTaskID",
 
   // Payslips URLs
   payslips: "/payslips",
