@@ -29,8 +29,10 @@ const BaseAnalytics = () => {
     queryFn: getProjectBudgets,
   });
 
-  const formattedMoney = formatMoney(projectsBudgets?.data?.data?.total_budget_today)
-  console.log(formatTime(workingHrs.data?.data.total_wh_today))
+  const formattedMoney = formatMoney(
+    projectsBudgets?.data?.data?.total_budget_today
+  );
+  console.log(formatTime(workingHrs.data?.data.total_wh_today));
   return (
     <div className='flex items-stretch justify-between gap-6'>
       {!employees.isPending && (
@@ -68,7 +70,7 @@ const BaseAnalytics = () => {
       {!projectsBudgets.isPending && (
         <BoxStats
           titleName='Budget Projects'
-          employeesNumber={`${projectsBudgets.data.data.increase_rate}% higher than yesterday`}
+          employeesNumber={`${projectsBudgets.data?.data.increase_rate}% higher than yesterday`}
           mainNumber={formattedMoney}
           mainIcon={<img src={dollarIcon} />}
           messageIcon={
