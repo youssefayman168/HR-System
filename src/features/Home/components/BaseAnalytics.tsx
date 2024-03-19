@@ -30,7 +30,7 @@ const BaseAnalytics = () => {
   });
 
   const formattedMoney = formatMoney(projectsBudgets?.data?.data?.total_budget_today)
-  console.log(formatTime(workingHrs.data?.data.total_wh_today))
+
   return (
     <div className='flex items-stretch justify-between gap-6'>
       {!employees.isPending && (
@@ -57,7 +57,7 @@ const BaseAnalytics = () => {
         <BoxStats
           titleName='Working Hours'
           employeesNumber={`${workingHrs.data?.data.increase_rate}% less than yesterday`}
-          mainNumber={formatTime(workingHrs.data?.data.total_wh_today)}
+          mainNumber={formatTime(workingHrs.data?.data.total_wh_today) === '' ? 0 : formatTime(workingHrs.data?.data.total_wh_today)}
           mainIcon={<img src={timeIcon} />}
           messageIcon={
             workingHrs.data?.data.increase_rate > 0 ? "increase" : "decrease"

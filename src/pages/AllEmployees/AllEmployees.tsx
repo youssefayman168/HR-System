@@ -4,189 +4,141 @@ import outlinePlus from "@/assets/outlinePlus.svg";
 import DownloadIcon from "@/assets/Projects/Download.svg";
 import BlueTableHeader from "@/components/Table/BlueTableHeader";
 import AllEmployeesComponents from "@/features/AllEmployees/components/AllEmployeesComponents";
-import ReactPaginate from "react-paginate";
-import { useEffect, useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { employeesData } from ".";
+import { useRef, useState } from "react";
 import BtnCreate from "@/components/Buttons/BtnCreate";
 import { useNavigate } from "react-router-dom";
 import { pathList } from "@/routes/routesPaths";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import getAllEmployees from "@/features/AllEmployees/services/getAllEmployees";
+import { useReactToPrint } from "react-to-print";
+import deleteEmployee from "@/features/AllEmployees/ViewEmployees/services/deleteEmployee";
+import deleteIcon from '@/assets/deletionPopup.svg'
+import BaseBtn from "@/components/Buttons/BaseBtn";
+import Loading from "@/components/Loading/Loading";
 
 const AllEmployees = () => {
-  //  DropDown State
-  const [departmentState, setDepartmentState] = useState<boolean>(false);
-  const [positionState, setPositionState] = useState<boolean>(false);
-  const [allEmployeesState, setAllEmployeesState] = useState<boolean>(false);
-
-  const openDepartment = () => {
-    setDepartmentState(!departmentState);
-    setPositionState(false);
-    setAllEmployeesState(false);
-  };
-
-  const openPosition = () => {
-    setPositionState(!positionState);
-    setDepartmentState(false);
-    setAllEmployeesState(false);
-  };
-  const openAllEmployeesState = () => {
-    setAllEmployeesState(!allEmployeesState);
-    setPositionState(false);
-    setDepartmentState(false);
-  };
-
-  // Pagination
-  const [page, setPage] = useState(0);
-  const [filterData, setFilterData] = useState<any>();
-  const n = 5;
-  useEffect(() => {
-    setFilterData(
-      employeesData.filter((_, index: number) => {
-        return index >= page * n && index < (page + 1) * n;
-      })
-    );
-  }, [page]);
+  // To print the table in PDF
+  const componentRef = useRef<any>();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'All Employees Overview',
+  });
 
   // View employee functionality
   const navigation = useNavigate();
 
-  const viewEmployee = () => navigation(pathList.view_employee);
+  const viewEmployee = (id: any) => navigation(`/all_employees/view_employee/${id}`);
   const editEmployee = () => navigation(pathList.edit_employee);
   const addDepartment = () => navigation(pathList.add_department);
   const addPosition = () => navigation(pathList.add_position);
 
-  const employees = useQuery({
+  // Get All Employees Data
+  const { data, isLoading } = useQuery({
     queryKey: ["employees"],
     queryFn: getAllEmployees,
   });
-  console.log(employees.data);
+
+  // Delete Single Project
+  const client = useQueryClient()
+
+  const deleteEmployeeMutation = useMutation({
+    mutationFn: (variables) => {
+      return deleteEmployee(variables)
+    },
+    onSuccess: () => {
+      return client.invalidateQueries({
+        queryKey: ['singleEmployee']
+      })
+    }
+  })
+
+  // Popup Functionality
+
+  const [showPopup, setShowPopup] = useState<boolean>(false)
+
+  const closePopup = () => setShowPopup(false)
+
+  const [globalId, setGlobalId] = useState<any>()
+
   return (
     <BaseLayout>
-      <div className='p-6 pb-2'>
-        <div className='flex items-center justify-between gap-[15px]'>
-          <h1 className='text-primary font-bold text-2xl'>All Employees</h1>
-          <div className='flex items-center gap-[15px]'>
-            <SecondaryBorderBtn
-              text='Add Department'
-              icon={outlinePlus}
-              onClick={() => addDepartment()}
-            />
-            <SecondaryBorderBtn
-              text='Add Position'
-              icon={outlinePlus}
-              onClick={() => addPosition()}
-            />
-          </div>
-        </div>
-        <div className='bg-white rounded-[15px]'>
-          <BlueTableHeader
-            departmentDropDown={
-              <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${departmentState ? "ulFilter act" : "h-0"
-                  }`}
-                style={{ opacity: departmentState ? 1 : 0 }}
-              >
-                <li className='py-[10px] border-b cursor-pointer'>All</li>
-                <li className='py-[10px] border-b cursor-pointer'>HR</li>
-                <li className='py-[10px] border-b cursor-pointer'>Designing</li>
-                <li className='py-[10px] border-b cursor-pointer'>
-                  Accountant
-                </li>
-                <li className='py-[10px] border-b cursor-pointer'>Manager</li>
-              </ul>
-            }
-            positionDropDown={
-              <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${positionState ? "ulFilter act" : "h-0"
-                  }`}
-                style={{ opacity: positionState ? 1 : 0 }}
-              >
-                <li className='py-[10px] border-b cursor-pointer'>All</li>
-                <li className='py-[10px] border-b cursor-pointer'>HR</li>
-                <li className='py-[10px] border-b cursor-pointer'>Designing</li>
-                <li className='py-[10px] border-b cursor-pointer'>
-                  Accountant
-                </li>
-                <li className='py-[10px] border-b cursor-pointer'>Manager</li>
-              </ul>
-            }
-            allEmployeesDropDown={
-              <ul
-                className={`bg-white duration-300 text-center absolute overflow-hidden w-[250px] text-black rounded-lg shadow-lg z-[2222] ${allEmployeesState ? "ulFilter act" : "h-0"
-                  }`}
-                style={{ opacity: allEmployeesState ? 1 : 0 }}
-              >
-                <li className='py-[10px] border-b cursor-pointer'>All</li>
-                <li className='py-[10px] border-b cursor-pointer'>HR</li>
-                <li className='py-[10px] border-b cursor-pointer'>Designing</li>
-                <li className='py-[10px] border-b cursor-pointer'>
-                  Accountant
-                </li>
-                <li className='py-[10px] border-b cursor-pointer'>Manager</li>
-              </ul>
-            }
-            departmentClick={openDepartment}
-            positionClick={openPosition}
-            allEmployeesClick={openAllEmployeesState}
-          >
-            <div className='h-[calc(100vh-395px)] overflow-y-auto HideScroll'>
-              {filterData &&
-                filterData.map(
-                  (
-                    {
-                      picture,
-                      employeeName,
-                      companyName,
-                      departmentName,
-                      positionName,
-                    }: any,
-                    index: number
-                  ) => {
-                    return (
-                      <AllEmployeesComponents
-                        key={index}
-                        employeeImg={picture}
-                        employeeName={employeeName}
-                        companyName={companyName}
-                        departmentName={departmentName}
-                        positionName={positionName}
-                        onViewClick={() => viewEmployee()}
-                        onEditClick={() => editEmployee()}
-                      />
-                    );
-                  }
-                )}
-            </div>
-            <div className='w-full py-3'>
-              <ReactPaginate
-                containerClassName={
-                  "pagination flex items-center gap-[8px] ml-6"
-                }
-                pageClassName={
-                  "size-[40px] rounded-lg flex items-center justify-center border border-[#D9D9DB]"
-                }
-                activeClassName={"active border-primary"}
-                onPageChange={(event) => setPage(event.selected)}
-                pageCount={Math.ceil(employeesData.length / n)}
-                breakLabel='...'
-                previousLabel={
-                  <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
-                    <IoIosArrowBack />
-                  </div>
-                }
-                nextLabel={
-                  <div className='border border-[#D9D9DB] size-[40px] flex items-center justify-center rounded-lg'>
-                    <IoIosArrowForward />
-                  </div>
-                }
+      {isLoading ?
+        <Loading />
+        :
+        <div className='p-6 pb-2'>
+          <div className='flex items-center justify-between gap-[15px]'>
+            <h1 className='text-primary font-bold text-2xl'>All Employees</h1>
+            <div className='flex items-center gap-[15px]'>
+              <SecondaryBorderBtn
+                text='Add Department'
+                icon={outlinePlus}
+                onClick={() => addDepartment()}
+              />
+              <SecondaryBorderBtn
+                text='Add Position'
+                icon={outlinePlus}
+                onClick={() => addPosition()}
               />
             </div>
-          </BlueTableHeader>
+          </div>
+          <div className='bg-white rounded-[15px]' ref={componentRef}>
+            <BlueTableHeader>
+              <div className='h-[calc(100vh-395px)] overflow-y-auto HideScroll'>
+                {
+                  data?.data?.map(
+                    (
+                      { id,
+                        name,
+                        image,
+                        company,
+                        department,
+                        position
+                      }: any,
+                    ) => {
+                      return (
+                        <>
+                          <AllEmployeesComponents
+                            key={id}
+                            employeeImg={`https://sec-system-apis.up.railway.app${image}`}
+                            employeeName={name}
+                            companyName={company}
+                            departmentName={department}
+                            positionName={position}
+                            onViewClick={() => viewEmployee(id)}
+                            onEditClick={() => editEmployee()}
+                            onDeleteClick={() => {
+                              setGlobalId(id)
+                              setShowPopup(true)
+                            }}
+                          />
+                        </>
+                      );
+                    }
+                  )}
+              </div>
+              <div className='w-full py-3'>
+              </div>
+            </BlueTableHeader>
+          </div>
+          <div className='w-fit mt-6 ms-auto'>
+            <BtnCreate icon={DownloadIcon} text='Export As PDF' path='' onClick={handlePrint} />
+          </div>
         </div>
-        <div className='w-fit mt-6 ms-auto'>
-          <BtnCreate icon={DownloadIcon} text='Export As PDF' path='' />
+      }
+      {/* Delete Modal */}
+      <div className={`top-0 left-0 right-0 bottom-0 bg-[#000000CC] ${showPopup ? 'absolute' : 'hidden'}`}>
+        <div className='w-[600px] h-[400px] absolute top-[28.5%] left-[33%] rounded-[6px] bg-white flex flex-col justify-center items-center'>
+          <div className='flex items-between justify-between h-full flex-col p-10'>
+            <img src={deleteIcon} alt="deletion" className="w-[100px] h-[100px] mx-auto" />
+            <h4 className='font-medium text-[#000] text-[24px] text-center'>Do you want to confirm deleting this employee ?</h4>
+            <div className="flex gap-8 items-center justify-center">
+              <BaseBtn
+                name="Delete"
+                styles={{ fontSize: 16, fontWeight: 500, width: 100, textAlign: 'center' }}
+                onClick={() => deleteEmployeeMutation.mutate(globalId)} />
+              <SecondaryBorderBtn text="Cancel" style={{ width: 100, justifyContent: 'center' }} onClick={closePopup} />
+            </div>
+          </div>
         </div>
       </div>
     </BaseLayout>
