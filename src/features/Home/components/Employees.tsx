@@ -17,7 +17,7 @@ const Employees = () => {
         {!employees.isPending &&
           employees.data?.data.map((employee: any) => (
             <EmployeeInfo
-              image={testImage}
+              image={`https://sec-system-apis.up.railway.app${employee?.image}`}
               employeeName={employee.name}
               profession={employee.position}
               projects={employee.total_projects_worked_on}

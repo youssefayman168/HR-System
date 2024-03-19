@@ -1,10 +1,8 @@
 import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import searchIcon from '../../assets/Projects/search.svg'
-import DateIcon from '../../assets/Projects/Date.svg'
 import DownloadIcon from '../../assets/Projects/Download.svg'
 import plus from '../../assets/plus.svg'
 import { pathList } from "@/routes/routesPaths";
-import DateInp from "@/components/DateInput/Date";
 import ProjectsTable from "@/components/Table/ProjectsTable/ProjectsTable";
 import BtnCreate from "@/components/Buttons/BtnCreate";
 import { useRef } from "react";
@@ -33,8 +31,6 @@ const Projects = () => {
             <input className="w-[520px] h-[52px] rounded-lg ps-10 outline-none" type="text" placeholder="Quick Search..." />
           </div>
           <div className="flex items-center gap-4">
-
-            <DateInp icon={DateIcon} />
 
             <BtnCreate text="Create Projects" icon={plus} path={pathList.createProject} />
           </div>

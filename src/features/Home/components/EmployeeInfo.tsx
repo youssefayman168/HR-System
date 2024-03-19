@@ -10,7 +10,7 @@ const EmployeeInfo = ({ image, employeeName, profession, projects, subTask, hour
     return (
         <div className="flex items-center pb-6 border-b border-b-[#EAEFF4] mb-6">
             <div className="w-[30%] flex items-center gap-4">
-                <img src={image} alt="Person Image" className="w-[40px] h-[40px]" />
+                <img src={image} alt="Person Image" className="w-[40px] h-[40px] rounded-full" />
                 <div>
                     <p className="text-primary text-sm font-bold">{employeeName}</p>
                     <p className="text-grayColor text-xs font-semibold mt-1">{profession}</p>
