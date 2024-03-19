@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import { pathList } from "@/routes/routesPaths";
 import ArrowLeft from '../../assets/CreateProjects/ArrowLeft.svg'
 import ArrowBottom from '../../assets/CreateProjects/ArrowBottom.svg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DateInpCreate from "@/components/DateInput/DateInpCreate";
 import DocumentUploader from "@/components/DocumentUploader";
 import postCreateProjects from "@/features/Projects/create-projets/services/postCreateProjects";
@@ -13,6 +13,8 @@ import { useState } from "react";
 
 const CreateProject = () => {
 
+  const navigate = useNavigate()
+
   // Get Selected Companies
   const companies = useQuery({
     queryKey: ['getSelectedCompanies'],
@@ -20,7 +22,6 @@ const CreateProject = () => {
   })
 
   const selectCompany = companies?.data
-
 
   const [data, setData] = useState({
     project_name: '',
@@ -46,7 +47,7 @@ const CreateProject = () => {
         <div className="CreatProject HideScroll bg-white mt-6 rounded-[20px] px-[80px] py-[50px] h-[calc(100vh-176px)] overflow-y-auto ">
           <form className=" w-[100%] " onSubmit={(e) => {
             e.preventDefault()
-            postCreateProjects(e, data)
+            postCreateProjects(navigate(pathList.projects), data)
           }}>
             <p className="font-bold text-[25px] ">Create New Projects</p>
             <div className="mb-5 mt-7 flex items-center gap-8">
@@ -96,7 +97,7 @@ const CreateProject = () => {
                     required
                   >
                     {selectCompany?.map(({ id, name }: any) => {
-                      return <option selected value={id} key={id}>{name}</option>
+                      return <option value={id} key={id}>{name}</option>
                     })}
                   </select>
                   <img className="absolute top-[50%] translate-y-[-50%] right-8 " src={ArrowBottom} alt="ArrowBottom" />
@@ -121,7 +122,7 @@ const CreateProject = () => {
                     defaultValue={'Hold'}
                     required
                   >
-                    <option value="Hold" selected>On Hold</option>
+                    <option value="Hold">On Hold</option>
                     <option value="Completed">Completed</option>
                     <option value="In-Progress">In Progress</option>
                     <option value="Declined">Declined</option>

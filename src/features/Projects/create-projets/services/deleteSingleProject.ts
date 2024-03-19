@@ -1,11 +1,12 @@
-import axiosInstance from "@/lib/axiosInstance"
+import requestHelpers from "@/lib/requestHelpers"
 
 async function handleDeleteProject(id: any) {
-    try {
-        return await axiosInstance.delete(`/project/delete/${id}/`)
-    } catch (err) {
-        return err
-    }
+    return requestHelpers.deleteData(`/project/delete/${id}/`,
+        {
+            showToast: true,
+            success: 'The Project Is Deleted Successfully',
+            error: "The Project Doesn't Deleted"
+        })
 }
 
 export default handleDeleteProject
