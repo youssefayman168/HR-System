@@ -28,7 +28,6 @@ const AllEmployees = () => {
   const navigation = useNavigate();
 
   const viewEmployee = (id: any) => navigation(`/all_employees/view_employee/${id}`);
-  const editEmployee = () => navigation(pathList.edit_employee);
   const addDepartment = () => navigation(pathList.add_department);
   const addPosition = () => navigation(pathList.add_position);
 
@@ -105,7 +104,7 @@ const AllEmployees = () => {
                             departmentName={department}
                             positionName={position}
                             onViewClick={() => viewEmployee(id)}
-                            onEditClick={() => editEmployee()}
+                            onEditClick={() => navigation(`/all_employees/edit_employee/${id}`)}
                             onDeleteClick={() => {
                               setGlobalId(id)
                               setShowPopup(true)

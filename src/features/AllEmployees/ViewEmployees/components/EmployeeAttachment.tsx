@@ -18,19 +18,19 @@ const EmployeeAttachment = ({ document, documentType, onReplaceClick, type, href
                 <div className="flex items-center gap-4">
                     <img src={dropFile} alt="File Drop" className='size-[24px]' />
                     <div className="flex flex-col">
-                        <p className="font-bold  text-ellipsis overflow-hidden text-nowrap w-[220px]">{document}</p>
+                        <p className="font-bold  text-ellipsis overflow-hidden text-nowrap w-[165px]">{document}</p>
                         <p className="text-#B2BBC6]">{documentType}</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-5">
                     {
                         patName === '/all_employees/view_employee' ?
+                            <a href={`https://sec-system-apis.up.railway.app${href}`} download={type} className='p-[10px] rounded-md border border-primary text-primary gap-[10px] h-[32px] flex items-center justify-center w-[80px]'>View</a>
+                            :
                             <div className='flex items-center gap-5'>
                                 <SecondaryBorderBtn onClick={() => onReplaceClick} style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} text='Replace' />
                                 <a href={`https://sec-system-apis.up.railway.app${href}`} download={type} className='p-[10px] rounded-md border border-primary text-primary gap-[10px] h-[32px] flex items-center justify-center w-[80px]'>View</a>
                             </div>
-                            :
-                            <a href={`https://sec-system-apis.up.railway.app${href}`} download={type} className='p-[10px] rounded-md border border-primary text-primary gap-[10px] h-[32px] flex items-center justify-center w-[80px]'>View</a>
                     }
                 </div>
             </div>

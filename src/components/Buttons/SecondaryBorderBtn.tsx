@@ -4,7 +4,8 @@ type IProps = {
     text: string,
     icon?: any,
     onClick?: any,
-    style?: CSSProperties
+    style?: CSSProperties,
+    type?: any
 }
 
 const SecondaryBorderBtn = ({ text, icon, onClick, style }: IProps) => {

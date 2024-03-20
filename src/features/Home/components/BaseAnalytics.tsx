@@ -49,7 +49,7 @@ const BaseAnalytics = () => {
         <BoxStats
           titleName='Total Projects'
           employeesNumber={`${projects.data?.data.increase_rate}% higher than yesterday`}
-          mainNumber={projects.data?.data.total_projects_today}
+          mainNumber={projects.data?.data.total_projects_today === '' ? 0 : projects.data?.data.total_projects_today}
           mainIcon={<img src={projectsIcon} />}
           messageIcon={
             projects.data?.data.increase_rate > 0 ? "increase" : "decrease"
@@ -76,7 +76,7 @@ const BaseAnalytics = () => {
         <BoxStats
           titleName='Budget Projects'
           employeesNumber={`${projectsBudgets.data?.data.increase_rate}% higher than yesterday`}
-          mainNumber={formattedMoney}
+          mainNumber={formattedMoney === '' || NaN ? 0 : formattedMoney}
           mainIcon={<img src={dollarIcon} />}
           messageIcon={
             projectsBudgets.data?.data.increase_rate > 0
