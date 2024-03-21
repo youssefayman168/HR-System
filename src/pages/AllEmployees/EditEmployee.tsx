@@ -8,7 +8,6 @@ import editPen from '@/assets/editPen.svg'
 import EmployeeInfoInput from "@/features/AllEmployees/EditEmployees/components/EmployeeInfoInput"
 import SelectOption from "@/components/SelectOption"
 import BaseBtn from "@/components/Buttons/BaseBtn"
-import SecondaryBorderBtn from "@/components/Buttons/SecondaryBorderBtn"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import getEmployeeDetails from "@/features/AllEmployees/ViewEmployees/services/getEmployeeDetails"
 import Loading from "@/components/Loading/Loading"
@@ -16,7 +15,6 @@ import getSelectedCompanies from "@/features/Projects/create-projets/services/ge
 import getDepartmentList from "@/features/AllEmployees/AddPosition/services/getDepartmentList"
 import updateSingleEmployee from "@/features/AllEmployees/EditEmployees/services/updateSingleEmployee"
 import { useState } from "react"
-import { format } from "date-fns"
 
 const EditEmployee = () => {
   const navigate = useNavigate()
@@ -25,10 +23,8 @@ const EditEmployee = () => {
   // Get Employee Details
   const { data, isLoading } = useQuery({
     queryKey: ['getEmployeeDetails', id],
-    queryFn: getEmployeeDetails
+    queryFn: () => getEmployeeDetails(id)
   })
-
-  // console.log(format(data[0]?.sent_at, 'mm/dd/yyyy'))
 
   // Get Selected Companies
   const companies = useQuery({

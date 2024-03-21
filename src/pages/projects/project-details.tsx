@@ -62,8 +62,8 @@ const ProjectDetails = () => {
               </p>
             </div>
             <NameProjects Name="Starting Date" Value={projectDetailsData?.start_date} />
-            <NameProjects Name="Project Hours" Value={`${projectDetailsData?.worked_hours}h`} />
-            <NameProjects Name="Work Hours" Value={`${projectDetailsData?.work_hours}h`} />
+            <NameProjects Name="Project Hours" Value={`${projectDetailsData?.work_hours}h`} />
+            <NameProjects Name="Work Hours" Value={`${projectDetailsData?.worked_hours}h`} />
             <NameProjects Name="Budget" Value={projectDetailsData?.budget} />
             <NameProjects Name="Location" Value={projectDetailsData?.location} />
             <NameProjects Name="Scope" Value={projectDetailsData?.scope} />
