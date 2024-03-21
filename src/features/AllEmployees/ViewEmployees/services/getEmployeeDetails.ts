@@ -1,6 +1,6 @@
 import requestHelpers from "@/lib/requestHelpers"
 
-const getEmployeeDetails = (id:any)=>{
+const getEmployeeDetails = (id: any) => {
     return requestHelpers.getData(`/user/get/${id}/`)
 }
 

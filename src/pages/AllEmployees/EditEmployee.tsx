@@ -16,6 +16,7 @@ import getSelectedCompanies from "@/features/Projects/create-projets/services/ge
 import getDepartmentList from "@/features/AllEmployees/AddPosition/services/getDepartmentList"
 import updateSingleEmployee from "@/features/AllEmployees/EditEmployees/services/updateSingleEmployee"
 import { useState } from "react"
+import { format } from "date-fns"
 
 const EditEmployee = () => {
   const navigate = useNavigate()
@@ -24,8 +25,10 @@ const EditEmployee = () => {
   // Get Employee Details
   const { data, isLoading } = useQuery({
     queryKey: ['getEmployeeDetails', id],
-    queryFn: () => getEmployeeDetails(id)
+    queryFn: getEmployeeDetails
   })
+
+  // console.log(format(data[0]?.sent_at, 'mm/dd/yyyy'))
 
   // Get Selected Companies
   const companies = useQuery({
