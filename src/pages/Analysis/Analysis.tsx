@@ -99,13 +99,13 @@ const Analysis = () => {
     queryFn: getDepartmentFunds
   })
 
+  console.log(departmentFunds?.data)
+
   // SEC Profits Box
   const secProfits = useQuery({
     queryKey: ['getSECProfits'],
     queryFn: getSECProfits
   })
-
-  console.log(chartData?.data)
 
   // Working Hours Box
   const workingHours = useQuery({

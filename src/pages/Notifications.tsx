@@ -98,7 +98,7 @@ const Notifications = () => {
                 date={format(new Date(sent_at), 'dd/MM/yyyy')}
                 status={`${type} (${action})`}
                 type={action}
-                deleteAction={deleteNotificationMutate.mutate(id)}
+                deleteAction={() => deleteNotificationMutate.mutate(id)}
               />
             })}
 
