@@ -16,7 +16,7 @@ const Notifications = () => {
 
   // Get All Notifications && Filtered Notifications
   const { data, isLoading } = useQuery({
-    queryKey: ['getNotifications', dateValue, projectType],
+    queryKey: ['notifications', dateValue, projectType],
     queryFn: () => getNotifications(projectType, dateValue)
   })
 
@@ -50,7 +50,7 @@ const Notifications = () => {
     },
     onSuccess: () => {
       return client.invalidateQueries({
-        queryKey: ['deleteNotification']
+        queryKey: ['notifications']
       })
     }
   })
