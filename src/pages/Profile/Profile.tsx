@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import BaseLayout from '@/layouts/BaseLayout/BaseLayout'
-import testImg from "../../assets/testImg.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import EmployeeInfo from '@/features/AllEmployees/ViewEmployees/components/EmployeeInfo';
 import { tabs } from './index'

@@ -1,14 +1,14 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import companyLogo from "../../assets/SEC_logo.svg";
-import testImg from "../../assets/testImg.jpg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { asideLinks } from ".";
 import LogoutIcon from "@/assets/icons/LogoutIcon";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import globalServices from "@/utils/globals.services";
 import { useState } from "react";
 import { pathList } from "@/routes/routesPaths";
+import getProfileData from "@/features/profile/services/getProfileData";
 
 const BaseLayout = ({ children }: any) => {
   const [userProfile, setUserProfile] = useState(false);
@@ -29,6 +29,12 @@ const BaseLayout = ({ children }: any) => {
       location.reload();
     },
   });
+
+  const { data: profileData } = useQuery<any>({
+    queryKey: ['getProfileData'],
+    queryFn: getProfileData
+  })
+
   return (
     <main>
       <div className='flex'>
@@ -70,17 +76,16 @@ const BaseLayout = ({ children }: any) => {
                 className={`flex items-center gap-2 font-bold text-lg  `}
               >
                 <img
-                  src={testImg}
+                  src={`https://sec-system-apis.up.railway.app${profileData?.image}`}
                   alt='UserImg'
                   className='rounded-full object-cover w-[30px] h-[30px]'
                 />
-                Hi SEC, Welcome <IoIosArrowDown />
+                Hi {profileData?.name}, Welcome <IoIosArrowDown />
               </button>
 
               <div
-                className={`${
-                  userProfile ? "h-[120px]" : "h-0"
-                } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
+                className={`${userProfile ? "h-[120px]" : "h-0"
+                  } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
               >
                 <ul className='ps-5'>
                   <li>
