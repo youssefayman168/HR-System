@@ -25,26 +25,10 @@ ChartJS.register(
   Title,
   Tooltip,
 );
-export const pieData = {
-  datasets: [
-    {
-      data: [15, 25, 35, 25],
-      backgroundColor: [
-        '#7694BA', // Right
-        '#1814F3', //Blue
-        '#A1E3CB', //Green
-        '#343C6A', //BlueDark
-      ],
-      borderColor: [
-        'white',
-      ],
-    },
-  ],
-};
+
 
 
 const Analysis = () => {
-
 
   // Chart Data
   const chartData = useQuery({
@@ -71,6 +55,27 @@ const Analysis = () => {
       },
     ],
   };
+
+  // Department Funds Box
+  const departmentFunds = useQuery({
+    queryKey: ['getDepartmentFunds'],
+    queryFn: getDepartmentFunds
+  })
+
+  const pieData = {
+    labels: departmentFunds?.data?.map(({ department_name }: any) => department_name),
+    datasets: [
+      {
+        data: departmentFunds?.data?.map(({ total }: any) => total),
+        label: 'Total',
+        backgroundColor: departmentFunds?.data?.map(({ department_color }: any) => department_color === '' ? '#1814F3' : department_color),
+        borderColor: [
+          'white',
+        ],
+      },
+    ],
+  };
+
   // Employee Funds Box
   const [dateValue, setDateValue] = useState('2024-03-1')
 
@@ -93,14 +98,6 @@ const Analysis = () => {
     setTotalBudget(total);
   }, [data]);
 
-  // Department Funds Box
-  const departmentFunds = useQuery({
-    queryKey: ['getDepartmentFunds'],
-    queryFn: getDepartmentFunds
-  })
-
-  console.log(departmentFunds?.data)
-
   // SEC Profits Box
   const secProfits = useQuery({
     queryKey: ['getSECProfits'],
@@ -112,6 +109,16 @@ const Analysis = () => {
     queryKey: ['getWorkingHours'],
     queryFn: getWorkingHours
   })
+
+
+  // Calculate Total Department
+
+  const [totalDepartment, setTotalDepartment] = useState(0);
+
+  useEffect(() => {
+    const total = departmentFunds?.data?.reduce((acc: any, { total }: any) => acc + total, 0);
+    setTotalDepartment(total);
+  }, [departmentFunds]);
 
   return (
     <BaseLayout>
@@ -168,8 +175,8 @@ const Analysis = () => {
                   <p className='font-[500] text-[17px] '>Company Profit And Worked Hours</p>
                 </div>
                 <div className='flex items-center gap-5'>
-                  <ValueColor name='Profit' aftColor='profit' styleName={{ width: "fit-content" }} />
-                  <ValueColor name='worked hours' aftColor='worked hours' styleName={{ width: "fit-content" }} />
+                  <ValueColor name='Profit' colorStyle='#224886' styleName={{ width: "fit-content" }} />
+                  <ValueColor name='worked hours' colorStyle='#5E79A7' styleName={{ width: "fit-content" }} />
                 </div>
               </div>
               <div className='w-[97%] mx-auto'>
@@ -180,19 +187,18 @@ const Analysis = () => {
             <div className='bg-white py-6 px-10 w-[40%] rounded-[16px] '>
               <div className='flex items-center justify-between mb-3 '>
                 <p className='font-[600] text-[20px]'>Funds By Department</p>
-                <p>Total <span className='font-[600] ms-3 text-[17px]'>34K</span></p>
+                <p>Total <span className='font-[600] ms-3 text-[17px]'>{formatMoney(totalDepartment)}</span></p>
               </div>
               <div className='w-[300px] max-xxl:w-[200px] mx-auto'>
                 <Pie data={pieData} />
               </div>
               <div className='Info mt-10'>
-                <div className='flex items-center justify-between mb-8'>
-                  <ValueColor aftColor='design' name='Design' val='30K' />
-                  <ValueColor aftColor='hr' name='HR' val='50K' />
+                <div className='flex items-center flex-wrap gap-5 justify-between mb-8 w-full'>
+                  {departmentFunds?.data?.map(({ department_name, department_color, total }: any) => {
+                    return <ValueColor colorStyle={department_color === '' ? '#1814F3' : department_color} name={department_name} val={total} />
+                  })}
                 </div>
                 <div className='flex items-center justify-between '>
-                  <ValueColor aftColor='managment' name='Managment' val='60K' />
-                  <ValueColor aftColor='other' name='Other' val='40K' />
                 </div>
               </div>
             </div>
