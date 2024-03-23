@@ -1,5 +1,4 @@
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker'
 import IncreaseDec from '@/components/Analysis/IncreaseDec'
 import ValueColor from '@/components/Analysis/ValueColor'
 import { useQuery } from '@tanstack/react-query'
@@ -7,8 +6,6 @@ import getEmployeesAnalysis from '@/features/analysis/services/getEmplyeesAnalys
 import getAllProjects from '@/features/Projects/all/services/getAllProjects'
 import NameProjectsInf from '@/components/NameProjects/NameProjectsInf'
 import BaseLayout from '../../layouts/BaseLayout/BaseLayout'
-import Calendar from '../../assets/Analysis/Calendar.svg'
-import DateInp from '@/components/DateInput/Date'
 import { useEffect, useState } from 'react'
 import AllEmployeeFunds from '@/components/Analysis/AllEmployeeFunds'
 import Header from '@/components/Analysis/Header';
@@ -19,6 +16,7 @@ import Loading from '@/components/Loading/Loading';
 import getDepartmentFunds from '@/features/analysis/services/getDepartmentFunds';
 import getSECProfits from '@/features/analysis/services/getSECProfits';
 import getWorkingHours from '@/features/Home/services/getWorkingHours';
+import getChartData from '@/features/analysis/services/getChartData';
 ChartJS.register(ArcElement, Tooltip);
 ChartJS.register(
   CategoryScale,
@@ -44,31 +42,36 @@ export const pieData = {
   ],
 };
 
-export const options = {
-  responsive: true,
-};
-const labels = ['Sat', 'Sun', 'Man', 'Tue', 'Wed', 'Thu', 'Fri'];
-export const data2: any = {
-  labels,
-  datasets: [
-    {
-      data: labels.map(() => (faker.datatype.number({ min: 0, max: 1000 }))),
-      backgroundColor: '#224886',
-      borderRadius: '30',
-    },
-    {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: '#224886BA',
-      borderRadius: '30',
-    },
-  ],
-};
-
 
 const Analysis = () => {
 
-  // Employee Funds Box
 
+  // Chart Data
+  const chartData = useQuery({
+    queryKey: ['getChartData'],
+    queryFn: getChartData
+  })
+
+  const options = {
+    responsive: true,
+  };
+  const labels = chartData?.data?.map(({ month }: any) => month);
+  const data2: any = {
+    labels,
+    datasets: [
+      {
+        data: labels?.map(() => chartData?.data?.map(({ profit }: any) => profit)),
+        backgroundColor: '#224886',
+        borderRadius: '30',
+      },
+      {
+        data: labels?.map(() => chartData?.data?.map(({ worked_hours }: any) => worked_hours)),
+        backgroundColor: '#224886BA',
+        borderRadius: '30',
+      },
+    ],
+  };
+  // Employee Funds Box
   const [dateValue, setDateValue] = useState('2024-03-1')
 
   const employees = useQuery({
@@ -103,10 +106,8 @@ const Analysis = () => {
     queryKey: ['getSECProfits'],
     queryFn: getSECProfits
   })
-  console.log(secProfits?.data)
 
   // Working Hours Box
-
   const workingHours = useQuery({
     queryKey: ['getWorkingHours'],
     queryFn: getWorkingHours
@@ -132,7 +133,7 @@ const Analysis = () => {
               </div>
               <Header>
                 <div className='Table h-full overflow-y-auto HideScroll '>
-                  {employees?.data?.data.map(({ id, image, name, department, total_work_hours, total_month_fund, productivity }: any,) => {
+                  {employees?.data?.data?.map(({ id, image, name, department, total_work_hours, total_month_fund, productivity }: any,) => {
                     return <AllEmployeeFunds
                       key={id}
                       employeeImg={`https://sec-system-apis.up.railway.app${image}`}
@@ -164,12 +165,11 @@ const Analysis = () => {
             <div className='bg-white py-6 px-10 w-[60%] rounded-[16px] '>
               <div className='flex items-center justify-between mb-6 '>
                 <div className='flex items-center gap-6'>
-                  <p className='font-[500] text-[17px] '>Company Profit And Expands</p>
-                  <DateInp icon={Calendar} styles={{ color: "black", border: "1px solid #00000033", flexDirection: "row-reverse" }} stylesInp={{ display: "flex", flexDirection: "row-reverse" }} />
+                  <p className='font-[500] text-[17px] '>Company Profit And Worked Hours</p>
                 </div>
                 <div className='flex items-center gap-5'>
                   <ValueColor name='Profit' aftColor='profit' styleName={{ width: "fit-content" }} />
-                  <ValueColor name='Expands' aftColor='expand' styleName={{ width: "fit-content" }} />
+                  <ValueColor name='worked hours' aftColor='worked hours' styleName={{ width: "fit-content" }} />
                 </div>
               </div>
               <div className='w-[97%] mx-auto'>
