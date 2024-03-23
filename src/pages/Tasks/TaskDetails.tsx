@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 const TaskDetails = () => {
   const { taskID } = useParams();
   const taskDetails = useQuery({
-    queryKey: ["taskDetails", taskID],
+    queryKey: [`taskDetails-${taskID}`],
     queryFn: () => {
       return getTask(Number(taskID!));
     },
@@ -43,7 +43,7 @@ const TaskDetails = () => {
             <BtnCreate
               icon={plus}
               text='Add Subtasks'
-              path={pathList.addSubTasks}
+              path={`/tasks/${taskID}/addSubTasks`}
             />
           </div>
         </div>

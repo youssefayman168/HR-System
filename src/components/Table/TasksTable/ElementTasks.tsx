@@ -76,7 +76,7 @@ const ElementTasks = ({
       <p className='w-[36%] max-xxl:w-[36%] '>{text6}</p>
       <div className=' flex-1 flex items-center gap-[15px] '>
         <Link
-          to={"/tasks/architecturalDrawing/addSubTasks"}
+          to={`/tasks/${elementID}/addSubTasks`}
           style={styleActionBtn}
           className='w-fit rounded-[6px] '
         >

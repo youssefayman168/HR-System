@@ -82,13 +82,15 @@ const ViewSubTask = () => {
                     {subtaskDetails.data?.data.approved ? "Yes" : "No"}
                   </p>
                 </div>
-                <EmployeeInfo
-                  title='Task Date'
-                  value={format(
-                    new Date(subtaskDetails.data?.data.date),
-                    "dd MMM yyyy"
-                  )}
-                />
+                {subtaskDetails.data && (
+                  <EmployeeInfo
+                    title='Task Date'
+                    value={format(
+                      new Date(subtaskDetails.data?.data.date),
+                      "dd MMM yyyy"
+                    )}
+                  />
+                )}
               </div>
               <div>
                 <EmployeeInfo

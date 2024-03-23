@@ -9,6 +9,7 @@ import NewEmployeeIcon from "../../assets/icons/NewEmployeeIcon";
 import AnalysisIcon from "../../assets/icons/AnalysisIcon";
 import RequestsIcon from "../../assets/icons/RequestsIcon";
 import ReportsIcon from "../../assets/icons/ReportsIcon";
+import FinancialRequestIco from "@/assets/icons/FinancialRequestIco";
 
 export const asideLinks = [
   {
@@ -52,8 +53,13 @@ export const asideLinks = [
     Icon: AnalysisIcon,
   },
   {
-    title: "Requests",
+    title: "Financial Requests",
     src: pathList.requests,
+    Icon: FinancialRequestIco,
+  },
+  {
+    title: "Requests",
+    src: pathList.vacationRequests,
     Icon: RequestsIcon,
   },
   {

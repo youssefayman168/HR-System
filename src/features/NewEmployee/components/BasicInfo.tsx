@@ -2,13 +2,16 @@ import BaseInput from "@/components/BaseInput";
 import Calendar from "@/components/Calendar";
 import DateInput from "@/components/DateInput";
 import ImageUploader from "@/components/ImageUploader";
+import SelectInput from "@/components/SelectInput";
 import { IEmployeeData } from "@/pages/NewEmployee";
 import React from "react";
 
 const BasicInfo = ({
   setData,
+  value,
 }: {
   setData: React.Dispatch<React.SetStateAction<IEmployeeData>>;
+  value: IEmployeeData;
 }) => {
   return (
     <>
@@ -27,6 +30,8 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.name}
+          req
         />
         <BaseInput
           type='text'
@@ -42,6 +47,8 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.email}
+          req
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -59,21 +66,30 @@ const BasicInfo = ({
               };
             })
           }
+          req
+          defaultValue={value.phone_number}
         />
-        <BaseInput
-          type='text'
-          placeholder="Please Select Employee's Gender"
-          label='Gender'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
+        <SelectInput
+          data={[
+            {
+              id: "male",
+              name: "male",
+            },
+            {
+              id: "female",
+              name: "female",
+            },
+          ]}
+          onSelect={(selectedItem) =>
             setData((prev) => {
               return {
                 ...prev,
-                gender: e,
+                gender: selectedItem,
               };
             })
           }
+          label='Gender'
+          className='flex-1'
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -91,6 +107,8 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.nationality}
+          req
         />
         <BaseInput
           type='text'
@@ -106,6 +124,8 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.location}
+          req
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -119,6 +139,7 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.birth_date}
         />
         <BaseInput
           type='text'
@@ -134,6 +155,8 @@ const BasicInfo = ({
               };
             })
           }
+          defaultValue={value.social_insurance}
+          req
         />
       </div>
       <ImageUploader

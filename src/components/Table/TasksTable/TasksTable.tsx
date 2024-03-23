@@ -76,6 +76,7 @@ const TasksTable = ({
                   <Link
                     to={`/tasks/details/${task.id}`}
                     className='border-b-[2px] border-[#a0aaca80] font-[600] py-7 flex items-center gap-[10px] '
+                    key={task.id}
                   >
                     <ElementTasks
                       text1={projectName}

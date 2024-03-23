@@ -10,8 +10,10 @@ import BorderBtn from "@/components/Buttons/BorderBtn";
 import BaseBtn from "@/components/Buttons/BaseBtn";
 import Calendar from "@/components/Calendar";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import createEmployee from "@/features/NewEmployee/services/createEmployee";
+import { pathList } from "@/routes/routesPaths";
+import { useNavigate } from "react-router-dom";
 
 export type IEmployeeData = {
   name: string;
@@ -39,6 +41,7 @@ export type IEmployeeData = {
   military_certificate: string;
   graduation_certificate: string;
   social_insurance: string;
+  role: string;
 };
 
 const NewEmployee = () => {
@@ -69,18 +72,26 @@ const NewEmployee = () => {
     military_certificate: "",
     graduation_certificate: "",
     social_insurance: "",
+    role: "",
   });
-  const { currentStep, step, goNext } = useMultiStepForm([
-    <BasicInfo setData={setData} />,
-    <SetPermissions setData={setData} />,
+  const { currentStep, step, goNext, goPrev } = useMultiStepForm([
+    <BasicInfo setData={setData} value={data} />,
+    <SetPermissions setData={setData} value={data} />,
     <Attachment setData={setData} />,
   ]);
+  console.log("CURRENT STEP", currentStep);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const addEmployee = useMutation<any, any, any>({
     mutationFn: (data) => {
       return createEmployee(data);
     },
     onSuccess: () => {
       setShowModal(true);
+      queryClient.invalidateQueries({
+        queryKey: ["employees"],
+      });
+      navigate(pathList.all_employees);
     },
   });
 
@@ -92,6 +103,7 @@ const NewEmployee = () => {
       console.log(e);
     }
   };
+
   return (
     <BaseLayout>
       <Breadcrumb link='/home' />
@@ -125,41 +137,64 @@ const NewEmployee = () => {
               stepName='Attachments'
             />
           </div>
-          {step}
-          <div className='w-[100%] flex flex-row items-center justify-center gap-[27px] pb-[50px]'>
-            <BorderBtn
-              name='Cancel'
-              styles={{
-                width: "163px",
-                height: "50px",
-                fontSize: 16,
-                fontWeight: 500,
-              }}
-            />
-            {currentStep != 2 ? (
-              <BaseBtn
-                name='Next'
-                styles={{
-                  width: "163px",
-                  height: "50px",
-                  fontSize: 16,
-                  fontWeight: 500,
-                }}
-                onClick={() => goNext()}
-              />
-            ) : (
-              <BaseBtn
-                name='Save'
-                styles={{
-                  width: "163px",
-                  height: "50px",
-                  fontSize: 16,
-                  fontWeight: 500,
-                }}
-                onClick={() => onSubmit()}
-              />
-            )}
-          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (currentStep != 2) {
+                goNext();
+              }
+              onSubmit();
+            }}
+          >
+            {step}
+            <div className='w-[100%] flex flex-row items-center justify-center gap-[27px] pb-[50px]'>
+              {currentStep == 0 ? (
+                <BorderBtn
+                  name='Cancel'
+                  styles={{
+                    width: "163px",
+                    height: "50px",
+                    fontSize: 16,
+                    fontWeight: 500,
+                  }}
+                  onClick={() => navigate(pathList.all_employees)}
+                />
+              ) : (
+                <BorderBtn
+                  name='Back'
+                  styles={{
+                    width: "163px",
+                    height: "50px",
+                    fontSize: 16,
+                    fontWeight: 500,
+                  }}
+                  onClick={() => goPrev()}
+                  type='button'
+                />
+              )}
+              {currentStep != 2 ? (
+                <BaseBtn
+                  name='Next'
+                  styles={{
+                    width: "163px",
+                    height: "50px",
+                    fontSize: 16,
+                    fontWeight: 500,
+                  }}
+                />
+              ) : (
+                <BaseBtn
+                  name='Save'
+                  styles={{
+                    width: "163px",
+                    height: "50px",
+                    fontSize: 16,
+                    fontWeight: 500,
+                  }}
+                />
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </BaseLayout>

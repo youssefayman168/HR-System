@@ -14,6 +14,7 @@ export const pathList = {
   tasks: "/tasks",
   taskDetails: "/tasks/details/:taskID",
   addSubTasks: "/tasks/:taskID/addSubTasks",
+  editSubtask: "/tasks/subtask/edit/:taskID/:subtaskID",
   editTasks: "/tasks/editTasks/:taskID",
   viewTask: "/tasks/view-task/:taskID",
   viewSubTask: "/tasks/viewSubTask/:subTaskID",
@@ -21,6 +22,7 @@ export const pathList = {
   // Payslips URLs
   payslips: "/payslips",
   create_payslip: "/payslips/create_payslip",
+  editPayslip: "/payslips/edit-payslip/:payslipID",
 
   notifications: "/notifications",
 
@@ -36,11 +38,17 @@ export const pathList = {
 
   // Reports
   reports: "/reports",
-  view_insight: "/reports/view_insights",
+  view_insight: "/reports/view_insights/:userID",
 
   // Requests URLs
   requests: "/requests",
+  createRequest: "/requests/create",
   viewRequests: "/requests/viewRequests/:id",
+
+  // Vacation Requests URLs
+  vacationRequests: "/vacation-requests",
+  createVacationRequest: "/vacation-requests/create",
+  viewVacationRequests: "/vacation-requests/viewRequests/:requestID",
 
   // Projects URLs
   projects: "/projects",

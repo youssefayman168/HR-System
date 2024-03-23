@@ -1,47 +1,70 @@
 import BaseInput from "@/components/BaseInput";
 import DateInput from "@/components/DateInput";
 import MultiDateInput from "@/components/MultiDateInput";
+import SelectInput from "@/components/SelectInput";
+import getDepartmentList from "@/features/AllEmployees/AddPosition/services/getDepartmentList";
 import { IEmployeeData } from "@/pages/NewEmployee";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
+import getPositions from "../services/getPositions";
+import getCompanies from "../services/getCompanies";
 
 const SetPermissions = ({
   setData,
+  value,
 }: {
   setData: React.Dispatch<React.SetStateAction<IEmployeeData>>;
+  value: IEmployeeData;
 }) => {
+  const departments = useQuery({
+    queryKey: ["departments"],
+    queryFn: getDepartmentList,
+  });
+  const positions = useQuery({
+    queryKey: ["positions", value.department],
+    queryFn: getPositions,
+    enabled: !!departments.data,
+  });
+  const companies = useQuery({
+    queryKey: ["companies", value.department],
+    queryFn: getCompanies,
+  });
+  const queryClient = useQueryClient();
+  console.log(companies.data);
   return (
     <>
       <div className='w-[100%] flex justify-between items-center gap-[21px]'>
-        <BaseInput
-          type='text'
-          placeholder='Please Enter Employee Position'
+        <SelectInput
+          data={positions?.data}
+          onSelect={(selectedItem) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                position: selectedItem,
+              };
+            })
+          }
           label='Position'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                position: e,
-              };
-            })
-          }
+          className='flex-1'
         />
-        <BaseInput
-          type='text'
-          placeholder="Please Enter Employee's Department"
-          label='Department'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                department: e,
-              };
-            })
-          }
-        />
+        {!departments.isPending && (
+          <SelectInput
+            data={departments?.data}
+            onSelect={(selectedItem) => {
+              setData((prev) => {
+                return {
+                  ...prev,
+                  department: selectedItem,
+                };
+              });
+              queryClient.invalidateQueries({
+                queryKey: ["positions", value.department],
+              });
+            }}
+            label='Department'
+            className='flex-1'
+          />
+        )}
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
         <BaseInput
@@ -58,22 +81,24 @@ const SetPermissions = ({
               };
             })
           }
+          req
+          defaultValue={value.grade}
         />
-        <BaseInput
-          type='text'
-          placeholder="Please Select Employee's Company"
-          label='Company'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                company: e,
-              };
-            })
-          }
-        />
+        {!companies.isPending && (
+          <SelectInput
+            data={companies?.data}
+            onSelect={(selectedItem) =>
+              setData((prev) => {
+                return {
+                  ...prev,
+                  company: selectedItem,
+                };
+              })
+            }
+            label='Company'
+            className='flex-1'
+          />
+        )}
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
         <BaseInput
@@ -90,6 +115,8 @@ const SetPermissions = ({
               };
             })
           }
+          req
+          defaultValue={value.college_name}
         />
         <MultiDateInput
           onDateFrom={(date) =>
@@ -108,9 +135,10 @@ const SetPermissions = ({
               };
             })
           }
+          label='Graduation Date'
         />
       </div>
-      <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
+      <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px] mb-[82px]'>
         <DateInput
           label='Hiring Date'
           onDate={(date) =>
@@ -121,6 +149,66 @@ const SetPermissions = ({
               };
             })
           }
+        />
+        <BaseInput
+          type='text'
+          placeholder='Please Enter Employee College Name'
+          label='Medical Insurance Type'
+          className='w-[100%]'
+          containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                medical_insurance_type: e,
+              };
+            })
+          }
+          req
+          defaultValue={value.medical_insurance_type}
+        />
+      </div>
+      <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px] mb-[82px]'>
+        <SelectInput
+          data={[
+            {
+              id: "HR",
+              name: "HR",
+            },
+            {
+              id: "HOD",
+              name: "HOD",
+            },
+            {
+              id: "Senior",
+              name: "Senior",
+            },
+            {
+              id: "ProjectManager",
+              name: "Project Manager",
+            },
+            {
+              id: "Accountant",
+              name: "Accountant",
+            },
+            {
+              id: "OfficeManager",
+              name: "Office Manager",
+            },
+            {
+              id: "Employee",
+              name: "Employee",
+            },
+          ]}
+          onSelect={(role) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                role,
+              };
+            })
+          }
+          label='Role'
         />
       </div>
     </>

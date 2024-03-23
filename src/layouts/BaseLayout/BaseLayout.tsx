@@ -11,9 +11,7 @@ import { useState } from "react";
 import { pathList } from "@/routes/routesPaths";
 
 const BaseLayout = ({ children }: any) => {
-
-
-  const [ userProfile , setUserProfile ] = useState(false)
+  const [userProfile, setUserProfile] = useState(false);
 
   const refreshToken = localStorage.getItem("refresh")
     ? JSON.parse(localStorage.getItem("refresh") ?? "")
@@ -43,7 +41,7 @@ const BaseLayout = ({ children }: any) => {
                   <NavLink
                     key={index}
                     className={
-                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-lg px-10 py-[8px]"
+                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px]"
                     }
                     to={src}
                   >
@@ -64,23 +62,45 @@ const BaseLayout = ({ children }: any) => {
         </aside>
         <div className='flex flex-col'>
           <nav className='bg-white h-[75px] w-[calc(100vw-290px)] flex items-center justify-end pr-6'>
-            
-            <div className="relative">
-              <button onClick={() => {setUserProfile(!userProfile)}} className={`flex items-center gap-2 font-bold text-lg  `} >
-                <img src={testImg} alt='UserImg' className='rounded-full object-cover w-[30px] h-[30px]' />
+            <div className='relative'>
+              <button
+                onClick={() => {
+                  setUserProfile(!userProfile);
+                }}
+                className={`flex items-center gap-2 font-bold text-lg  `}
+              >
+                <img
+                  src={testImg}
+                  alt='UserImg'
+                  className='rounded-full object-cover w-[30px] h-[30px]'
+                />
                 Hi SEC, Welcome <IoIosArrowDown />
               </button>
 
-              <div className={`${userProfile ? 'h-[120px]' : 'h-0' } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`} >
-                <ul className="ps-5">
-                  <li><Link className="py-[7px] pt-3 block" to={pathList.profile} >Profile</Link></li>
-                  <li><Link className="py-[7px] block" to='' >Add account</Link></li>
-                  <li><Link className="py-[7px] block text-[#FF5151]" to='' >Sign out</Link></li>
+              <div
+                className={`${
+                  userProfile ? "h-[120px]" : "h-0"
+                } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
+              >
+                <ul className='ps-5'>
+                  <li>
+                    <Link className='py-[7px] pt-3 block' to={pathList.profile}>
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className='py-[7px] block' to=''>
+                      Add account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className='py-[7px] block text-[#FF5151]' to=''>
+                      Sign out
+                    </Link>
+                  </li>
                 </ul>
               </div>
-
             </div>
-
           </nav>
           <motion.div
             initial={{ opacity: 0 }}

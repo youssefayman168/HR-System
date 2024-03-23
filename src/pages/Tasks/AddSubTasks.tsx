@@ -14,7 +14,7 @@ import createSubTask from "@/features/Tasks/AddSubTasks/services/createSubtask";
 const AddSubTasks = () => {
   const { taskID } = useParams();
   const taskDetails = useQuery({
-    queryKey: ["taskDetails", taskID],
+    queryKey: [`taskDetails-${taskID}`],
     queryFn: () => {
       return getTask(Number(taskID!));
     },
@@ -37,7 +37,7 @@ const AddSubTasks = () => {
         .invalidateQueries({
           queryKey: ["taskDetails"],
         })
-        .then(() => navigate(`/tasks/view-task/${taskID}`));
+        .then(() => navigate(`/tasks/details/${taskID}`));
     },
   });
 

@@ -17,7 +17,7 @@ import { format } from "date-fns";
 const ViewTask = () => {
   const { taskID } = useParams();
   const taskDetails = useQuery({
-    queryKey: ["taskDetails", taskID],
+    queryKey: [`taskDetails-${taskID}`],
     queryFn: () => {
       return getTask(Number(taskID!));
     },

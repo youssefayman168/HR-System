@@ -60,6 +60,8 @@ const SubTasksTable = ({
                   text6={subTask.approved ? "Approved" : "Pending"}
                   text7={subTask.hours}
                   styleStaus={subTask.approved ? "done" : "progress"}
+                  subtaskID={subTask.id}
+                  taskID={subTask.task_id}
                 />
               ))}
             </div>

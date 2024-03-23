@@ -10,6 +10,7 @@ type IProps = {
   className?: string;
   containerClassName?: string;
   onDate?: (date: any) => any;
+  defaultValue?: string | any;
 };
 
 const DateInput = ({
@@ -21,6 +22,7 @@ const DateInput = ({
   className,
   containerClassName,
   onDate,
+  defaultValue,
 }: IProps) => {
   return (
     <main
@@ -41,6 +43,7 @@ const DateInput = ({
           className='border-2 px-[17.6px] rounded-[10px] absolute inset-0 z-[99] opacity-1 '
           type='date'
           onChange={(e) => onDate?.(e.target.value)}
+          defaultValue={defaultValue}
         />
         <p>{placeholder}</p>
         <div className='right-[15px] absolute'>

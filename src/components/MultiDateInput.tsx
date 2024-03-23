@@ -3,13 +3,15 @@ import React from "react";
 const MultiDateInput = ({
   onDateFrom,
   onDateTo,
+  label,
 }: {
   onDateFrom: (date: Date | string) => any;
   onDateTo: (date: Date | string) => any;
+  label: string;
 }) => {
   return (
     <div className='flex-1 gap-[30px] flex-col items-start justify-start'>
-      <p className='mb-2 mt-3 text-lg font-medium'>Graduation Date</p>
+      <p className='mb-2 mt-3 text-lg font-medium'>{label}</p>
       <div className='flex-1 gap-[30px] flex'>
         <div className='w-[50%] h-[60px] rounded-[10px] border-[1px] border-solid border-[#BDBDBD] flex items-center relative'>
           <input

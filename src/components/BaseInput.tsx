@@ -54,7 +54,7 @@ const BaseInput = ({
         disabled={disabled}
         onChange={(e) => onChange?.(e.target.value)}
         style={styles}
-        defaultValue={defaultValue}
+        value={defaultValue}
         className={`border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] ${className}`}
       />
     </main>

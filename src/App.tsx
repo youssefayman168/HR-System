@@ -38,6 +38,12 @@ import CreatePayslip from "./pages/Payslips/CreatePayslip";
 import ViewInsightsPage from "./features/Reports/employeePerformance/components/ViewInsightsPage";
 import Profile from "./pages/Profile/Profile";
 import EditProject from "./pages/projects/EditProject";
+import EditSubTask from "./pages/Tasks/EditSubTask";
+import EditPayslip from "./pages/Payslips/EditPayslip";
+import CreateRequest from "./pages/Requests/CreateRequest";
+import All from "./pages/VacationRequests/all";
+import CreateVacationRequest from "./pages/VacationRequests/CreateVacationRequest";
+import RequestDetails from "./pages/VacationRequests/details";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -131,6 +137,14 @@ const router = createBrowserRouter(
           <Route
             element={
               <ProtectedRoute>
+                <EditSubTask />
+              </ProtectedRoute>
+            }
+            path={pathList.editSubtask}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
                 <ViewTask />
               </ProtectedRoute>
             }
@@ -169,6 +183,14 @@ const router = createBrowserRouter(
               </ProtectedRoute>
             }
             path={pathList.create_payslip}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <EditPayslip />
+              </ProtectedRoute>
+            }
+            path={pathList.editPayslip}
           />
         </Route>
         <Route
@@ -253,6 +275,40 @@ const router = createBrowserRouter(
               </ProtectedRoute>
             }
             path={pathList.viewRequests}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <CreateRequest />
+              </ProtectedRoute>
+            }
+            path={pathList.createRequest}
+          />
+        </Route>
+        <Route path={pathList.vacationRequests}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <All />
+              </ProtectedRoute>
+            }
+            index
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <RequestDetails />
+              </ProtectedRoute>
+            }
+            path={pathList.viewVacationRequests}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <CreateVacationRequest />
+              </ProtectedRoute>
+            }
+            path={pathList.createVacationRequest}
           />
         </Route>
         <Route path={pathList.reports}>
