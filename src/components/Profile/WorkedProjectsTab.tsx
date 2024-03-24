@@ -13,8 +13,6 @@ const WorkedProjectsTab = () => {
     queryFn: getTotalTasks
   })
 
-  console.log(data)
-
   const [totalBudget, setTotalBudget] = useState(0);
 
   // Calculate Total Budget
