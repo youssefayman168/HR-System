@@ -3,7 +3,6 @@ import RequestsTableElm from './RequestsTableElm'
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../Loading/Loading'
 import getAllRequests from '@/features/requests/all/services/getAllRequests'
-import { pathList } from '@/routes/routesPaths'
 
 const AnnualsTab = () => {
 
@@ -12,8 +11,6 @@ const AnnualsTab = () => {
     queryKey: ["getAllRequests"],
     queryFn: getAllRequests,
   });
-
-  console.log(allRequests)
 
   return (
     <>

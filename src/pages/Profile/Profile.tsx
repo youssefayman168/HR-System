@@ -40,7 +40,7 @@ const Profile = () => {
               </div>
               <div>
                 <EmployeeInfo title='Company' value={data?.company} />
-                <EmployeeInfo title='Per Hour' value={`${data?.hr_rate}$ per hour`} />
+                <EmployeeInfo title='Per Hour' value={`$ ${data?.hr_rate} per hour`} />
               </div>
               <div>
                 <EmployeeInfo title='Mobile Number' value={data?.phone_number} />
