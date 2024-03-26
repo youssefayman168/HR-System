@@ -22,15 +22,17 @@ const SetPermissions = ({
   });
   const positions = useQuery({
     queryKey: ["positions", value.department],
-    queryFn: getPositions,
+    queryFn: () => {
+      return getPositions(value.department);
+    },
     enabled: !!departments.data,
   });
   const companies = useQuery({
-    queryKey: ["companies", value.department],
+    queryKey: ["companies"],
     queryFn: getCompanies,
   });
   const queryClient = useQueryClient();
-  console.log(companies.data);
+  console.log(positions.data);
   return (
     <>
       <div className='w-[100%] flex justify-between items-center gap-[21px]'>
@@ -46,6 +48,7 @@ const SetPermissions = ({
           }
           label='Position'
           className='flex-1'
+          preSelect='Select Position'
         />
         {!departments.isPending && (
           <SelectInput
@@ -97,6 +100,7 @@ const SetPermissions = ({
             }
             label='Company'
             className='flex-1'
+            preSelect='Select Company'
           />
         )}
       </div>
@@ -111,19 +115,19 @@ const SetPermissions = ({
             setData((prev) => {
               return {
                 ...prev,
-                college_name: e,
+                college: e,
               };
             })
           }
           req
-          defaultValue={value.college_name}
+          defaultValue={value.college}
         />
         <MultiDateInput
           onDateFrom={(date) =>
             setData((prev: any) => {
               return {
                 ...prev,
-                graduation_date_from: date,
+                graduation_year_from: date,
               };
             })
           }
@@ -131,7 +135,7 @@ const SetPermissions = ({
             setData((prev: any) => {
               return {
                 ...prev,
-                graduation_date_to: date,
+                graduation_year_to: date,
               };
             })
           }
@@ -152,7 +156,7 @@ const SetPermissions = ({
         />
         <BaseInput
           type='text'
-          placeholder='Please Enter Employee College Name'
+          placeholder='Please Enter Employee Medical Insurance Type'
           label='Medical Insurance Type'
           className='w-[100%]'
           containerClassName='flex-1'
@@ -204,11 +208,29 @@ const SetPermissions = ({
             setData((prev) => {
               return {
                 ...prev,
-                role,
+                role: role,
               };
             })
           }
           label='Role'
+          className='flex-1'
+        />
+        <BaseInput
+          type='text'
+          placeholder='Please Enter Employee Social Insurance Type'
+          label='Social Insurance Type'
+          className='w-[100%]'
+          containerClassName='flex-1'
+          onChange={(e) =>
+            setData((prev) => {
+              return {
+                ...prev,
+                social_insurance_type: e,
+              };
+            })
+          }
+          req
+          defaultValue={value.social_insurance_type}
         />
       </div>
     </>

@@ -15,7 +15,7 @@ export const pathList = {
   taskDetails: "/tasks/details/:taskID",
   addSubTasks: "/tasks/:taskID/addSubTasks",
   editSubtask: "/tasks/subtask/edit/:taskID/:subtaskID",
-  editTasks: "/tasks/editTasks/:taskID",
+  editTasks: "/tasks/editTasks/:taskID/:phaseID?",
   viewTask: "/tasks/view-task/:taskID",
   viewSubTask: "/tasks/viewSubTask/:subTaskID",
 
@@ -55,5 +55,8 @@ export const pathList = {
   createProject: "/projects/create",
   projectDetails: "/projects/:id",
   editProject: "/projects/editProject/:id",
-  projectDetailsAddTask: "/projects/:id/addTask",
+  projectDetailsAddTask: "/projects/:id/addTask/:phaseID?",
+
+  // HR
+  hrReports: "/hr/reports",
 };

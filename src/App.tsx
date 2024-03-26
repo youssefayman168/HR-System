@@ -44,6 +44,7 @@ import CreateRequest from "./pages/Requests/CreateRequest";
 import All from "./pages/VacationRequests/all";
 import CreateVacationRequest from "./pages/VacationRequests/CreateVacationRequest";
 import RequestDetails from "./pages/VacationRequests/details";
+import HrReports from "./pages/HR/Reports";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -329,6 +330,14 @@ const router = createBrowserRouter(
             path={pathList.view_insight}
           />
         </Route>
+        <Route
+          path={pathList.hrReports}
+          element={
+            <ProtectedRoute>
+              <HrReports />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </>
   )

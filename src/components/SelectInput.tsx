@@ -6,11 +6,13 @@ const SelectInput = ({
   onSelect,
   label,
   className,
+  preSelect,
 }: {
   data: any;
   label: string;
   onSelect: (selectedItem: any) => any;
   className?: string;
+  preSelect?: string;
 }) => {
   return (
     <div className={`w-full ${className}`}>
@@ -24,7 +26,9 @@ const SelectInput = ({
           onChange={(e) => onSelect(e.target.value)}
           required
         >
+          {preSelect && <option value=''>{preSelect}</option>}
           {data?.map(({ id, name }: any) => {
+            console.log(name);
             return (
               <option value={id} key={id}>
                 {name}

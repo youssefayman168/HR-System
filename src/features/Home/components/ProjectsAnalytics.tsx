@@ -4,7 +4,7 @@ import PercentageLine from "./PercentageLine";
 import { useQuery } from "@tanstack/react-query";
 import getProjects from "@/features/Home/services/getProjects";
 
-const colorConditionSwitcher = (status: string) => {
+export const colorConditionSwitcher = (status: string) => {
   switch (status) {
     case "Completed":
       return "done";
@@ -48,10 +48,9 @@ const ProjectsAnalytics = () => {
             value={
               project.worked_hours <= 0
                 ? "0%"
-                :
-                project.worked_hours >= 100 ?
-                  '100%' :
-                  String(
+                : project.worked_hours >= 100
+                ? "100%"
+                : String(
                     ((project.worked_hours / project.work_hours) * 100).toFixed(
                       0
                     )

@@ -80,14 +80,15 @@ const BasicInfo = ({
               name: "female",
             },
           ]}
-          onSelect={(selectedItem) =>
+          onSelect={(selectedItem) => {
+            console.log(selectedItem);
             setData((prev) => {
               return {
                 ...prev,
                 gender: selectedItem,
               };
-            })
-          }
+            });
+          }}
           label='Gender'
           className='flex-1'
         />

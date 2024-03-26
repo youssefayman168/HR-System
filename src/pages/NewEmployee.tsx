@@ -24,14 +24,15 @@ export type IEmployeeData = {
   location: string;
   birth_date: string;
   medical_insurance_type: string;
+  social_insurance_type: string;
   image: File | string;
   position: string;
   department: string;
   grade: string;
   company: string;
-  college_name: string;
-  graduation_date_from: string;
-  graduation_date_to: string;
+  college: string;
+  graduation_year_from: string;
+  graduation_year_to: string;
   hiring_date: string;
   cv: string;
   passport_copy: string;
@@ -55,14 +56,15 @@ const NewEmployee = () => {
     location: "",
     birth_date: "",
     medical_insurance_type: "",
+    social_insurance_type: "",
     image: "",
     position: "",
     department: "",
     grade: "",
     company: "",
-    college_name: "",
-    graduation_date_from: "",
-    graduation_date_to: "",
+    college: "",
+    graduation_year_from: "",
+    graduation_year_to: "",
     hiring_date: "",
     cv: "",
     passport_copy: "",
@@ -94,6 +96,7 @@ const NewEmployee = () => {
       navigate(pathList.all_employees);
     },
   });
+  console.log(data);
 
   const onSubmit = async () => {
     try {

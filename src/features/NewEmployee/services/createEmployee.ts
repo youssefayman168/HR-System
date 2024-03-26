@@ -11,14 +11,15 @@ const createEmployee = (data: IEmployeeData) => {
   formData.append("location", data.location);
   formData.append("birth_date", data.birth_date);
   formData.append("medical_insurance_type", data.medical_insurance_type);
+  formData.append("social_insurance_type", data.social_insurance_type);
   formData.append("image", data.image);
   formData.append("position", data.position);
   formData.append("department", data.department);
   formData.append("grade", data.grade);
   formData.append("company", data.company);
-  formData.append("college_name", data.college_name);
-  formData.append("graduation_date_from", data.graduation_date_from);
-  formData.append("graduation_date_to", data.graduation_date_to);
+  formData.append("college_name", data.college);
+  formData.append("graduation_date_from", data.graduation_year_from);
+  formData.append("graduation_date_to", data.graduation_year_to);
   formData.append("hiring_date", data.hiring_date);
   formData.append("cv", data.cv);
   formData.append("passport_copy", data.passport_copy);
@@ -28,6 +29,7 @@ const createEmployee = (data: IEmployeeData) => {
   formData.append("military_certificate", data.military_certificate);
   formData.append("graduation_certificate", data.graduation_certificate);
   formData.append("social_insurance", data.social_insurance);
+  formData.append("role", data.role);
   formData.append("password", "admin");
   return requestHelpers.postData("/user/create/", formData);
 };

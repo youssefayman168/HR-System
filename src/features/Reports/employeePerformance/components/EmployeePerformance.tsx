@@ -11,7 +11,7 @@ import { pathList } from "@/routes/routesPaths";
 import { useQuery } from "@tanstack/react-query";
 import getAllEmployees from "@/features/AllEmployees/services/getAllEmployees";
 
-const EmployeePerformance = () => {
+const EmployeePerformance = ({ className }: any) => {
   //  DropDown State
   const [departmentState, setDepartmentState] = useState<boolean>(false);
   const [positionState, setPositionState] = useState<boolean>(false);
@@ -96,31 +96,6 @@ const EmployeePerformance = () => {
               onActionClick={() => viewInsight(employee.id)}
             />
           ))}
-          {filterData &&
-            filterData.map(
-              (
-                {
-                  picture,
-                  allEmployees,
-                  companyName,
-                  departmentName,
-                  position,
-                }: any,
-                index: number
-              ) => {
-                return (
-                  <EmployeePerformanceElement
-                    key={index}
-                    employeeImg={picture}
-                    employeeName={allEmployees}
-                    companyName={companyName}
-                    departmentName={departmentName}
-                    positionName={position}
-                    onActionClick={() => viewInsight()}
-                  />
-                );
-              }
-            )}
         </div>
         <div className='h-[80px] w-full'>
           <ReactPaginate

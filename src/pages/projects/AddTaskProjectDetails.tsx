@@ -2,7 +2,7 @@ import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import { pathList } from "@/routes/routesPaths";
 import ArrowLeft from "../../assets/CreateProjects/ArrowLeft.svg";
 import { BiChevronRight } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BaseInput from "@/components/BaseInput";
 import DateInpCreate from "@/components/DateInput/DateInpCreate";
 import { useState } from "react";
@@ -19,6 +19,8 @@ const AddTaskProjectDetails = () => {
     description: "",
     status: "",
   });
+  const { phaseID, id } = useParams();
+  console.log(phaseID);
   const projects = useQuery({
     queryKey: ["projects"],
     queryFn: getAllProjects,
@@ -27,12 +29,21 @@ const AddTaskProjectDetails = () => {
   const queryClient = useQueryClient();
   const addTask = useMutation({
     mutationFn: () => {
-      return createTask(data, Number(data.project));
+      return createTask(
+        {
+          ...data,
+          phase: phaseID,
+        },
+        Number(data.project)
+      );
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["projects"],
+      });
       queryClient
         .invalidateQueries({
-          queryKey: ["projects"],
+          queryKey: [`getPhases-${id}`],
         })
         .then(() => navigate(pathList.tasks));
     },
@@ -93,6 +104,7 @@ const AddTaskProjectDetails = () => {
                         }
                         required
                       >
+                        <option value=''>Select Project</option>
                         {projects?.data?.map(({ id, project_name }: any) => {
                           return (
                             <option value={id} key={id}>

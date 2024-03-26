@@ -2,7 +2,15 @@ import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import companyLogo from "../../assets/SEC_logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { asideLinks } from ".";
+import {
+  asideLinks,
+  hrLinks,
+  HODLinks,
+  EmployeeLinks,
+  projectManagerLinks,
+  officeManagerLinks,
+  accountantLinks,
+} from ".";
 import LogoutIcon from "@/assets/icons/LogoutIcon";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import globalServices from "@/utils/globals.services";
@@ -10,13 +18,27 @@ import { useState } from "react";
 import { pathList } from "@/routes/routesPaths";
 import getProfileData from "@/features/profile/services/getProfileData";
 
+const rolesScreens: any = {
+  HR: hrLinks,
+  HOD: HODLinks,
+  Employee: EmployeeLinks,
+  Senior: EmployeeLinks,
+  ProjectManager: projectManagerLinks,
+  OfficeManager: officeManagerLinks,
+  Accountant: accountantLinks,
+};
+
 const BaseLayout = ({ children }: any) => {
   const [userProfile, setUserProfile] = useState(false);
-
+  const [sideLinks, setSideLinks] = useState([]);
   const refreshToken = localStorage.getItem("refresh")
     ? JSON.parse(localStorage.getItem("refresh") ?? "")
     : "";
-
+  const myProfile = useQuery({
+    queryKey: ["myProfile"],
+    queryFn: globalServices.getPersonalInfo,
+  });
+  console.log(myProfile.data);
   const navigate = useNavigate();
 
   const logout = useMutation({
@@ -31,9 +53,9 @@ const BaseLayout = ({ children }: any) => {
   });
 
   const { data: profileData } = useQuery<any>({
-    queryKey: ['getProfileData'],
-    queryFn: getProfileData
-  })
+    queryKey: ["getProfileData"],
+    queryFn: getProfileData,
+  });
 
   return (
     <main>
@@ -42,20 +64,39 @@ const BaseLayout = ({ children }: any) => {
           <img src={companyLogo} alt='SEC Logo' className='mt-8 ml-7' />
           <div className='mt-6'>
             <ul className=' flex items-center justify-between gap-2 flex-col'>
-              {asideLinks.map(({ title, src, Icon }, index) => {
-                return (
-                  <NavLink
-                    key={index}
-                    className={
-                      "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px]"
-                    }
-                    to={src}
-                  >
-                    <Icon />
-                    {title}
-                  </NavLink>
-                );
-              })}
+              {!myProfile.isPending
+                ? myProfile.data?.is_superuser
+                  ? asideLinks.map(({ title, src, Icon }, index) => {
+                      return (
+                        <NavLink
+                          key={index}
+                          className={
+                            "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px]"
+                          }
+                          to={src}
+                        >
+                          <Icon />
+                          {title}
+                        </NavLink>
+                      );
+                    })
+                  : rolesScreens[myProfile?.data?.role]?.map(
+                      ({ title, src, Icon }: any, index: any) => {
+                        return (
+                          <NavLink
+                            key={index}
+                            className={
+                              "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px]"
+                            }
+                            to={src}
+                          >
+                            <Icon />
+                            {title}
+                          </NavLink>
+                        );
+                      }
+                    )
+                : null}
               <li
                 onClick={() => logout.mutate()}
                 className='text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] text-lg px-10 py-3 cursor-pointer'
@@ -84,8 +125,9 @@ const BaseLayout = ({ children }: any) => {
               </button>
 
               <div
-                className={`${userProfile ? "h-[120px]" : "h-0"
-                  } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
+                className={`${
+                  userProfile ? "h-[120px]" : "h-0"
+                } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
               >
                 <ul className='ps-5'>
                   <li>

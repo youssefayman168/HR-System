@@ -5,7 +5,7 @@ import { pathList } from "@/routes/routesPaths";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import People from "@/components/ViewPage/People";
 import EmployeeInfo from "@/features/AllEmployees/ViewEmployees/components/EmployeeInfo";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import getRequestDetails from "@/features/requests/details/services/getRequestDetails";
 import Loading from "@/components/Loading/Loading";
 import acceptRequest from "@/features/requests/details/services/acceptRequest";
@@ -21,6 +21,7 @@ import { format } from "date-fns";
 import { getStatus } from "./all";
 import rejectVacationRequest from "@/features/vacation-request/details/services/reject";
 import approveVacationRequest from "@/features/vacation-request/details/services/accept";
+import delegateRequest from "@/features/vacation-request/details/services/delegateRequest";
 
 const RequestDetails = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -38,19 +39,26 @@ const RequestDetails = () => {
     queryFn: () => getVacationRequest(Number(requestID!)),
   });
 
-  console.log(data?.data?.created_at);
+  console.log(data?.data.is_referred);
 
-  const [hrValue, setHrValue] = useState("");
+  const [HOD, setHOD] = useState("");
 
-  const HR = useQuery({
+  const HODs = useQuery({
     queryKey: ["getAllHR"],
     queryFn: getAllHR,
   });
 
-  const filteredHR = HR?.data?.data
-    ?.filter(({ role }: any) => role === "HR")
+  const filteredHODs = HODs?.data?.data
+    ?.filter(({ role }: any) => role === "HOD")
     .map(({ name, id }: any) => ({ name, id }));
-
+  const referRequest = useMutation({
+    mutationFn: () => {
+      return delegateRequest(requestID, HOD);
+    },
+    onSuccess: () => {
+      navigate(pathList.vacationRequests);
+    },
+  });
   return (
     <BaseLayout>
       {isLoading ? (
@@ -146,67 +154,62 @@ const RequestDetails = () => {
                       </div>
                     </div>
                     <div className='pt-5 pb-2 border-b-[1px] border-[#EAECF0] flex items-center gap-32'>
-                      <EmployeeInfo title='Type' value={data?.type} />
+                      <EmployeeInfo title='Type' value={data?.data.type} />
                     </div>
                   </div>
                   <div>
-                    {!data?.data.hod_approved ? (
-                      null ? (
-                        data.data.hod_approved ==
-                        null(
-                          <div>
-                            <p className='text-[#091E42] font-[500] text-[20px] mb-4'>
-                              Take Action
-                            </p>
-                            <p className='w-[500px] xxxl:w-[600px] max-xxl:w-[400px] bg-red-40 '>
-                              Once you take the action the employees will be
-                              notified and the action can’t be undone{" "}
-                            </p>
-                            <div className='Btns flex items-center gap-32 mt-8'>
-                              <button
-                                className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px] '
-                                onClick={() => {
-                                  rejectVacationRequest(requestID).then(() =>
-                                    navigate(pathList.vacationRequests)
-                                  );
-                                }}
-                              >
-                                Reject
-                              </button>
-                              <button
-                                className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px]'
-                                onClick={() => {
-                                  approveVacationRequest(requestID).then(() =>
-                                    navigate(pathList.vacationRequests)
-                                  );
-                                }}
-                              >
-                                Accept
-                              </button>
-                              <button
-                                className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px]'
-                                onClick={() => setShowPopup(true)}
-                              >
-                                Refer
-                              </button>
-                            </div>
-                          </div>
-                        )
-                      ) : data?.status === "referred" ? (
-                        <div>
-                          <p className='text-[20px] text-[#15294B] font-[600] mb-3'>
-                            Referred To:
-                          </p>
-                          <div className='flex items-center flex-wrap gap-x-3 gap-y-4 '>
-                            <People
-                              name={data?.hr?.name}
-                              photo={`https://sec-system-apis.up.railway.app${data?.hr?.image}`}
-                            />
-                          </div>
+                    {data?.data.hod_approved ? null : (
+                      <div>
+                        <p className='text-[#091E42] font-[500] text-[20px] mb-4'>
+                          Take Action
+                        </p>
+                        <p className='w-[500px] xxxl:w-[600px] max-xxl:w-[400px] bg-red-40 '>
+                          Once you take the action the employees will be
+                          notified and the action can’t be undone{" "}
+                        </p>
+                        <div className='Btns flex items-center gap-32 mt-8'>
+                          <button
+                            className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px] '
+                            onClick={() => {
+                              rejectVacationRequest(requestID).then(() =>
+                                navigate(pathList.vacationRequests)
+                              );
+                            }}
+                          >
+                            Reject
+                          </button>
+                          <button
+                            className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px]'
+                            onClick={() => {
+                              approveVacationRequest(requestID).then(() =>
+                                navigate(pathList.vacationRequests)
+                              );
+                            }}
+                          >
+                            Accept
+                          </button>
+                          <button
+                            className='text-[#224886] text-[18px] border-[1px] border-[#1F4690] w-[100%] text-center py-3 rounded-[10px]'
+                            onClick={() => setShowPopup(true)}
+                          >
+                            Refer
+                          </button>
                         </div>
-                      ) : (
-                        ""
-                      )
+                      </div>
+                    )}
+
+                    {data?.data.is_referred ? (
+                      <div className='mt-10'>
+                        <p className='text-[20px] text-[#15294B] font-[600] mb-3'>
+                          Referred To:
+                        </p>
+                        <div className='flex items-center flex-wrap gap-x-3 gap-y-4 '>
+                          <People
+                            name={data?.data.hod?.name}
+                            photo={`https://sec-system-apis.up.railway.app${data?.data.hod?.image}`}
+                          />
+                        </div>
+                      </div>
                     ) : null}
                   </div>
                 </div>
@@ -215,7 +218,7 @@ const RequestDetails = () => {
                     Additional Notes
                   </p>
                   <textarea
-                    value={data?.comment_from_the_hr}
+                    value={data?.data.comment_from_the_hr}
                     className='border-[1px] p-5 border-[#eaebeb] rounded-[15px] outline-none w-[480px] h-[500px]'
                     disabled
                   ></textarea>
@@ -238,10 +241,11 @@ const RequestDetails = () => {
                   <select
                     id='mySelect'
                     className='custom-select p-5 border-[1px] border-[#ccc] w-[100%] appearance-none outline-none h-[60px] rounded-[10px] '
-                    onChange={(e) => setHrValue(e.target.value)}
+                    onChange={(e) => setHOD(e.target.value)}
                     required
                   >
-                    {filteredHR?.map(({ id, name }: any) => {
+                    <option value=''>Select HOD</option>
+                    {filteredHODs?.map(({ id, name }: any) => {
                       return (
                         <option selected value={id} key={id}>
                           {name}
@@ -255,7 +259,7 @@ const RequestDetails = () => {
                     alt='ArrowBottom'
                   />
                 </div>
-                {/* <div className='flex gap-8 items-center justify-center'>
+                <div className='flex gap-8 items-center justify-center'>
                   <BaseBtn
                     name='Send'
                     styles={{
@@ -264,16 +268,14 @@ const RequestDetails = () => {
                       width: 100,
                       textAlign: "center",
                     }}
-                    onClick={() =>
-                      referHR(id, hrValue, navigate(pathList.requests))
-                    }
+                    onClick={() => referRequest.mutate()}
                   />
                   <SecondaryBorderBtn
                     text='Cancel'
                     style={{ width: 100, justifyContent: "center" }}
                     onClick={closePopup}
                   />
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
