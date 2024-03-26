@@ -1,54 +1,13 @@
 import BaseLayout from "../../layouts/BaseLayout/BaseLayout";
-import {
-  IoIosArrowBack,
-  IoIosArrowForward,
-  IoMdArrowDropdown,
-} from "react-icons/io";
-import { useEffect, useState } from "react";
 import download from "../../assets/Projects/Download.svg";
-import DropDown from "../../components/DropDown/DropDown";
 import Elm from "../../components/Requests/Elm";
 import BtnCreate from "../../components/Buttons/BtnCreate";
-import ReactPaginate from "react-paginate";
 import { useQuery } from "@tanstack/react-query";
 import getAllRequests from "@/features/requests/all/services/getAllRequests";
 import { pathList } from "@/routes/routesPaths";
 import plus from "@/assets/plus.svg";
 
 const Requests = () => {
-  const [uListEmp, setUlList] = useState(false);
-  const [uListReq, setUListReq] = useState(false);
-  const [uListRole, setUListRole] = useState(false);
-  const [uListStat, setUListStat] = useState(false);
-
-  function uListEmp1() {
-    setUlList(!uListEmp);
-
-    setUListReq(false);
-    setUListRole(false);
-    setUListStat(false);
-  }
-  function uListReq2() {
-    setUListReq(!uListReq);
-
-    setUlList(false);
-    setUListRole(false);
-    setUListStat(false);
-  }
-  function uListStat4() {
-    setUListStat(!uListStat);
-
-    setUlList(false);
-    setUListReq(false);
-    setUListRole(false);
-  }
-  function uListRole3() {
-    setUListRole(!uListRole);
-
-    setUlList(false);
-    setUListReq(false);
-    setUListStat(false);
-  }
 
   // Get All Requests
 
@@ -82,104 +41,12 @@ const Requests = () => {
         </div>
         <div className='Table bg-white rounded-[15px] w-full mt-6'>
           <div className='Header bg-primary py-7 rounded-tl-[15px] rounded-tr-[15px] px-6 text-white flex items-center gap-6 w-full'>
-            <button
-              onClick={uListEmp1}
-              className='w-[18%] flex items-center mx-auto gap-1 relative'
-            >
-              <span className='absolute top-[50px] left-[-110px]'>
-                <DropDown
-                  text1='All'
-                  text2='Stationary'
-                  text3='Loans'
-                  text4='Training'
-                  text5='Expenses'
-                  style={{
-                    opacity: uListEmp ? "1" : "0",
-                    visibility: uListEmp ? "visible" : "hidden",
-                    border: "none",
-                    boxShadow: "0px 4px 4px 2px rgba(0, 0, 0, 0.25)",
-                    top: "0px",
-                    left: "100px",
-                  }}
-                />
-              </span>
-              Employee Name
-              <IoMdArrowDropdown />
-            </button>
-            <button
-              onClick={uListReq2}
-              className=' flex items-center w-[18%] mx-auto gap-1 relative'
-            >
-              <span className='absolute top-[50px] left-[-110px]'>
-                <DropDown
-                  text1='All'
-                  text2='Stationary'
-                  text3='Loans'
-                  text4='Training'
-                  text5='Expenses'
-                  style={{
-                    opacity: uListReq ? "1" : "0",
-                    visibility: uListReq ? "visible" : "hidden",
-                    border: "none",
-                    boxShadow: "0px 4px 4px 2px rgba(0, 0, 0, 0.25)",
-                    top: "0px",
-                    left: "100px",
-                  }}
-                />
-              </span>
-              Request Type
-              <IoMdArrowDropdown />
-            </button>
+            <p className='w-[18%]'>Employee Name</p>
+            <p className='w-[18%]'>Request Type</p>
             <p className='w-[15%] '>Employee ID</p>
             <p className='w-[15%] '>Date</p>
-            <button
-              onClick={uListRole3}
-              className='w-[15%] flex items-center mx-auto gap-1 relative'
-            >
-              <span className='absolute top-[50px] left-[-110px]'>
-                <DropDown
-                  styleLast={{ display: "none" }}
-                  text1='All'
-                  text2='SuperAdmin'
-                  text3='HR'
-                  text4='Office Manager'
-                  style={{
-                    opacity: uListRole ? "1" : "0",
-                    visibility: uListRole ? "visible" : "hidden",
-                    border: "none",
-                    boxShadow: "0px 4px 4px 2px rgba(0, 0, 0, 0.25)",
-                    top: "0px",
-                    left: "100px",
-                  }}
-                />
-              </span>
-              Role
-              <IoMdArrowDropdown />
-            </button>
-            <button
-              onClick={uListStat4}
-              className=' flex items-center w-[8%] mx-auto gap-1 relative'
-            >
-              <span className='absolute top-[50px] left-[-110px]'>
-                <DropDown
-                  styleLast={{ display: "none" }}
-                  text1='All'
-                  text2='Active'
-                  text3='Declined'
-                  text4='Accepted'
-                  style={{
-                    opacity: uListStat ? "1" : "0",
-                    visibility: uListStat ? "visible" : "hidden",
-                    border: "none",
-                    boxShadow: "0px 4px 4px 2px rgba(0, 0, 0, 0.25)",
-                    top: "0px",
-                    left: "100px",
-                  }}
-                />
-              </span>
-              Status
-              <IoMdArrowDropdown />
-            </button>
+            <p className='w-[15%]'>Role</p>
+            <p className='w-[8%]'>Status</p>
             <p className='w-[15%] '>Action</p>
           </div>
           <div className='Body w-full h-[calc(100vh-385px)] HideScroll overflow-y-auto '>

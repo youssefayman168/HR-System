@@ -136,12 +136,12 @@ const BaseLayout = ({ children }: any) => {
                     </Link>
                   </li>
                   <li>
-                    <Link className='py-[7px] block' to=''>
+                    <Link className='py-[7px] block' to={pathList.new_employee}>
                       Add account
                     </Link>
                   </li>
                   <li>
-                    <Link className='py-[7px] block text-[#FF5151]' to=''>
+                    <Link className='py-[7px] block text-[#FF5151]' to={'/'}>
                       Sign out
                     </Link>
                   </li>
