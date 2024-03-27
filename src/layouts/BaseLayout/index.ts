@@ -67,11 +67,6 @@ export const asideLinks = [
     src: pathList.reports,
     Icon: ReportsIcon,
   },
-  {
-    title: "Reports",
-    src: pathList.reports,
-    Icon: ReportsIcon,
-  },
 ];
 
 export const hrLinks = [
