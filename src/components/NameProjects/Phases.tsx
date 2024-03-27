@@ -64,10 +64,6 @@ const Phases = ({ phaseNum, projectID, tasks }: phaseNum) => {
             />
           </div>
           <div className='w-[15%] flex items-center gap-2'>
-            <img src={Groupe} alt='Groupe' />
-            Assignee
-          </div>
-          <div className='w-[15%] flex items-center gap-2'>
             <img src={Calendar} alt='Calendar' />
             Creation Date
           </div>
@@ -84,6 +80,7 @@ const Phases = ({ phaseNum, projectID, tasks }: phaseNum) => {
             startDate={format(new Date(task.created_at), "dd MMM yyyy")}
             ExpiryDate={task.hours}
             styleStaus={colorConditionSwitcher(task.status)!}
+            contributors={task.contributors}
           />
         ))}
         <Link

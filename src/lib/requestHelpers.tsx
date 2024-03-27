@@ -116,6 +116,38 @@ export async function putData(
     });
 }
 
+export async function patchData(
+  path: string,
+  data?: any,
+  requestOptions?: Partial<RequestOptions>
+) {
+  const { showToast, success, error } = requestOptions || {};
+  return await axiosInstance
+    .patch(path, data)
+    .then((res) => {
+      if (showToast) {
+        if (success) {
+          if (success instanceof Function) {
+            toast.success(success(res.data));
+          } else toast.success(success);
+        }
+      }
+      return res;
+    })
+    .catch((err) => {
+      console.log(err?.response);
+      if (error) {
+        if (error instanceof Function) {
+          toast.error(error(err?.response?.data));
+        } else toast.error(error);
+      }
+      return Promise.reject({
+        message: err?.response?.data?.message ?? err.response?.data?.detail,
+        status: err?.response?.status,
+      });
+    });
+}
+
 export async function deleteData(
   path: string,
   requestOptions?: Partial<RequestOptions>
@@ -152,6 +184,7 @@ const requestHelpers = {
   postData,
   putData,
   deleteData,
+  patchData,
 };
 
 export default requestHelpers;

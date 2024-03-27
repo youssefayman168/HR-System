@@ -13,6 +13,7 @@ import NewHires from "@/components/ViewPage/NewHires";
 import { useQuery } from "@tanstack/react-query";
 import getTask from "@/features/Tasks/TaskDetails/services/getTask";
 import { format } from "date-fns";
+import NoData from "@/assets/icons/NoData";
 
 const ViewTask = () => {
   const { taskID } = useParams();
@@ -22,6 +23,7 @@ const ViewTask = () => {
       return getTask(Number(taskID!));
     },
   });
+  console.log(taskDetails.data?.data.contributors);
   return (
     <BaseLayout>
       <div className='p-5 '>
@@ -61,11 +63,12 @@ const ViewTask = () => {
             <p className='font-[600] text-[18px] text-[#0E2354]'>Task Team</p>
             <p className='mt-6 mb-3 '>People working on the task</p>
             <div className='People flex gap-3'>
-              <People photo={testImg} name='Jennifer Lopez' />
-              <People photo={testImg} name='Tassy Omah' />
-              <People photo={testImg} name='Emeto Winnder' />
-              <People photo={testImg} name='Kate Magnamay' />
-              <People photo={testImg} name='Jane Mena' />
+              {taskDetails.data?.data.contributors?.map((contributor: any) => (
+                <People
+                  photo={`https://sec-system-apis.up.railway.app${contributor.image}`}
+                  name={contributor.name}
+                />
+              ))}
             </div>
             <p className='font-[600] text-[18px] mb-6 mt-4 text-[#0E2354]'>
               Task Details
@@ -80,7 +83,25 @@ const ViewTask = () => {
                   <p className='text-sm text-grayColor font-bold capitalize'>
                     Status
                   </p>
-                  <p className='relative text-[15px] font-semibold bg-[#ECFDF3] text-[#027A48] after:absolute after:bg-[#12B76A] left-[-5px] py-[3px] px-3 ps-5 after:w-[8px] after:h-[8px] after:rounded-full after:top-[50%] after:translate-y-[-50%] after:left-[7px] rounded-[15px] '>
+                  <p
+                    className={`relative text-[15px] font-semibold ${
+                      taskDetails.data?.data.status == "Done"
+                        ? "bg-[#ECFDF3] text-[#027A48]"
+                        : taskDetails.data?.data.status == "Hold"
+                        ? "bg-[#FFEFC4] text-[#D99D00]"
+                        : taskDetails.data?.data.status == "In-Progress"
+                        ? "bg-[#E6EFFC] text-[#0764E6]"
+                        : "bg-[#FFE3E3] text-[#A00]"
+                    } after:absolute ${
+                      taskDetails.data?.data.status == "Done"
+                        ? "after:bg-[#12B76A]"
+                        : taskDetails.data?.data.status == "In-Progress"
+                        ? "after:bg-[#0764E6]"
+                        : taskDetails.data?.data.status == "Hold"
+                        ? "after:bg-[#D99D00]"
+                        : "after:bg-[#A00]"
+                    } left-[-5px] py-[3px] px-3 ps-5 after:w-[8px] after:h-[8px] after:rounded-full after:top-[50%] after:translate-y-[-50%] after:left-[7px] rounded-[15px]`}
+                  >
                     {taskDetails.data?.data?.status}
                   </p>
                 </div>
@@ -107,16 +128,25 @@ const ViewTask = () => {
               <p className='font-[600] text-[18px] mb-3 text-[#0E2354]'>
                 Subtasks
               </p>
-              <div className='border-[1px] border-[#C1C1C1] pb-4 pt-6 rounded-[10px] max-xxl:px-4 flex flex-wrap justify-start'>
-                {taskDetails.data?.data.subtasks.map((subtask: any) => (
-                  <NewHires
-                    title={subtask.name}
-                    desc={subtask.description}
-                    btn='View'
-                    subtaskID={subtask.id}
-                  />
-                ))}
-              </div>
+              {taskDetails.data?.data.subtasks.length == 0 ? (
+                <div className='flex flex-col justify-center items-center text-center'>
+                  <div>
+                    <NoData className='w-[254px] h-[254px]' />
+                  </div>
+                  <p className='ml-[53px]'>There's no subtasks created</p>
+                </div>
+              ) : (
+                <div className='border-[1px] border-[#C1C1C1] pb-4 pt-6 rounded-[10px] max-xxl:px-4 flex flex-wrap justify-start'>
+                  {taskDetails.data?.data.subtasks.map((subtask: any) => (
+                    <NewHires
+                      title={subtask.name}
+                      desc={subtask.description}
+                      btn='View'
+                      subtaskID={subtask.id}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
