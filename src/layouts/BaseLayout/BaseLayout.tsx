@@ -67,6 +67,21 @@ const BaseLayout = ({ children }: any) => {
               {!myProfile.isPending
                 ? myProfile.data?.is_superuser
                   ? asideLinks.map(({ title, src, Icon }, index) => {
+                    return (
+                      <NavLink
+                        key={index}
+                        className={
+                          "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px] whitespace-nowrap"
+                        }
+                        to={src}
+                      >
+                        <Icon />
+                        {title}
+                      </NavLink>
+                    );
+                  })
+                  : rolesScreens[myProfile?.data?.role]?.map(
+                    ({ title, src, Icon }: any, index: any) => {
                       return (
                         <NavLink
                           key={index}
@@ -79,23 +94,8 @@ const BaseLayout = ({ children }: any) => {
                           {title}
                         </NavLink>
                       );
-                    })
-                  : rolesScreens[myProfile?.data?.role]?.map(
-                      ({ title, src, Icon }: any, index: any) => {
-                        return (
-                          <NavLink
-                            key={index}
-                            className={
-                              "text-[#797979] w-[90%] flex items-center gap-5 rounded-[15px] xxl:my-[3.8px] xxxl:my-[8.7px] text-[17px] px-10 py-[8px]"
-                            }
-                            to={src}
-                          >
-                            <Icon />
-                            {title}
-                          </NavLink>
-                        );
-                      }
-                    )
+                    }
+                  )
                 : null}
               <li
                 onClick={() => logout.mutate()}
@@ -125,9 +125,8 @@ const BaseLayout = ({ children }: any) => {
               </button>
 
               <div
-                className={`${
-                  userProfile ? "h-[120px]" : "h-0"
-                } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
+                className={`${userProfile ? "h-[120px]" : "h-0"
+                  } overflow-hidden bg-white duration-300 font-[600] absolute rounded-[15px] z-[9000000] top-full shadow-lg left-[-22px] w-[220px] text-start`}
               >
                 <ul className='ps-5'>
                   <li>
