@@ -45,6 +45,7 @@ import All from "./pages/VacationRequests/all";
 import CreateVacationRequest from "./pages/VacationRequests/CreateVacationRequest";
 import RequestDetails from "./pages/VacationRequests/details";
 import HrReports from "./pages/HR/Reports";
+import AddCompany from "./features/AllEmployees/AddCompany/components/AddCompany";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -242,6 +243,14 @@ const router = createBrowserRouter(
               </ProtectedRoute>
             }
             path={pathList.add_position}
+          />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AddCompany />
+              </ProtectedRoute>
+            }
+            path={pathList.add_company}
           />
         </Route>
         <Route
