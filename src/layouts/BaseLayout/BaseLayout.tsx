@@ -30,7 +30,6 @@ const rolesScreens: any = {
 
 const BaseLayout = ({ children }: any) => {
   const [userProfile, setUserProfile] = useState(false);
-  const [sideLinks, setSideLinks] = useState([]);
   const refreshToken = localStorage.getItem("refresh")
     ? JSON.parse(localStorage.getItem("refresh") ?? "")
     : "";
