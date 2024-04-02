@@ -3,6 +3,7 @@ import RequestsTableElm from './RequestsTableElm'
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../Loading/Loading'
 import getAllRequests from '@/features/requests/all/services/getAllRequests'
+import getProfileData from '@/features/profile/services/getProfileData'
 
 const AnnualsTab = () => {
 
@@ -12,6 +13,11 @@ const AnnualsTab = () => {
     queryFn: getAllRequests,
   });
 
+  const { data: insights } = useQuery<any>({
+    queryKey: ['getProfileData'],
+    queryFn: getProfileData
+  })
+
   return (
     <>
       {isLoading ?
@@ -19,13 +25,13 @@ const AnnualsTab = () => {
         :
         <div>
           <div className='flex gap-5 mt-5'>
-            <ViewInsightStatsBox title="Total Projects" value={24} />
-            <ViewInsightStatsBox title="Total Projects" value={24} />
-            <ViewInsightStatsBox title="Total Projects" value={24} />
+            <ViewInsightStatsBox title="Total Annual Days" value={insights?.constant_vacation_days} />
+            <ViewInsightStatsBox title="Total Sick Leave Days" value={insights?.sick_days} />
+            <ViewInsightStatsBox title="Total  Taken Early Leave Days" value={insights?.casual_days} />
           </div>
           <div className='flex gap-5 mt-5 w-[66%] '>
-            <ViewInsightStatsBox title="Total Projects" value={24} />
-            <ViewInsightStatsBox title="Total Projects" value={24} />
+            <ViewInsightStatsBox title="Total Taken Annual Days" value={insights?.annual_days} />
+            <ViewInsightStatsBox title="Remaining Holiday Days" value={insights?.vacation_days} />
           </div>
           <div className='border-[1px] border-[#E0E0E0] p-4 rounded-[12px] mt-5'>
             <p className='text-[20px] font-[500] mb-5 text-[#161E54]'>Requests</p>

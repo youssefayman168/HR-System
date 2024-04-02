@@ -30,6 +30,7 @@ const AllEmployees = () => {
   const viewEmployee = (id: any) => navigation(`/all_employees/view_employee/${id}`);
   const addDepartment = () => navigation(pathList.add_department);
   const addPosition = () => navigation(pathList.add_position);
+  const addCompany = () => navigation(pathList.add_company);
 
   // Get All Employees Data
   const { data, isLoading } = useQuery({
@@ -77,6 +78,11 @@ const AllEmployees = () => {
                 text='Add Position'
                 icon={outlinePlus}
                 onClick={() => addPosition()}
+              />
+              <SecondaryBorderBtn
+                text='Add Company'
+                icon={outlinePlus}
+                onClick={() => addCompany()}
               />
             </div>
           </div>
