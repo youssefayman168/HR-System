@@ -367,6 +367,7 @@ const EditPayslip = () => {
             <button
               type='button'
               className='text-[#224886] border-[1px] border-[#224886] py-[8px] px-9 rounded-[6px]'
+              onClick={() => navigate(pathList.payslips)}
             >
               Cancel
             </button>
