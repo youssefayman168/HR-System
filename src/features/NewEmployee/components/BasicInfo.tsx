@@ -91,6 +91,7 @@ const BasicInfo = ({
           }}
           label='Gender'
           className='flex-1'
+          preSelect="Select Gender"
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>

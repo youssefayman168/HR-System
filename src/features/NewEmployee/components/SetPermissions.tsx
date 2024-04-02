@@ -66,6 +66,7 @@ const SetPermissions = ({
             }}
             label='Department'
             className='flex-1'
+            preSelect='Select Department'
           />
         )}
       </div>
@@ -214,6 +215,7 @@ const SetPermissions = ({
           }
           label='Role'
           className='flex-1'
+          preSelect='Select Role'
         />
         <BaseInput
           type='text'
