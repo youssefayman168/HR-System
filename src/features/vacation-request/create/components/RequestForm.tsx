@@ -7,8 +7,10 @@ import { IRequest } from "@/pages/VacationRequests/CreateVacationRequest";
 
 const RequestForm = ({
   setData,
+  data,
 }: {
   setData: React.Dispatch<React.SetStateAction<IRequest>>;
+  data: IRequest;
 }) => {
   return (
     <div>
@@ -42,39 +44,44 @@ const RequestForm = ({
               };
             })
           }
+          preSelect="Select Your Vacation's Type"
         />
-        <MultiDateInput
-          onDateFrom={(date) =>
-            setData((prev: any) => {
-              return {
-                ...prev,
-                date_from: date,
-              };
-            })
-          }
-          onDateTo={(date) =>
-            setData((prev: any) => {
-              return {
-                ...prev,
-                date_to: date,
-              };
-            })
-          }
-          label='Date'
-        />
+        {data.type != "Casual Leave" && (
+          <MultiDateInput
+            onDateFrom={(date) =>
+              setData((prev: any) => {
+                return {
+                  ...prev,
+                  date_from: date,
+                };
+              })
+            }
+            onDateTo={(date) =>
+              setData((prev: any) => {
+                return {
+                  ...prev,
+                  date_to: date,
+                };
+              })
+            }
+            label='Date'
+          />
+        )}
       </div>
       <div className='flex gap-[48px] justify-between items-center'>
-        <DocumentUploader
-          label='Attachment'
-          onSelect={(file) =>
-            setData((prev: any) => {
-              return {
-                ...prev,
-                medical_report: file,
-              };
-            })
-          }
-        />
+        {data.type == "Sick Leave" && (
+          <DocumentUploader
+            label='Attachment'
+            onSelect={(file) =>
+              setData((prev: any) => {
+                return {
+                  ...prev,
+                  medical_report: file,
+                };
+              })
+            }
+          />
+        )}
         <TextArea
           label='Additional Notes'
           onChange={(e) =>
