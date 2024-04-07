@@ -37,7 +37,11 @@ const AllEmployeesComponents = ({
       <p className='w-[18%]'>{departmentName}</p>
       <p className='w-[18%]'>{positionName}</p>
       <div className='w-[30%] flex items-center gap-2'>
-        {/* <button className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold' onClick={onViewClick}>view</button> */}
+        <button
+          className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold'
+          onClick={onViewClick}
+        >view
+        </button>
         <button
           className='py-2 px-6 bg-[#CCE2FF] text-primary rounded-md capitalize font-semibold'
           onClick={onEditClick}
