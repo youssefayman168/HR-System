@@ -108,20 +108,20 @@ const SetPermissions = ({
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
         <BaseInput
           type='text'
-          placeholder='Please Enter Employee College Name'
-          label='College Name'
+          placeholder='Please Enter Employee Medical Insurance Type'
+          label='Medical Insurance Type'
           className='w-[100%]'
           containerClassName='flex-1'
           onChange={(e) =>
             setData((prev) => {
               return {
                 ...prev,
-                college: e,
+                medical_insurance_type: e,
               };
             })
           }
           req
-          defaultValue={value.college}
+          defaultValue={value.medical_insurance_type}
         />
         <MultiDateInput
           onDateFrom={(date) =>
@@ -157,20 +157,20 @@ const SetPermissions = ({
         />
         <BaseInput
           type='text'
-          placeholder='Please Enter Employee Medical Insurance Type'
-          label='Medical Insurance Type'
+          placeholder='Please Enter Employee Social Insurance Type'
+          label='Social Insurance Type'
           className='w-[100%]'
           containerClassName='flex-1'
           onChange={(e) =>
             setData((prev) => {
               return {
                 ...prev,
-                medical_insurance_type: e,
+                social_insurance_type: e,
               };
             })
           }
           req
-          defaultValue={value.medical_insurance_type}
+          defaultValue={value.social_insurance_type}
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px] mb-[82px]'>
@@ -216,23 +216,6 @@ const SetPermissions = ({
           label='Role'
           className='flex-1'
           preSelect='Select Role'
-        />
-        <BaseInput
-          type='text'
-          placeholder='Please Enter Employee Social Insurance Type'
-          label='Social Insurance Type'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                social_insurance_type: e,
-              };
-            })
-          }
-          req
-          defaultValue={value.social_insurance_type}
         />
       </div>
     </>

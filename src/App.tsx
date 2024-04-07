@@ -46,6 +46,7 @@ import CreateVacationRequest from "./pages/VacationRequests/CreateVacationReques
 import RequestDetails from "./pages/VacationRequests/details";
 import HrReports from "./pages/HR/Reports";
 import AddCompany from "./features/AllEmployees/AddCompany/components/AddCompany";
+import TimeSheet from "./pages/projects/TimeSheet";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -344,6 +345,14 @@ const router = createBrowserRouter(
           element={
             <ProtectedRoute>
               <HrReports />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={pathList.timesheet}
+          element={
+            <ProtectedRoute>
+              <TimeSheet />
             </ProtectedRoute>
           }
         />

@@ -18,7 +18,7 @@ const ResetForm = () => {
       return resetPassword(params.otpCode!, params.email!, passwords.password);
     },
     onSuccess: () => {
-      navigate("/");
+      navigate("/profile");
     },
   });
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

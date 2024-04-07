@@ -5,12 +5,12 @@ const ImageUploader = ({
   name,
   onSelect,
   label,
-  optional,
+  optional = false,
 }: {
   onSelect?: (file?: File) => any;
   label: string;
   optional?: boolean;
-  name?: string
+  name?: string;
 }) => {
   const [selectedFile, setSelectedFile] = useState<File>();
 

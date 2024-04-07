@@ -32,6 +32,7 @@ const CreateProject = () => {
     budget: "",
     status: "",
     work_hours: "",
+    project_number: "",
   });
 
   return (
@@ -220,29 +221,55 @@ const CreateProject = () => {
                 />
               </div>
             </div>
-
-            <div className='w-full'>
-              <label
-                className='mb-2 block text-lg font-medium'
-                htmlFor='Location'
-              >
-                Location
-              </label>
-              <input
-                required
-                id='Location'
-                placeholder='Please Enter The Location'
-                className='w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] '
-                type='text'
-                onChange={(e) =>
-                  setData((prev: any) => {
-                    return {
-                      ...prev,
-                      location: e.target.value,
-                    };
-                  })
-                }
-              />
+            <div className='mb-5 mt-7 flex items-center gap-8'>
+              <div className='w-full'>
+                <label
+                  className='mb-2 block text-lg font-medium'
+                  htmlFor='Location'
+                >
+                  Location
+                </label>
+                <input
+                  required
+                  id='Location'
+                  placeholder='Please Enter The Location'
+                  className='w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] '
+                  type='text'
+                  onChange={(e) =>
+                    setData((prev: any) => {
+                      return {
+                        ...prev,
+                        location: e.target.value,
+                      };
+                    })
+                  }
+                />
+              </div>
+              <div className='w-full'>
+                <label
+                  className='mb-2 block text-lg font-medium'
+                  htmlFor='budget'
+                >
+                  Project Number
+                </label>
+                <input
+                  required
+                  id='number'
+                  placeholder='Please Enter The Project Number'
+                  className='w-full h-[60px] border border-[#BDBDBD] placeholder:text-[#737373] py-3 px-5 focus:outline-none rounded-[10px] placeholder:text-[14px] '
+                  type='number'
+                  maxLength={4}
+                  onChange={(e) =>
+                    setData((prev: any) => {
+                      return {
+                        ...prev,
+                        project_number: e.target.value,
+                      };
+                    })
+                  }
+                  value={data.project_number}
+                />
+              </div>
             </div>
 
             <div className='Description flex flex-col mt-10 gap-5'>

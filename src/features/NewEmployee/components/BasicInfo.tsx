@@ -54,49 +54,6 @@ const BasicInfo = ({
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
         <BaseInput
           type='text'
-          placeholder='Please Enter Employee Phone Number'
-          label='Phone Number'
-          className='w-[100%]'
-          containerClassName='flex-1'
-          onChange={(e) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                phone_number: e,
-              };
-            })
-          }
-          req
-          defaultValue={value.phone_number}
-        />
-        <SelectInput
-          data={[
-            {
-              id: "male",
-              name: "male",
-            },
-            {
-              id: "female",
-              name: "female",
-            },
-          ]}
-          onSelect={(selectedItem) => {
-            console.log(selectedItem);
-            setData((prev) => {
-              return {
-                ...prev,
-                gender: selectedItem,
-              };
-            });
-          }}
-          label='Gender'
-          className='flex-1'
-          preSelect="Select Gender"
-        />
-      </div>
-      <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
-        <BaseInput
-          type='text'
           placeholder='Please Enter Employee Nationality'
           label='Nationality'
           className='w-[100%]'
@@ -131,21 +88,9 @@ const BasicInfo = ({
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
-        <DateInput
-          label='Birth Date'
-          onDate={(date) =>
-            setData((prev) => {
-              return {
-                ...prev,
-                birth_date: date,
-              };
-            })
-          }
-          defaultValue={value.birth_date}
-        />
         <BaseInput
           type='text'
-          placeholder='Please Select Insurance Type'
+          placeholder='Please Enter Insurance Type'
           label='Insurance Type'
           className='w-[100%]'
           containerClassName='flex-1'

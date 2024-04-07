@@ -22,7 +22,7 @@ const Login = () => {
     onSuccess: (data) => {
       localStorage.setItem("access", JSON.stringify(data.data.access));
       localStorage.setItem("refresh", JSON.stringify(data.data.refresh));
-      navigate("/home");
+      navigate("/profile");
       location.reload();
     },
   });

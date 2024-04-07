@@ -18,11 +18,8 @@ import { useNavigate } from "react-router-dom";
 export type IEmployeeData = {
   name: string;
   email: string;
-  phone_number: string;
-  gender: string;
   nationality: string;
   location: string;
-  birth_date: string;
   medical_insurance_type: string;
   social_insurance_type: string;
   image: File | string;
@@ -30,7 +27,6 @@ export type IEmployeeData = {
   department: string;
   grade: string;
   company: string;
-  college: string;
   graduation_year_from: string;
   graduation_year_to: string;
   hiring_date: string;
@@ -50,11 +46,8 @@ const NewEmployee = () => {
   const [data, setData] = useState<IEmployeeData>({
     name: "",
     email: "",
-    phone_number: "",
-    gender: "",
     nationality: "",
     location: "",
-    birth_date: "",
     medical_insurance_type: "",
     social_insurance_type: "",
     image: "",
@@ -62,7 +55,6 @@ const NewEmployee = () => {
     department: "",
     grade: "",
     company: "",
-    college: "",
     graduation_year_from: "",
     graduation_year_to: "",
     hiring_date: "",

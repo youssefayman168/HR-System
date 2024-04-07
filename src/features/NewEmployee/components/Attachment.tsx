@@ -20,10 +20,11 @@ const Attachment = ({
               };
             })
           }
+          optional={false}
         />
         <DocumentUploader
           label='Upload Passport Copy'
-          optional
+          optional={false}
           onSelect={(file) =>
             setData((prev: any) => {
               return {
@@ -45,6 +46,7 @@ const Attachment = ({
               };
             })
           }
+          optional={false}
         />
         <DocumentUploader
           label='Upload ID Photo'
@@ -56,6 +58,7 @@ const Attachment = ({
               };
             })
           }
+          optional={false}
         />
       </div>
       <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
@@ -69,10 +72,11 @@ const Attachment = ({
               };
             })
           }
+          optional={false}
         />
         <DocumentUploader
           label='Upload Military Certificate'
-          optional
+          optional={false}
           onSelect={(file) =>
             setData((prev: any) => {
               return {
@@ -94,10 +98,11 @@ const Attachment = ({
               };
             })
           }
+          optional={false}
         />
         <DocumentUploader
           label='Upload Social Insurance'
-          optional
+          optional={false}
           onSelect={(file) =>
             setData((prev: any) => {
               return {

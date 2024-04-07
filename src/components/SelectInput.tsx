@@ -7,12 +7,14 @@ const SelectInput = ({
   label,
   className,
   preSelect,
+  fetchName,
 }: {
   data: any;
   label: string;
   onSelect: (selectedItem: any) => any;
   className?: string;
   preSelect?: string;
+  fetchName?: (currentItem: any) => string;
 }) => {
   return (
     <div className={`w-full ${className}`}>
@@ -27,11 +29,11 @@ const SelectInput = ({
           required
         >
           {preSelect && <option value=''>{preSelect}</option>}
-          {data?.map(({ id, name }: any) => {
-            console.log(name);
+          {data?.map((item: any) => {
+            console.log(item.name);
             return (
-              <option value={id} key={id}>
-                {name}
+              <option value={item.id} key={item.id}>
+                {fetchName ? fetchName(item) : item.name}
               </option>
             );
           })}

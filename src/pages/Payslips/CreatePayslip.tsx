@@ -5,33 +5,49 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiChevronRight } from "react-icons/bi";
 import BaseInput from "@/components/BaseInput";
 import DateInpCreate from "@/components/DateInput/DateInpCreate";
-import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import createPayslip from "@/features/Payslips/CreatePayslip/services/createPayslip";
 
 const CreatePayslip = () => {
   const [data, setData] = useState({
-    category: "",
+    basic_salary: 0,
+    transportation_allowances: 0,
+    housing_allowances: 0,
+    other_allowances: 0,
+    social_insurance: 0,
+    taxes: 0,
+    medical_insurance: 0,
+    gross_salary: 0,
+    hr_rate: 0,
     employee_number: "",
-    experience: "",
-    hiring_date: "",
-    grade: "",
-    net_salary: 0,
-    actual_working_days: 0,
-    overtime_hours: 0,
-    working_days_wage: 0,
-    daily_overtime_cost: 0,
-    transfer_allowance: 0,
-    total_wage: 0,
-    penalties: 0,
-    loans: "",
-    total_salary: 0,
   });
+  const grossSalary =
+    Number(data.basic_salary) +
+    Number(data.housing_allowances) +
+    Number(data.other_allowances) +
+    Number(data.social_insurance) +
+    Number(data.medical_insurance) +
+    Number(data.taxes) +
+    Number(data.transportation_allowances);
+  console.log(grossSalary);
+  const HrRate = ((grossSalary * 12) / 365).toFixed(2);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const addPayslip = useMutation({
     mutationFn: () => {
-      return createPayslip(data);
+      return createPayslip({
+        basic_salary: data.basic_salary,
+        housing_allowances: data.housing_allowances,
+        transportation_allowances: data.transportation_allowances,
+        other_allowances: data.other_allowances,
+        social_insurance: data.social_insurance,
+        taxes: data.taxes,
+        medical_insurance: data.medical_insurance,
+        gross_salary: data.gross_salary,
+        hr_rate: HrRate,
+        employee_number: data.employee_number,
+      });
     },
     onSuccess: () => {
       queryClient
@@ -50,6 +66,16 @@ const CreatePayslip = () => {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    setData((prev: any) => {
+      return {
+        ...prev,
+        gross_salary: String(grossSalary),
+        hr_rate: HrRate,
+      };
+    });
+  }, [grossSalary, HrRate]);
   return (
     <BaseLayout>
       <div className='p-6 pb-[15px]'>
@@ -68,12 +94,6 @@ const CreatePayslip = () => {
               <p className='text-[#101828] text-[24px] font-[600] '>
                 Create New Payslip
               </p>
-              <button
-                type='button'
-                className='bg-[#105090] py-2 px-8 rounded-[10px] text-white '
-              >
-                Import Excel Sheet
-              </button>
             </div>
             <div className='inputs flex gap-8 items-start mb-3'>
               <div className='w-full'>
@@ -93,97 +113,84 @@ const CreatePayslip = () => {
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter The Employee experience'
-                  label='Experience'
+                  placeholder='Please Enter The Employee Basic Salary'
+                  label='Basic Salary'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        experience: text,
-                      };
-                    })
-                  }
-                />
-                <DateInpCreate
-                  when='Hiring Date'
-                  styleLabel={{ display: "block" }}
-                  label='Hiring date'
-                  onChange={(e: any) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        hiring_date: e.target.value,
+                        basic_salary: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the number of working days'
-                  label='Actual working days'
+                  placeholder='Please Enter the Transportation Allowances'
+                  label='Transportation Allowances'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        actual_working_days: text,
+                        transportation_allowances: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter working days wage'
-                  label='Working days wage'
+                  placeholder='Please Enter Housing Allowances'
+                  label='Housing Allowances'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        working_days_wage: text,
+                        housing_allowances: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the allowance'
+                  placeholder='Please Enter The Other Allowances'
                   label='Transfer allowance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        transfer_allowance: text,
+                        other_allowances: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter penalties'
-                  label='Penalties'
+                  placeholder='Please Enter Social Insurance'
+                  label='Social Insurance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        penalties: text,
+                        social_insurance: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the total salary'
-                  label='Total Salary'
+                  placeholder='Please Enter Taxes'
+                  label='Taxes'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        total_salary: text,
+                        taxes: text,
                       };
                     })
                   }
@@ -193,101 +200,36 @@ const CreatePayslip = () => {
               <div className=' w-full'>
                 <BaseInput
                   type='text'
-                  placeholder='Please Enter categories Name'
-                  label='Category'
+                  placeholder='Please Enter Medical Insurance'
+                  label='Medical Insurance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        category: text,
+                        medical_insurance: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='text'
-                  placeholder='Please Choose The Grade'
-                  label='Grade'
+                  label='Gross Salary'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        grade: text,
+                        gross_salary: text,
                       };
                     })
                   }
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter The Budget'
-                  label='Net Salary'
+                  label='HR Rate'
                   styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        net_salary: text,
-                      };
-                    })
-                  }
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter the number of overtime hours'
-                  label='Overtime hours'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        overtime_hours: text,
-                      };
-                    })
-                  }
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter Your overtime coast'
-                  label='Daily overtime cost'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        daily_overtime_cost: text,
-                      };
-                    })
-                  }
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter the total wage'
-                  label='Total wage'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        total_wage: text,
-                      };
-                    })
-                  }
-                />
-                <BaseInput
-                  type='text'
-                  placeholder='Please Enter Your Loans'
-                  label='Loans'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        loans: text,
-                      };
-                    })
-                  }
+                  defaultValue={HrRate}
                 />
               </div>
             </div>

@@ -10,6 +10,7 @@ import AnalysisIcon from "../../assets/icons/AnalysisIcon";
 import RequestsIcon from "../../assets/icons/RequestsIcon";
 import ReportsIcon from "../../assets/icons/ReportsIcon";
 import FinancialRequestIco from "@/assets/icons/FinancialRequestIco";
+import TimesheetIcon from "@/assets/icons/TimesheetIcon";
 
 export const asideLinks = [
   {
@@ -26,6 +27,11 @@ export const asideLinks = [
     title: "Tasks",
     src: pathList.tasks,
     Icon: TasksIcon,
+  },
+  {
+    title: "Time Sheet",
+    src: pathList.timesheet,
+    Icon: ReportsIcon,
   },
   {
     title: "Payslips",
@@ -132,14 +138,9 @@ export const accountantLinks = [
 
 export const officeManagerLinks = [
   {
-    title: "Projects",
-    src: pathList.projects,
-    Icon: ProjectsIcon,
-  },
-  {
-    title: "Tasks",
-    src: pathList.tasks,
-    Icon: TasksIcon,
+    title: "Time Sheet",
+    src: pathList.timesheet,
+    Icon: TimesheetIcon,
   },
   {
     title: "Notifications",
@@ -169,10 +170,15 @@ export const projectManagerLinks = [
     src: pathList.projects,
     Icon: ProjectsIcon,
   },
+  // {
+  //   title: "Tasks",
+  //   src: pathList.tasks,
+  //   Icon: TasksIcon,
+  // },
   {
-    title: "Tasks",
-    src: pathList.tasks,
-    Icon: TasksIcon,
+    title: "Time Sheet",
+    src: pathList.timesheet,
+    Icon: TimesheetIcon,
   },
   {
     title: "Payslips",
@@ -202,15 +208,16 @@ export const HODLinks = [
     src: pathList.home,
     Icon: DashboardIcon,
   },
-  {
-    title: "Projects",
-    src: pathList.projects,
-    Icon: ProjectsIcon,
-  },
+
   {
     title: "Tasks",
     src: pathList.tasks,
     Icon: TasksIcon,
+  },
+  {
+    title: "Time Sheet",
+    src: pathList.timesheet,
+    Icon: TimesheetIcon,
   },
   {
     title: "Payslips",
@@ -235,15 +242,15 @@ export const HODLinks = [
 ];
 
 export const EmployeeLinks = [
+  // {
+  //   title: "Tasks",
+  //   src: pathList.tasks,
+  //   Icon: TasksIcon,
+  // },
   {
-    title: "Projects",
-    src: pathList.projects,
-    Icon: ProjectsIcon,
-  },
-  {
-    title: "Tasks",
-    src: pathList.tasks,
-    Icon: TasksIcon,
+    title: "Time Sheet",
+    src: pathList.timesheet,
+    Icon: TimesheetIcon,
   },
   {
     title: "Notifications",

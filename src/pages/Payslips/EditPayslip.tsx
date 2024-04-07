@@ -14,21 +14,16 @@ import editPayslip from "@/features/Payslips/EditPayslip/editPayslip";
 const EditPayslip = () => {
   const { payslipID } = useParams();
   const [data, setData] = useState({
-    category: "",
+    basic_salary: 0,
+    transportation_allowances: 0,
+    housing_allowances: 0,
+    other_allowances: 0,
+    social_insurance: 0,
+    taxes: 0,
+    medical_insurance: 0,
+    gross_salary: 0,
+    hr_rate: 0,
     employee_number: "",
-    experience: "",
-    hiring_date: "",
-    grade: "",
-    net_salary: 0,
-    actual_working_days: 0,
-    overtime_hours: 0,
-    working_days_wage: 0,
-    daily_overtime_cost: 0,
-    transfer_allowance: 0,
-    total_wage: 0,
-    penalties: 0,
-    loans: "",
-    total_salary: 0,
   });
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -43,45 +38,32 @@ const EditPayslip = () => {
     mutationFn: () => {
       return editPayslip(
         {
-          category: data.category ? data.category : payslip.data?.data.category,
+          basic_salary: data.basic_salary
+            ? data.basic_salary
+            : payslip.data?.data.basic_salary,
           employee_number: data.employee_number
             ? data.employee_number
             : payslip.data?.data.employee.employee_number,
-          experience: data.experience
-            ? data.experience
-            : payslip.data?.data.experience,
-          hiring_date: data.hiring_date
-            ? data.hiring_date
-            : payslip.data?.data.hiring_date,
-          grade: data.grade ? data.grade : payslip.data?.data.grade,
-          net_salary: data.net_salary
-            ? data.net_salary
-            : payslip.data?.data.net_salary,
-          actual_working_days: data.actual_working_days
-            ? data.actual_working_days
-            : payslip.data?.data.actual_working_days,
-          overtime_hours: data.overtime_hours
-            ? data.overtime_hours
-            : payslip.data?.data.overtime_hours,
-          working_days_wage: data.working_days_wage
-            ? data.working_days_wage
-            : payslip.data?.data.working_days_wage,
-          daily_overtime_cost: data.daily_overtime_cost
-            ? data.daily_overtime_cost
-            : payslip.data?.data.daily_overtime_cost,
-          transfer_allowance: data.transfer_allowance
-            ? data.transfer_allowance
-            : payslip.data?.data.transfer_allowance,
-          total_wage: data.total_wage
-            ? data.total_wage
-            : payslip.data?.data.total_wage,
-          penalties: data.penalties
-            ? data.penalties
-            : payslip.data?.data.penalties,
-          loans: data.loans ? data.loans : payslip.data?.data.loans,
-          total_salary: data.total_salary
-            ? data.total_salary
-            : payslip.data?.data.total_salary,
+          transportation_allowances: data.transportation_allowances
+            ? data.transportation_allowances
+            : payslip.data?.data.transportation_allowances,
+          housing_allowances: data.housing_allowances
+            ? data.housing_allowances
+            : payslip.data?.data.housing_allowances,
+          other_allowances: data.other_allowances
+            ? data.other_allowances
+            : payslip.data?.data.other_allowances,
+          social_insurance: data.social_insurance
+            ? data.social_insurance
+            : payslip.data?.data.social_insurance,
+          taxes: data.taxes ? data.taxes : payslip.data?.data.taxes,
+          medical_insurance: data.medical_insurance
+            ? data.medical_insurance
+            : payslip.data?.data.medical_insurance,
+          gross_salary: data.gross_salary
+            ? data.gross_salary
+            : payslip.data?.data.gross_salary,
+          hr_rate: data.hr_rate ? data.hr_rate : payslip.data?.data.hr_rate,
         },
         Number(payslipID!)
       );
@@ -116,20 +98,14 @@ const EditPayslip = () => {
           <img src={ArrowLeft} alt='ArrowLeft' />
           Payslips
           <BiChevronRight />
-          Create Payslip
+          Edit Payslip
         </Link>
         <form onSubmit={onSubmit}>
           <div className='bg-white py-6 px-12 mt-8 rounded-[15px] h-[calc(100vh-240px)] overflow-y-auto HideScroll '>
             <div className='flex items-center justify-between mb-10'>
               <p className='text-[#101828] text-[24px] font-[600] '>
-                Create New Payslip
+                Edit a Payslip
               </p>
-              <button
-                type='button'
-                className='bg-[#105090] py-2 px-8 rounded-[10px] text-white '
-              >
-                Import Excel Sheet
-              </button>
             </div>
             <div className='inputs flex gap-8 items-start mb-3'>
               <div className='w-full'>
@@ -146,219 +122,133 @@ const EditPayslip = () => {
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.employee.employee_number}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter The Employee experience'
-                  label='Experience'
+                  placeholder='Please Enter The Employee Basic Salary'
+                  label='Basic Salary'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        experience: text,
+                        basic_salary: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.experience}
-                />
-                <DateInpCreate
-                  when='Hiring Date'
-                  styleLabel={{ display: "block" }}
-                  label='Hiring date'
-                  onChange={(e: any) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        hiring_date: e.target.value,
-                      };
-                    })
-                  }
-                  defaultValue={payslip.data?.data.hiring_date}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the number of working days'
-                  label='Actual working days'
+                  placeholder='Please Enter the Transportation Allowances'
+                  label='Transportation Allowances'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        actual_working_days: text,
+                        transportation_allowances: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.actual_working_days}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter working days wage'
-                  label='Working days wage'
+                  placeholder='Please Enter Housing Allowances'
+                  label='Housing Allowances'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        working_days_wage: text,
+                        housing_allowances: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.working_days_wage}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the allowance'
+                  placeholder='Please Enter The Other Allowances'
                   label='Transfer allowance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        transfer_allowance: text,
+                        other_allowances: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.transfer_allowance}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter penalties'
-                  label='Penalties'
+                  placeholder='Please Enter Social Insurance'
+                  label='Social Insurance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        penalties: text,
+                        social_insurance: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.penalties}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter the total salary'
-                  label='Total Salary'
+                  placeholder='Please Enter Taxes'
+                  label='Taxes'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        total_salary: text,
+                        taxes: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.total_salary}
                 />
               </div>
 
               <div className=' w-full'>
                 <BaseInput
                   type='text'
-                  placeholder='Please Enter categories Name'
-                  label='Category'
+                  placeholder='Please Enter Medical Insurance'
+                  label='Medical Insurance'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        category: text,
+                        medical_insurance: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.category}
                 />
                 <BaseInput
                   type='text'
-                  placeholder='Please Choose The Grade'
-                  label='Grade'
+                  label='Gross Salary'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        grade: text,
+                        gross_salary: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.grade}
                 />
                 <BaseInput
                   type='number'
-                  placeholder='Please Enter The Budget'
-                  label='Net Salary'
+                  label='HR Rate'
                   styles={{ width: "100%" }}
                   onChange={(text) =>
                     setData((prev) => {
                       return {
                         ...prev,
-                        net_salary: text,
+                        hr_rate: text,
                       };
                     })
                   }
-                  defaultValue={payslip.data?.data.net_salary}
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter the number of overtime hours'
-                  label='Overtime hours'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        overtime_hours: text,
-                      };
-                    })
-                  }
-                  defaultValue={payslip.data?.data.overtime_hours}
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter Your overtime coast'
-                  label='Daily overtime cost'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        daily_overtime_cost: text,
-                      };
-                    })
-                  }
-                  defaultValue={payslip.data?.data.daily_overtime_cost}
-                />
-                <BaseInput
-                  type='number'
-                  placeholder='Please Enter the total wage'
-                  label='Total wage'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        total_wage: text,
-                      };
-                    })
-                  }
-                  defaultValue={payslip.data?.data.total_wage}
-                />
-                <BaseInput
-                  type='text'
-                  placeholder='Please Enter Your Loans'
-                  label='Loans'
-                  styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        loans: text,
-                      };
-                    })
-                  }
-                  defaultValue={payslip.data?.data.loans}
                 />
               </div>
             </div>

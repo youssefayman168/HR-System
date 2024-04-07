@@ -31,7 +31,11 @@ const createEmployee = (data: IEmployeeData) => {
   formData.append("social_insurance", data.social_insurance);
   formData.append("role", data.role);
   formData.append("password", "admin");
-  return requestHelpers.postData("/user/create/", formData);
+  return requestHelpers.postData("/user/create/", formData, {
+    showToast: true,
+    success: "Employee Created Successfully",
+    error: "Employee Couldn't Be Created",
+  });
 };
 
 export default createEmployee;

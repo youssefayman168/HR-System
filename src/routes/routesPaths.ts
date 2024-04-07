@@ -57,6 +57,7 @@ export const pathList = {
   projectDetails: "/projects/:id",
   editProject: "/projects/editProject/:id",
   projectDetailsAddTask: "/projects/:id/addTask/:phaseID?",
+  timesheet: "/timesheet",
 
   // HR
   hrReports: "/hr/reports",
