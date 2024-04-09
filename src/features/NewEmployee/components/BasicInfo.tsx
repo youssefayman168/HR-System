@@ -87,7 +87,7 @@ const BasicInfo = ({
           req
         />
       </div>
-      <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
+      {/* <div className='w-[100%] flex justify-between items-center gap-[21px] mt-[50px]'>
         <BaseInput
           type='text'
           placeholder='Please Enter Insurance Type'
@@ -98,14 +98,14 @@ const BasicInfo = ({
             setData((prev) => {
               return {
                 ...prev,
-                social_insurance: e,
+                in: e,
               };
             })
           }
-          defaultValue={value.social_insurance}
+          defaultValue={value.social_insurance_type}
           req
         />
-      </div>
+      </div> */}
       <ImageUploader
         label='Employee’s Profile Photo'
         onSelect={(file) => {
