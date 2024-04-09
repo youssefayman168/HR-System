@@ -5,10 +5,16 @@ import requestHelpers from "@/lib/requestHelpers";
  * @param {number} subTaskID - Number
  * @param {number} approvalID - Number
  */
-const approveSubTask = (subTaskID: number, approvalID: number) => {
+const approveSubTask = (
+  subTaskID: number,
+  approvalID: number,
+  commentsFromHOD?: string
+) => {
   return requestHelpers.patchData(
     `/task/sub-task/approve/${subTaskID}/${approvalID}/`,
-    {},
+    {
+      hod_comment: commentsFromHOD,
+    },
     {
       showToast: true,
       success: "Subtask approved successfully",

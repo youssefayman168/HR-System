@@ -10,13 +10,16 @@ import DropDown from "../../components/DropDown/DropDown";
 import Elm from "../../components/Requests/Elm";
 import BtnCreate from "../../components/Buttons/BtnCreate";
 import ReactPaginate from "react-paginate";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import getAllRequests from "@/features/requests/all/services/getAllRequests";
 import { pathList } from "@/routes/routesPaths";
 import plus from "@/assets/plus.svg";
 import getVacationRequests from "@/features/vacation-request/all/services/getVacationRequests";
 import Request from "@/features/vacation-request/all/components/Request";
 import { format } from "date-fns";
+import getHODVacations from "@/features/vacation-request/all/services/getHODVacations";
+import getMyVacations from "@/features/vacation-request/create/services/getMyVacations";
+import getProfileData from "@/features/profile/services/getProfileData";
 
 export const getStatus = (hodApproved: boolean, staffApproved: boolean) => {
   if (hodApproved) {
@@ -34,12 +37,50 @@ export const getStatus = (hodApproved: boolean, staffApproved: boolean) => {
   } else return "inactive";
 };
 
+/**
+ * if HOD -> getHODRequests
+ * if Senior -> getAll
+ * if Super Admin -> all
+ * if Employee -> me
+ */
+
 const All = () => {
   const vacationRequests = useQuery({
     queryKey: ["vacation-requests"],
     queryFn: getVacationRequests,
   });
-  const data: any = [];
+  const [data, setData] = useState([]);
+
+  const { mutate: getRequests } = useMutation({
+    mutationFn: () => getVacationRequests(),
+    onSuccess: (data) => setData(data.data),
+  });
+
+  const { mutate: fetchHODRequests } = useMutation({
+    mutationFn: () => getHODVacations(),
+    onSuccess: (data) => setData(data.data),
+  });
+
+  const { data: myRequests, mutate: fetchMyRequests } = useMutation({
+    mutationFn: () => getMyVacations(),
+    onSuccess: (data) => setData(data.data),
+  });
+
+  const { data: profileData, isLoading: profileLoading } = useQuery<any>({
+    queryKey: ["getProfileData"],
+    queryFn: getProfileData,
+  });
+
+  useEffect(() => {
+    if (profileData?.is_superuser || profileData?.role == "Senior") {
+      return getRequests();
+    } else if (profileData?.role == "HOD") {
+      return fetchHODRequests();
+    } else if (profileData?.role == "Employee") {
+      return fetchMyRequests();
+    }
+  }, [profileLoading]);
+  console.log(data);
   return (
     <BaseLayout>
       <div className='p-6 pb-3'>
@@ -77,7 +118,7 @@ const All = () => {
             <p className='w-[15%] '>Action</p>
           </div>
           <div className='Body w-full h-[calc(100vh-385px)] HideScroll overflow-y-auto '>
-            {vacationRequests.data?.data?.map(
+            {data.map(
               ({
                 hod,
                 type,

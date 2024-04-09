@@ -136,7 +136,7 @@ const NewEmployee = () => {
             onSubmit={(e) => {
               e.preventDefault();
               if (currentStep != 2) {
-                goNext();
+                return goNext();
               }
               onSubmit();
             }}

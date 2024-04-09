@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import DeleteIcon from "../../../assets/Projects/Delete.svg";
 import EditIcon from "../../../assets/Projects/Edit.svg";
 import deleteSubtask from "@/features/Tasks/TaskDetails/services/deleteSubtask";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type ElementArchitectural = {
   text1: string;
@@ -44,7 +44,10 @@ const ArchitecturalElement = ({
     },
   });
   return (
-    <div className='border-b-[2px] border-[#a0aaca80] font-[600] py-7 flex items-center gap-[10px] '>
+    <Link
+      to={`/tasks/viewSubTask/${subtaskID}`}
+      className='border-b-[2px] border-[#a0aaca80] font-[600] py-7 flex items-center gap-[10px] '
+    >
       <p className='w-[15%] text-[#105090] '>{text1}</p>
       <p className='w-[12%] '>{text2}</p>
       <p className='w-[12%] '>{text3}</p>
@@ -98,7 +101,7 @@ const ArchitecturalElement = ({
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

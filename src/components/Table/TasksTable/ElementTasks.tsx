@@ -75,14 +75,14 @@ const ElementTasks = ({
       </div>
       <p className='w-[36%] max-xxl:w-[36%] '>{text6}</p>
       <div className=' flex-1 flex items-center gap-[15px] '>
-        <Link
+        {/* <Link
           to={`/tasks/${elementID}/addSubTasks`}
           style={styleActionBtn}
           className='w-fit rounded-[6px] '
         >
           {text7}
-        </Link>
-        <div className='flex items-center gap-4 ms-auto'>
+        </Link> */}
+        <div className='flex items-center gap-4 '>
           <Link to={`/tasks/editTasks/${elementID}`}>
             <img
               className='bg-[#DEFFE1] cursor-pointer py-[10px] px-[10px] rounded-full '

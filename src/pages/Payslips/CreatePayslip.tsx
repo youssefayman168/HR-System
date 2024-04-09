@@ -44,7 +44,7 @@ const CreatePayslip = () => {
         social_insurance: data.social_insurance,
         taxes: data.taxes,
         medical_insurance: data.medical_insurance,
-        gross_salary: data.gross_salary,
+        gross_salary: grossSalary,
         hr_rate: HrRate,
         employee_number: data.employee_number,
       });
@@ -216,14 +216,15 @@ const CreatePayslip = () => {
                   type='text'
                   label='Gross Salary'
                   styles={{ width: "100%" }}
-                  onChange={(text) =>
-                    setData((prev) => {
-                      return {
-                        ...prev,
-                        gross_salary: text,
-                      };
-                    })
-                  }
+                  // onChange={(text) =>
+                  //   setData((prev) => {
+                  //     return {
+                  //       ...prev,
+                  //       gross_salary: text,
+                  //     };
+                  //   })
+                  // }
+                  defaultValue={grossSalary}
                 />
                 <BaseInput
                   type='number'

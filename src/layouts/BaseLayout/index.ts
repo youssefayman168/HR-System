@@ -180,11 +180,11 @@ export const projectManagerLinks = [
     src: pathList.timesheet,
     Icon: TimesheetIcon,
   },
-  {
-    title: "Payslips",
-    src: pathList.payslips,
-    Icon: TimeTableIcon,
-  },
+  // {
+  //   title: "Payslips",
+  //   src: pathList.payslips,
+  //   Icon: TimeTableIcon,
+  // },
   {
     title: "Notifications",
     src: pathList.notifications,
@@ -219,11 +219,11 @@ export const HODLinks = [
     src: pathList.timesheet,
     Icon: TimesheetIcon,
   },
-  {
-    title: "Payslips",
-    src: pathList.payslips,
-    Icon: TimeTableIcon,
-  },
+  // {
+  //   title: "Payslips",
+  //   src: pathList.payslips,
+  //   Icon: TimeTableIcon,
+  // },
   {
     title: "Notifications",
     src: pathList.notifications,

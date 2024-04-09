@@ -2,19 +2,56 @@ import BaseLayout from "../../layouts/BaseLayout/BaseLayout";
 import download from "../../assets/Projects/Download.svg";
 import Elm from "../../components/Requests/Elm";
 import BtnCreate from "../../components/Buttons/BtnCreate";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import getAllRequests from "@/features/requests/all/services/getAllRequests";
 import { pathList } from "@/routes/routesPaths";
 import plus from "@/assets/plus.svg";
+import getHrRequests from "@/features/requests/all/services/getHrRequests";
+import getMyRequests from "@/features/requests/all/services/getMyRequests";
+import getProfileData from "@/features/profile/services/getProfileData";
+import { useEffect, useState } from "react";
+
+/**
+ * if super admin -> get all requests
+ * if HR -> get HR's requests
+ * if Employee -> get my requests
+ */
 
 const Requests = () => {
+  const [data, setData] = useState([]);
 
-  // Get All Requests
-
-  const { data } = useQuery<any>({
-    queryKey: ["getAllRequests"],
-    queryFn: getAllRequests,
+  const { data: allRequests, mutate: getRequests } = useMutation({
+    mutationFn: () => getAllRequests(),
+    onSuccess: (data) => setData(data),
   });
+
+  const { data: hrRequests, mutate: fetchHrRequests } = useMutation({
+    mutationFn: () => getHrRequests(),
+    onSuccess: (data) => setData(data),
+  });
+
+  const { data: myRequests, mutate: fetchMyRequests } = useMutation({
+    mutationFn: () => getMyRequests(),
+    onSuccess: (data) => setData(data),
+  });
+
+  const { data: profileData, isLoading: profileLoading } = useQuery<any>({
+    queryKey: ["getProfileData"],
+    queryFn: getProfileData,
+  });
+
+  useEffect(() => {
+    if (profileData?.is_superuser) {
+      return getRequests();
+    } else if (profileData?.role == "HR") {
+      return fetchHrRequests();
+    } else if (profileData?.role == "Employee") {
+      return fetchMyRequests();
+    }
+  }, [profileLoading]);
+  console.log(profileData);
+
+  console.log(data);
 
   // const [currentPage, setCurrentPage] = useState(0)
   // const [filterDataReq, setFilterDataReq] = useState<any>()
